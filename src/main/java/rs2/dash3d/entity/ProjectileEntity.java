@@ -140,7 +140,7 @@ public class ProjectileEntity extends Entity {
     }
 
     @OriginalMember(owner = "client!KFJRVZCI", name = "a", descriptor = "(B)LLZYQDKJV;")
-    public final Model method239(byte arg0) {
+    public final Model draw(byte loopCycle) {
         Model var2 = this.field974.method439();
         if (var2 == null) {
             return null;
@@ -161,7 +161,7 @@ public class ProjectileEntity extends Entity {
         }
         var4.method371(this.field984, 341);
         var4.method376(this.field974.field1307 + 64, this.field974.field1308 + 850, -30, -50, -30, true);
-        if (arg0 == 3) {
+        if (loopCycle == 3) {
             boolean var5 = false;
         } else {
             this.field982 = !this.field982;

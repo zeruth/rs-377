@@ -5,13 +5,13 @@ import org.openrs2.deob.annotation.OriginalMember;
 import rs2.dash3d.entity.Entity;
 
 @OriginalClass("client!BHOSVTIT")
-public class Loc {
+public class Location {
 
     @OriginalMember(owner = "client!BHOSVTIT", name = "n", descriptor = "B")
     public byte field89;
 
     @OriginalMember(owner = "client!BHOSVTIT", name = "a", descriptor = "I")
-    public int field76;
+    public int level;
 
     @OriginalMember(owner = "client!BHOSVTIT", name = "b", descriptor = "I")
     public int field77;
@@ -26,13 +26,13 @@ public class Loc {
     public int field81;
 
     @OriginalMember(owner = "client!BHOSVTIT", name = "g", descriptor = "I")
-    public int field82;
+    public int tileX;
 
     @OriginalMember(owner = "client!BHOSVTIT", name = "h", descriptor = "I")
     public int field83;
 
     @OriginalMember(owner = "client!BHOSVTIT", name = "i", descriptor = "I")
-    public int field84;
+    public int tileZ;
 
     @OriginalMember(owner = "client!BHOSVTIT", name = "j", descriptor = "I")
     public int field85;
@@ -44,7 +44,7 @@ public class Loc {
     public int field87;
 
     @OriginalMember(owner = "client!BHOSVTIT", name = "m", descriptor = "I")
-    public int field88;
+    public int typecode;
 
     @OriginalMember(owner = "client!BHOSVTIT", name = "e", descriptor = "LZOXDNIET;")
     public Entity field80;

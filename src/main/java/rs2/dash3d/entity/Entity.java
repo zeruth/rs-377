@@ -26,7 +26,7 @@ public class Entity extends DoublyLinkable {
 
     @OriginalMember(owner = "client!ZOXDNIET", name = "a", descriptor = "(IIIIIIIII)V")
     public void method381(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8) {
-        Model var10 = this.method239(field1706);
+        Model var10 = this.draw(field1706);
         if (var10 != null) {
             this.field1709 = var10.field1709;
             var10.method381(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8);
@@ -34,8 +34,8 @@ public class Entity extends DoublyLinkable {
     }
 
     @OriginalMember(owner = "client!ZOXDNIET", name = "a", descriptor = "(B)LLZYQDKJV;")
-    public Model method239(byte arg0) {
-        if (arg0 != 3) {
+    public Model draw(byte loopCycle) {
+        if (loopCycle != 3) {
             this.field1707 = !this.field1707;
         }
         return null;

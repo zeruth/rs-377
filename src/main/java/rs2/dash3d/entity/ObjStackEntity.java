@@ -18,8 +18,8 @@ public class ObjStackEntity extends Entity {
     public int field875;
 
     @OriginalMember(owner = "client!HRIUIFAV", name = "a", descriptor = "(B)LLZYQDKJV;")
-    public final Model method239(byte arg0) {
-        if (arg0 != 3) {
+    public final Model draw(byte loopCycle) {
+        if (loopCycle != 3) {
             this.field874 = -358;
         }
         ObjType var2 = ObjType.method221(this.field873);

@@ -11,13 +11,13 @@ public class Ground extends Linkable {
     private boolean field1379 = false;
 
     @OriginalMember(owner = "client!RIEEXHOP", name = "q", descriptor = "[LBHOSVTIT;")
-    public Loc[] field1391 = new Loc[5];
+    public Location[] locs = new Location[5];
 
     @OriginalMember(owner = "client!RIEEXHOP", name = "r", descriptor = "[I")
-    public int[] field1392 = new int[5];
+    public int[] locSpan = new int[5];
 
     @OriginalMember(owner = "client!RIEEXHOP", name = "f", descriptor = "I")
-    public int field1380;
+    public int groundLevel;
 
     @OriginalMember(owner = "client!RIEEXHOP", name = "i", descriptor = "I")
     public int field1383;
@@ -29,13 +29,13 @@ public class Ground extends Linkable {
     public int field1382;
 
     @OriginalMember(owner = "client!RIEEXHOP", name = "p", descriptor = "I")
-    public int field1390;
+    public int locCount;
 
     @OriginalMember(owner = "client!RIEEXHOP", name = "s", descriptor = "I")
-    public int field1393;
+    public int locSpans;
 
     @OriginalMember(owner = "client!RIEEXHOP", name = "t", descriptor = "I")
-    public int field1394;
+    public int drawLevel;
 
     @OriginalMember(owner = "client!RIEEXHOP", name = "x", descriptor = "I")
     public int field1398;
@@ -56,13 +56,13 @@ public class Ground extends Linkable {
     public ObjStack field1389;
 
     @OriginalMember(owner = "client!RIEEXHOP", name = "B", descriptor = "LRIEEXHOP;")
-    public Ground field1402;
+    public Ground bridge;
 
     @OriginalMember(owner = "client!RIEEXHOP", name = "k", descriptor = "LJQCVNYYR;")
-    public TileOverlay field1385;
+    public TileOverlay overlay;
 
     @OriginalMember(owner = "client!RIEEXHOP", name = "j", descriptor = "LAYYYSATX;")
-    public TileUnderlay field1384;
+    public TileUnderlay underlay;
 
     @OriginalMember(owner = "client!RIEEXHOP", name = "l", descriptor = "LWQXKHZYN;")
     public Wall field1386;
@@ -81,7 +81,7 @@ public class Ground extends Linkable {
 
     @OriginalMember(owner = "client!RIEEXHOP", name = "<init>", descriptor = "(III)V")
     public Ground(int arg0, int arg1, int arg2) {
-        this.field1383 = this.field1380 = arg0;
+        this.field1383 = this.groundLevel = arg0;
         this.field1381 = arg1;
         this.field1382 = arg2;
     }

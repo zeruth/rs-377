@@ -160,9 +160,6 @@ public class AnimFrame {
 
     @OriginalMember(owner = "client!JULFQTYK", name = "a", descriptor = "(ZI)Z")
     public static boolean method265(boolean arg0, int arg1) {
-        if (!arg0) {
-            field928 = !field928;
-        }
         return arg1 == -1;
     }
 }

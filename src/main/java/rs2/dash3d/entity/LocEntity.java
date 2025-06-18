@@ -109,8 +109,8 @@ public class LocEntity extends Entity {
     }
 
     @OriginalMember(owner = "client!NRPYRAWK", name = "a", descriptor = "(B)LLZYQDKJV;")
-    public final Model method239(byte arg0) {
-        if (arg0 != 3) {
+    public final Model draw(byte loopCycle) {
+        if (loopCycle != 3) {
             this.field1328 = !this.field1328;
         }
         int var2 = -1;

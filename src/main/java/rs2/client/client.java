@@ -4744,11 +4744,11 @@ public class client extends GameShell {
                 }
                 if (var7 == 1) {
                     NpcEntity var11 = this.field428[var8];
-                    if (var11.field1370.field1445 == 1 && (var11.field1157 & 127) == 64 && (var11.field1158 & 127) == 64) {
+                    if (var11.npcType.field1445 == 1 && (var11.field1157 & 127) == 64 && (var11.field1158 & 127) == 64) {
                         for (int var12 = 0; var12 < this.field429; ++var12) {
                             NpcEntity var15 = this.field428[this.field430[var12]];
-                            if (var15 != null && var11 != var15 && var15.field1370.field1445 == 1 && var11.field1157 == var15.field1157 && var11.field1158 == var15.field1158) {
-                                this.method104(var15.field1370, var6, var5, this.field430[var12], (byte) -76);
+                            if (var15 != null && var11 != var15 && var15.npcType.field1445 == 1 && var11.field1157 == var15.field1157 && var11.field1158 == var15.field1158) {
+                                this.method104(var15.npcType, var6, var5, this.field430[var12], (byte) -76);
                             }
                         }
                         for (int var13 = 0; var13 < this.field267; ++var13) {
@@ -4758,15 +4758,15 @@ public class client extends GameShell {
                             }
                         }
                     }
-                    this.method104(var11.field1370, var6, var5, var8, (byte) -76);
+                    this.method104(var11.npcType, var6, var5, var8, (byte) -76);
                 }
                 if (var7 == 0) {
                     PlayerEntity var16 = this.field266[var8];
                     if ((var16.field1157 & 127) == 64 && (var16.field1158 & 127) == 64) {
                         for (int var17 = 0; var17 < this.field429; ++var17) {
                             NpcEntity var20 = this.field428[this.field430[var17]];
-                            if (var20 != null && var20.field1370.field1445 == 1 && var16.field1157 == var20.field1157 && var16.field1158 == var20.field1158) {
-                                this.method104(var20.field1370, var6, var5, this.field430[var17], (byte) -76);
+                            if (var20 != null && var20.npcType.field1445 == 1 && var16.field1157 == var20.field1157 && var16.field1158 == var20.field1158) {
+                                this.method104(var20.npcType, var6, var5, this.field430[var17], (byte) -76);
                             }
                         }
                         for (int var18 = 0; var18 < this.field267; ++var18) {
@@ -5012,7 +5012,7 @@ public class client extends GameShell {
         for (int var4 = 0; var4 < this.field590; ++var4) {
             int var6 = this.field591[var4];
             if (field621 != this.field428[var6].field1132) {
-                this.field428[var6].field1370 = null;
+                this.field428[var6].npcType = null;
                 this.field428[var6] = null;
             }
         }
@@ -5354,7 +5354,7 @@ public class client extends GameShell {
         for (int var4 = 0; var4 < this.field429; ++var4) {
             NpcEntity var5 = this.field428[this.field430[var4]];
             int var6 = (this.field430[var4] << 14) + 536870912;
-            if (var5 != null && var5.method351(0) && var5.field1370.field1447 == arg1 && var5.field1370.method473(-993)) {
+            if (var5 != null && var5.method351(0) && var5.npcType.field1447 == arg1 && var5.npcType.method473(-993)) {
                 int var7 = var5.field1157 >> 7;
                 int var8 = var5.field1158 >> 7;
                 if (var7 >= 0 && var7 < 104 && var8 >= 0 && var8 < 104) {
@@ -5364,7 +5364,7 @@ public class client extends GameShell {
                         }
                         this.field182[var7][var8] = this.field434;
                     }
-                    if (!var5.field1370.field1434) {
+                    if (!var5.npcType.field1434) {
                         var6 += Integer.MIN_VALUE;
                     }
                     this.field460.method285(var6, var5, var5.field1157, this.method133(var5.field1158, var5.field1157, (byte) 9, this.field387), var5.field1139, 0, this.field387, (var5.field1148 - 1) * 64 + 60, var5.field1158, var5.field1159);
@@ -5674,14 +5674,14 @@ public class client extends GameShell {
             NpcEntity var7 = this.field428[var6];
             int var8 = arg0.g1();
             if ((var8 & 1) != 0) {
-                var7.field1370 = NpcType.method477(arg0.g2_alt2((byte) 9));
-                var7.field1148 = var7.field1370.field1445;
-                var7.field1147 = var7.field1370.field1454;
-                var7.field1166 = var7.field1370.field1448;
-                var7.field1167 = var7.field1370.field1446;
-                var7.field1168 = var7.field1370.field1444;
-                var7.field1169 = var7.field1370.field1436;
-                var7.field1181 = var7.field1370.field1424;
+                var7.npcType = NpcType.method477(arg0.g2_alt2((byte) 9));
+                var7.field1148 = var7.npcType.field1445;
+                var7.field1147 = var7.npcType.field1454;
+                var7.field1166 = var7.npcType.field1448;
+                var7.field1167 = var7.npcType.field1446;
+                var7.field1168 = var7.npcType.field1444;
+                var7.field1169 = var7.npcType.field1436;
+                var7.field1181 = var7.npcType.field1424;
             }
             if ((var8 & 64) != 0) {
                 var7.field1156 = arg0.g2_alt1(-125);
@@ -6016,7 +6016,7 @@ public class client extends GameShell {
                     Jagfile var9 = this.method81(14076, this.field133[8], "sounds", 55, 8, "sound effects");
                     this.field421 = new byte[4][104][104];
                     this.field187 = new int[4][105][105];
-                    this.field460 = new World3D(this.field187, 104, 4, 104, (byte) 5);
+                    this.field460 = new World3D(this.field187, 4, 104, 104);
                     for (int var10 = 0; var10 < 4; ++var10) {
                         this.field556[var10] = new CollisionMap(104, 0, 104);
                     }
@@ -6584,7 +6584,7 @@ public class client extends GameShell {
             int var3 = this.field430[var2];
             NpcEntity var4 = this.field428[var3];
             if (var4 != null) {
-                this.method90(var4.field1370.field1445, (byte) -97, var4);
+                this.method90(var4.npcType.field1445, (byte) -97, var4);
             }
         }
         if (arg0 != -37214) {
@@ -8215,7 +8215,7 @@ public class client extends GameShell {
             for (int var12 = 0; var12 < this.field429; ++var12) {
                 NpcEntity var32 = this.field428[this.field430[var12]];
                 if (var32 != null && var32.method351(0)) {
-                    NpcType var33 = var32.field1370;
+                    NpcType var33 = var32.npcType;
                     if (var33.field1425 != null) {
                         var33 = var33.method476(false);
                     }
@@ -8534,7 +8534,7 @@ public class client extends GameShell {
             this.field578.method10();
             Draw3D.method547((byte) 71);
             this.method69(383);
-            this.field460.method274((byte) 7);
+            this.field460.reset();
             System.gc();
             for (int var2 = 0; var2 < 4; ++var2) {
                 this.field556[var2].method532();
@@ -8656,9 +8656,9 @@ public class client extends GameShell {
                 int var45 = this.field387 - 1;
             }
             if (field222) {
-                this.field460.method275(World.field113, true);
+                this.field460.setMinLevel(World.field113);
             } else {
-                this.field460.method275(0, true);
+                this.field460.setMinLevel(0);
             }
             for (int var46 = 0; var46 < 104; ++var46) {
                 for (int var47 = 0; var47 < 104; ++var47) {
@@ -10656,7 +10656,7 @@ public class client extends GameShell {
                 if (var5 == 1668) {
                     NpcEntity var53 = this.field428[var6];
                     if (var53 != null) {
-                        NpcType var54 = var53.field1370;
+                        NpcType var54 = var53.npcType;
                         if (var54.field1425 != null) {
                             var54 = var54.method476(false);
                         }
@@ -10865,7 +10865,7 @@ public class client extends GameShell {
             }
             if (var19 != null && var19.method351(0)) {
                 if (var19 instanceof NpcEntity) {
-                    NpcType var20 = ((NpcEntity) var19).field1370;
+                    NpcType var20 = ((NpcEntity) var19).npcType;
                     if (var20.field1425 != null) {
                         var20 = var20.method476(false);
                     }
@@ -10874,7 +10874,7 @@ public class client extends GameShell {
                     }
                 }
                 if (var2 >= this.field267) {
-                    NpcType var23 = ((NpcEntity) var19).field1370;
+                    NpcType var23 = ((NpcEntity) var19).npcType;
                     if (var23.field1441 >= 0 && var23.field1441 < this.field375.length) {
                         this.method161(var19, false, var19.field1141 + 15);
                         if (this.field228 > -1) {
@@ -11178,7 +11178,7 @@ public class client extends GameShell {
         this.field389 = "";
         this.method69(383);
         this.field433 &= arg0;
-        this.field460.method274((byte) 7);
+        this.field460.reset();
         for (int var2 = 0; var2 < 4; ++var2) {
             this.field556[var2].method532();
         }
@@ -11578,14 +11578,14 @@ public class client extends GameShell {
                 var8 -= 32;
             }
             int var9 = arg0.gBit(402, 1);
-            var5.field1370 = NpcType.method477(arg0.gBit(402, 13));
-            var5.field1148 = var5.field1370.field1445;
-            var5.field1147 = var5.field1370.field1454;
-            var5.field1166 = var5.field1370.field1448;
-            var5.field1167 = var5.field1370.field1446;
-            var5.field1168 = var5.field1370.field1444;
-            var5.field1169 = var5.field1370.field1436;
-            var5.field1181 = var5.field1370.field1424;
+            var5.npcType = NpcType.method477(arg0.gBit(402, 13));
+            var5.field1148 = var5.npcType.field1445;
+            var5.field1147 = var5.npcType.field1454;
+            var5.field1166 = var5.npcType.field1448;
+            var5.field1167 = var5.npcType.field1446;
+            var5.field1168 = var5.npcType.field1444;
+            var5.field1169 = var5.npcType.field1436;
+            var5.field1181 = var5.npcType.field1424;
             var5.method354(field463.field1134[0] + var7, (byte) 5, var9 == 1, field463.field1133[0] + var8);
         }
         arg0.accessBytes(-29290);
@@ -11706,12 +11706,12 @@ public class client extends GameShell {
                     }
                 }
                 if (var41 == 2) {
-                    Loc var52 = this.field460.method298(var43, (byte) 32, var44, this.field387);
+                    Location var52 = this.field460.method298(var43, (byte) 32, var44, this.field387);
                     if (var39 == 11) {
                         var39 = 10;
                     }
                     if (var52 != null) {
-                        var52.field80 = new LocEntity(var37, var47, var48, var46, var39, (byte) 3, var52.field88 >> 14 & 32767, false, var45, var40);
+                        var52.field80 = new LocEntity(var37, var47, var48, var46, var39, (byte) 3, var52.typecode >> 14 & 32767, false, var45, var40);
                     }
                 }
                 if (var41 == 3) {

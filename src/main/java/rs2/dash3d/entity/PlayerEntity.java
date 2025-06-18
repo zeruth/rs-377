@@ -287,7 +287,7 @@ public class PlayerEntity extends PathingEntity {
     }
 
     @OriginalMember(owner = "client!ZGNGQRPJ", name = "a", descriptor = "(B)LLZYQDKJV;")
-    public final Model method239(byte arg0) {
+    public final Model draw(byte loopCycle) {
         if (!this.field1680) {
             return null;
         } else {
@@ -351,7 +351,7 @@ public class PlayerEntity extends PathingEntity {
                         }
                     }
                     var2.field1227 = true;
-                    if (arg0 == 3) {
+                    if (loopCycle == 3) {
                         boolean var9 = false;
                     } else {
                         this.field1689 = !this.field1689;

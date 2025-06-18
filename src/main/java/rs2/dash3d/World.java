@@ -521,7 +521,7 @@ public class World {
                                     var88 = Draw3D.field1610[method19(var81, 96)];
                                 }
                                 if (var71 == 0) {
-                                    arg2.method279(var5, var58, var67, 0, 0, -1, var72, var73, var74, var75, method19(var80, var76), method19(var80, var77), method19(var80, var78), method19(var80, var79), 0, 0, 0, 0, var88, 0);
+                                    arg2.setTile(var5, var58, var67, 0, 0, -1, var72, var73, var74, var75, method19(var80, var76), method19(var80, var77), method19(var80, var78), method19(var80, var79), 0, 0, 0, 0, var88, 0);
                                 } else {
                                     int var89 = this.field116[var5][var58][var67] + 1;
                                     byte var90 = this.field105[var5][var58][var67];
@@ -540,7 +540,7 @@ public class World {
                                         var94 = this.method25(var91.field802, var91.field803, var91.field804);
                                         var93 = Draw3D.field1610[this.method30(var91.field807, 96)];
                                     }
-                                    arg2.method279(var5, var58, var67, var89, var90, var92, var72, var73, var74, var75, method19(var80, var76), method19(var80, var77), method19(var80, var78), method19(var80, var79), this.method30(var94, var76), this.method30(var94, var77), this.method30(var94, var78), this.method30(var94, var79), var88, var93);
+                                    arg2.setTile(var5, var58, var67, var89, var90, var92, var72, var73, var74, var75, method19(var80, var76), method19(var80, var77), method19(var80, var78), method19(var80, var79), this.method30(var94, var76), this.method30(var94, var77), this.method30(var94, var78), this.method30(var94, var79), var88, var93);
                                 }
                             }
                         }
@@ -549,7 +549,7 @@ public class World {
             }
             for (int var59 = 1; var59 < this.field115 - 1; var59++) {
                 for (int var60 = 1; var60 < this.field114 - 1; var60++) {
-                    arg2.method278(var5, var60, var59, this.method12(var59, var5, var60, (byte) 0));
+                    arg2.setDrawLevel(var5, var60, var59, this.method12(var59, var5, var60, (byte) 0));
                 }
             }
         }
@@ -557,7 +557,7 @@ public class World {
         for (int var6 = 0; var6 < this.field114; var6++) {
             for (int var47 = 0; var47 < this.field115; var47++) {
                 if ((this.field101[1][var6][var47] & 0x2) == 2) {
-                    arg2.method276(true, var6, var47);
+                    arg2.setBridge(var6, var47);
                 }
             }
         }

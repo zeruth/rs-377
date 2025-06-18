@@ -77,8 +77,8 @@ public class SpotAnimEntity extends Entity {
     }
 
     @OriginalMember(owner = "client!WHUAOHZM", name = "a", descriptor = "(B)LLZYQDKJV;")
-    public final Model method239(byte arg0) {
-        if (arg0 != 3) {
+    public final Model draw(byte loopCycle) {
+        if (loopCycle != 3) {
             throw new NullPointerException();
         }
         Model var2 = this.field1530.method439();

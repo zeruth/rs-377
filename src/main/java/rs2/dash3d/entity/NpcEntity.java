@@ -15,7 +15,7 @@ public class NpcEntity extends PathingEntity {
     private boolean field1369 = true;
 
     @OriginalMember(owner = "client!RGHBDSIJ", name = "rb", descriptor = "LSLDUQHOR;")
-    public NpcType field1370;
+    public NpcType npcType;
 
     @OriginalMember(owner = "client!RGHBDSIJ", name = "b", descriptor = "(B)LLZYQDKJV;")
     private final Model method457(byte arg0) {
@@ -25,7 +25,7 @@ public class NpcEntity extends PathingEntity {
             if (super.field1135 >= 0 && super.field1181 != super.field1135) {
                 var3 = SeqType.field775[super.field1135].field777[super.field1136];
             }
-            return this.field1370.method475(var2, var3, 0, SeqType.field775[super.field1171].field781);
+            return this.npcType.method475(var2, var3, 0, SeqType.field775[super.field1171].field781);
         } else {
             int var4 = -1;
             if (arg0 != 122) {
@@ -34,17 +34,17 @@ public class NpcEntity extends PathingEntity {
             if (super.field1135 >= 0) {
                 var4 = SeqType.field775[super.field1135].field777[super.field1136];
             }
-            return this.field1370.method475(var4, -1, 0, (int[]) null);
+            return this.npcType.method475(var4, -1, 0, (int[]) null);
         }
     }
 
     @OriginalMember(owner = "client!RGHBDSIJ", name = "a", descriptor = "(B)LLZYQDKJV;")
-    public final Model method239(byte arg0) {
-        if (arg0 != 3) {
+    public final Model draw(byte loopCycle) {
+        if (loopCycle != 3) {
             throw new NullPointerException();
         } else {
             boolean var2 = false;
-            if (this.field1370 == null) {
+            if (this.npcType == null) {
                 return null;
             } else {
                 Model var3 = this.method457((byte) 122);
@@ -71,7 +71,7 @@ public class NpcEntity extends PathingEntity {
                             var3 = new Model(2, true, 0, var8);
                         }
                     }
-                    if (this.field1370.field1445 == 1) {
+                    if (this.npcType.field1445 == 1) {
                         var3.field1227 = true;
                     }
                     return var3;
@@ -85,7 +85,7 @@ public class NpcEntity extends PathingEntity {
         if (arg0 != 0) {
             throw new NullPointerException();
         } else {
-            return this.field1370 != null;
+            return this.npcType != null;
         }
     }
 }
