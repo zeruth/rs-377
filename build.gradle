@@ -9,7 +9,7 @@ java {
 }
 
 application {
-    mainClass = "client"
+    mainClass = "rs2.client.client"
 }
 
 dependencies {
