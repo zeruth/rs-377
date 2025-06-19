@@ -14,10 +14,10 @@ public class Decor {
     public int field1406;
 
     @OriginalMember(owner = "client!SEMZHDXN", name = "b", descriptor = "I")
-    public int field1407;
+    public int x;
 
     @OriginalMember(owner = "client!SEMZHDXN", name = "c", descriptor = "I")
-    public int field1408;
+    public int z;
 
     @OriginalMember(owner = "client!SEMZHDXN", name = "d", descriptor = "I")
     public int field1409;
@@ -34,8 +34,8 @@ public class Decor {
     public Decor(byte field1413, int field1406, int field1407, int field1408, int field1409, int field1410, int field1412, Entity field1411) {
         this.field1413 = field1413;
         this.field1406 = field1406;
-        this.field1407 = field1407;
-        this.field1408 = field1408;
+        this.x = field1407;
+        this.z = field1408;
         this.field1409 = field1409;
         this.field1410 = field1410;
         this.field1412 = field1412;

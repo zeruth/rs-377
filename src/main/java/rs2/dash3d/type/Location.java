@@ -29,13 +29,13 @@ public class Location {
     public int tileX;
 
     @OriginalMember(owner = "client!BHOSVTIT", name = "h", descriptor = "I")
-    public int field83;
+    public int maxSceneTileX;
 
     @OriginalMember(owner = "client!BHOSVTIT", name = "i", descriptor = "I")
     public int tileZ;
 
     @OriginalMember(owner = "client!BHOSVTIT", name = "j", descriptor = "I")
-    public int field85;
+    public int maxSceneTileZ;
 
     @OriginalMember(owner = "client!BHOSVTIT", name = "k", descriptor = "I")
     public int field86;
@@ -57,9 +57,9 @@ public class Location {
         this.field79 = field79;
         this.field81 = field81;
         this.tileX = tileX;
-        this.field83 = field83;
+        this.maxSceneTileX = field83;
         this.tileZ = tileZ;
-        this.field85 = field85;
+        this.maxSceneTileZ = field85;
         this.field86 = field86;
         this.field87 = field87;
         this.typecode = typecode;

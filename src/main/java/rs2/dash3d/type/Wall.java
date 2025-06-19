@@ -26,7 +26,7 @@ public class Wall {
     public int field1536;
 
     @OriginalMember(owner = "client!WQXKHZYN", name = "h", descriptor = "I")
-    public int field1539;
+    public int typecode;
 
     @OriginalMember(owner = "client!WQXKHZYN", name = "f", descriptor = "LZOXDNIET;")
     public Entity field1537;
@@ -34,14 +34,14 @@ public class Wall {
     @OriginalMember(owner = "client!WQXKHZYN", name = "g", descriptor = "LZOXDNIET;")
     public Entity field1538;
 
-    public Wall(byte field1540, int field1532, int field1533, int field1534, int field1535, int field1536, int field1539, Entity field1537, Entity field1538) {
+    public Wall(byte field1540, int field1532, int field1533, int field1534, int field1535, int field1536, int typecode, Entity field1537, Entity field1538) {
         this.field1540 = field1540;
         this.field1532 = field1532;
         this.field1533 = field1533;
         this.field1534 = field1534;
         this.field1535 = field1535;
         this.field1536 = field1536;
-        this.field1539 = field1539;
+        this.typecode = typecode;
         this.field1537 = field1537;
         this.field1538 = field1538;
     }

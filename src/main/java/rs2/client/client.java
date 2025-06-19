@@ -2134,7 +2134,7 @@ public class client extends GameShell {
     public final void method46(int arg0, int arg1) {
         LinkList var3 = this.field619[this.field387][arg0][arg1];
         if (var3 == null) {
-            this.field460.method295(this.field387, arg0, arg1);
+            this.field460.removeObjStack(this.field387, arg0, arg1);
         } else {
             int var4 = -99999999;
             ObjStackEntity var5 = null;
@@ -4866,10 +4866,10 @@ public class client extends GameShell {
             boolean var11 = false;
             boolean var12 = false;
             if (arg7 == 0) {
-                var9 = this.field460.method300(arg4, arg1, arg3);
+                var9 = this.field460.getWallTypecode(arg4, arg1, arg3);
             }
             if (arg7 == 1) {
-                var9 = this.field460.method301(arg1, (byte) 4, arg4, arg3);
+                var9 = this.field460.getDecorTypecode(arg1, arg4, arg3);
             }
             if (arg7 == 2) {
                 var9 = this.field460.method302(arg4, arg1, arg3);
@@ -4883,17 +4883,17 @@ public class client extends GameShell {
                 int var15 = var13 & 31;
                 int var16 = var13 >> 6;
                 if (arg7 == 0) {
-                    this.field460.method291(arg3, arg4, arg1, true);
+                    this.field460.removeWall(arg3, arg4, arg1, true);
                     LocType var17 = LocType.method561(var14);
                     if (var17.field1664) {
                         this.field556[arg4].method537(var16, arg1, 0, arg3, var15, var17.field1663);
                     }
                 }
                 if (arg7 == 1) {
-                    this.field460.method292(false, arg1, arg3, arg4);
+                    this.field460.removeWallDecoration(arg4, arg1, arg3);
                 }
                 if (arg7 == 2) {
-                    this.field460.method293(arg3, arg4, -779, arg1);
+                    this.field460.removeLoc(arg3, arg4, arg1);
                     LocType var18 = LocType.method561(var14);
                     if (var18.field1655 + arg1 > 103 || var18.field1655 + arg3 > 103 || var18.field1629 + arg1 > 103 || var18.field1629 + arg3 > 103) {
                         return;
@@ -4903,7 +4903,7 @@ public class client extends GameShell {
                     }
                 }
                 if (arg7 == 3) {
-                    this.field460.method294(arg1, arg3, true, arg4);
+                    this.field460.removeGroundDecoration(arg4, arg1, arg3);
                     LocType var19 = LocType.method561(var14);
                     if (var19.field1664 && var19.field1613) {
                         this.field556[arg4].method540(arg1, (byte) -122, arg3);
@@ -11688,9 +11688,9 @@ public class client extends GameShell {
                 int var47 = this.field187[this.field387][var43 + 1][var44 + 1];
                 int var48 = this.field187[this.field387][var43][var44 + 1];
                 if (var41 == 0) {
-                    Wall var49 = this.field460.method296(this.field387, 17734, var43, var44);
+                    Wall var49 = this.field460.getWall(this.field387, 17734, var43, var44);
                     if (var49 != null) {
-                        int var50 = var49.field1539 >> 14 & 32767;
+                        int var50 = var49.typecode >> 14 & 32767;
                         if (var39 == 2) {
                             var49.field1537 = new LocEntity(var37, var47, var48, var46, 2, (byte) 3, var50, false, var45, var40 + 4);
                             var49.field1538 = new LocEntity(var37, var47, var48, var46, 2, (byte) 3, var50, false, var45, var40 + 1 & 3);
@@ -11700,13 +11700,13 @@ public class client extends GameShell {
                     }
                 }
                 if (var41 == 1) {
-                    Decor var51 = this.field460.method297(this.field387, var44, var43, false);
+                    Decor var51 = this.field460.getWallDecoration(this.field387, var44, var43);
                     if (var51 != null) {
                         var51.field1411 = new LocEntity(var37, var47, var48, var46, 4, (byte) 3, var51.field1412 >> 14 & 32767, false, var45, 0);
                     }
                 }
                 if (var41 == 2) {
-                    Location var52 = this.field460.method298(var43, (byte) 32, var44, this.field387);
+                    Location var52 = this.field460.getLoc(var43, var44, this.field387);
                     if (var39 == 11) {
                         var39 = 10;
                     }
@@ -11715,7 +11715,7 @@ public class client extends GameShell {
                     }
                 }
                 if (var41 == 3) {
-                    GroundDecor var53 = this.field460.method299(this.field387, var44, 0, var43);
+                    GroundDecor var53 = this.field460.getGroundDecor(this.field387, var44, var43);
                     if (var53 != null) {
                         var53.entity = new LocEntity(var37, var47, var48, var46, 22, (byte) 3, var53.field1314 >> 14 & 32767, false, var45, var40);
                     }
@@ -12083,10 +12083,10 @@ public class client extends GameShell {
             this.field260.p1(175);
         }
         if (arg1.field1324 == 0) {
-            var3 = this.field460.method300(arg1.field1323, arg1.field1325, arg1.field1326);
+            var3 = this.field460.getWallTypecode(arg1.field1323, arg1.field1325, arg1.field1326);
         }
         if (arg1.field1324 == 1) {
-            var3 = this.field460.method301(arg1.field1325, (byte) 4, arg1.field1323, arg1.field1326);
+            var3 = this.field460.getDecorTypecode(arg1.field1325, arg1.field1323, arg1.field1326);
         }
         if (arg1.field1324 == 2) {
             var3 = this.field460.method302(arg1.field1323, arg1.field1325, arg1.field1326);
@@ -12758,7 +12758,7 @@ public class client extends GameShell {
 
     @OriginalMember(owner = "client!client", name = "a", descriptor = "(IIIIII)V")
     public final void method177(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
-        int var7 = this.field460.method300(arg1, arg2, arg0);
+        int var7 = this.field460.getWallTypecode(arg1, arg2, arg0);
         int var8 = 62 / arg4;
         if (var7 != 0) {
             int var9 = this.field460.method304(arg1, arg2, arg0, var7);
@@ -12956,7 +12956,7 @@ public class client extends GameShell {
         Model.field1254 = super.field960 - 4;
         Draw2D.method335(4);
         this.field460.method313(this.field512, var4, 0, this.field513, this.field514, this.field516, this.field515);
-        this.field460.method288(this.field193);
+        this.field460.clearTemporaryLocs(this.field193);
         this.method145(false);
         this.method151(true);
         this.method87(var11, -927);

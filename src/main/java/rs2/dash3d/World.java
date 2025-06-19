@@ -294,7 +294,7 @@ public class World {
                 arg9.setWallDecoration(arg8, field121[arg5], arg5 * 512, var17, var18, arg6, 0, arg3, 0, var15, var32);
             } else if (arg2 == 5) {
                 int var33 = 16;
-                int var34 = arg9.method300(arg8, arg6, arg3);
+                int var34 = arg9.getWallTypecode(arg8, arg6, arg3);
                 if (var34 > 0) {
                     var33 = LocType.method561(var34 >> 14 & 0x7FFF).field1656;
                 }
@@ -970,7 +970,7 @@ public class World {
                 arg1.method533(arg6, 37679, var15.field1663, arg7, arg4, arg2);
             }
             if (var15.field1656 != 16) {
-                arg0.method290(arg2, var15.field1656, arg3, arg4, 0);
+                arg0.setWallDecorationOffset(arg2, var15.field1656, arg3, arg4, 0);
             }
         } else if (arg7 == 1) {
             Entity var21;
@@ -1025,7 +1025,7 @@ public class World {
                 arg1.method533(arg6, 37679, var15.field1663, arg7, arg4, arg2);
             }
             if (var15.field1656 != 16) {
-                arg0.method290(arg2, var15.field1656, arg3, arg4, 0);
+                arg0.setWallDecorationOffset(arg2, var15.field1656, arg3, arg4, 0);
             }
         } else if (arg7 == 3) {
             Entity var25;
@@ -1093,7 +1093,7 @@ public class World {
                 arg0.setWallDecoration(arg3, field121[arg6], arg6 * 512, var16, var17, arg4, 0, arg2, 0, var14, var31);
             } else if (arg7 == 5) {
                 int var32 = 16;
-                int var33 = arg0.method300(arg3, arg4, arg2);
+                int var33 = arg0.getWallTypecode(arg3, arg4, arg2);
                 if (var33 > 0) {
                     var32 = LocType.method561(var33 >> 14 & 0x7FFF).field1656;
                 }
