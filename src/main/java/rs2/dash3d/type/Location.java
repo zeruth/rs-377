@@ -8,7 +8,7 @@ import rs2.dash3d.entity.Entity;
 public class Location {
 
     @OriginalMember(owner = "client!BHOSVTIT", name = "n", descriptor = "B")
-    public byte field89;
+    public byte info;
 
     @OriginalMember(owner = "client!BHOSVTIT", name = "a", descriptor = "I")
     public int level;
@@ -38,10 +38,10 @@ public class Location {
     public int maxSceneTileZ;
 
     @OriginalMember(owner = "client!BHOSVTIT", name = "k", descriptor = "I")
-    public int field86;
+    public int distance;
 
     @OriginalMember(owner = "client!BHOSVTIT", name = "l", descriptor = "I")
-    public int field87;
+    public int cycle;
 
     @OriginalMember(owner = "client!BHOSVTIT", name = "m", descriptor = "I")
     public int typecode;
@@ -49,8 +49,8 @@ public class Location {
     @OriginalMember(owner = "client!BHOSVTIT", name = "e", descriptor = "LZOXDNIET;")
     public Entity entity;
 
-    public Location(byte field89, int level, int field77, int field78, int field79, int field81, int tileX, int field83, int tileZ, int field85, int field86, int field87, int typecode, Entity entity) {
-        this.field89 = field89;
+    public Location(byte info, int level, int field77, int field78, int field79, int field81, int tileX, int field83, int tileZ, int field85, int distance, int cycle, int typecode, Entity entity) {
+        this.info = info;
         this.level = level;
         this.field77 = field77;
         this.field78 = field78;
@@ -60,8 +60,8 @@ public class Location {
         this.maxSceneTileX = field83;
         this.tileZ = tileZ;
         this.maxSceneTileZ = field85;
-        this.field86 = field86;
-        this.field87 = field87;
+        this.distance = distance;
+        this.cycle = cycle;
         this.typecode = typecode;
         this.entity = entity;
     }

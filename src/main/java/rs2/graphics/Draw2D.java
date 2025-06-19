@@ -35,7 +35,7 @@ public class Draw2D extends DoublyLinkable {
     public static int field1100;
 
     @OriginalMember(owner = "client!LFYNQWSZ", name = "s", descriptor = "I")
-    public static int field1101;
+    public static int boundX;
 
     @OriginalMember(owner = "client!LFYNQWSZ", name = "t", descriptor = "I")
     public static int field1102;
@@ -69,7 +69,7 @@ public class Draw2D extends DoublyLinkable {
         field1097 = 0;
         field1100 = field1095;
         field1098 = field1096;
-        field1101 = field1100 - 1;
+        boundX = field1100 - 1;
         if (arg0 != 82) {
             field1093 = -258;
         }
@@ -95,7 +95,7 @@ public class Draw2D extends DoublyLinkable {
         field1100 = arg3;
         field1098 = arg2;
         if (arg4) {
-            field1101 = field1100 - 1;
+            boundX = field1100 - 1;
             field1102 = field1100 / 2;
             field1103 = field1098 / 2;
         }

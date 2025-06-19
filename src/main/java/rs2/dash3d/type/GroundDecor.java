@@ -20,17 +20,17 @@ public class GroundDecor {
     public int z;
 
     @OriginalMember(owner = "client!MOLUZZPG", name = "e", descriptor = "I")
-    public int field1314;
+    public int typecode;
 
     @OriginalMember(owner = "client!MOLUZZPG", name = "d", descriptor = "LZOXDNIET;")
     public Entity entity;
 
-    public GroundDecor(Entity entity, int x, int z, int field1310, int field1314, byte info) {
+    public GroundDecor(Entity entity, int x, int z, int field1310, int typecode, byte info) {
         this.entity = entity;
         this.x = x;
         this.z = z;
         this.field1310 = field1310;
-        this.field1314 = field1314;
+        this.typecode = typecode;
         this.info = info;
     }
 }

@@ -116,13 +116,13 @@ public class Packet extends DoublyLinkable {
             Packet var3 = null;
             if (arg1 == 0 && cacheMinCount > 0) {
                 cacheMinCount--;
-                var3 = (Packet) cacheMin.method5();
+                var3 = (Packet) cacheMin.removeHead();
             } else if (arg1 == 1 && cacheMidCount > 0) {
                 cacheMidCount--;
-                var3 = (Packet) cacheMid.method5();
+                var3 = (Packet) cacheMid.removeHead();
             } else if (arg1 == 2 && cacheMaxCount > 0) {
                 cacheMaxCount--;
-                var3 = (Packet) cacheMax.method5();
+                var3 = (Packet) cacheMax.removeHead();
             }
             if (var3 != null) {
                 var3.pos = 0;

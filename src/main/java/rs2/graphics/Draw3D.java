@@ -53,13 +53,13 @@ public class Draw3D extends Draw2D {
     private static int field1587;
 
     @OriginalMember(owner = "client!YIBHWZVJ", name = "D", descriptor = "I")
-    public static int field1593;
+    public static int alpha;
 
     @OriginalMember(owner = "client!YIBHWZVJ", name = "E", descriptor = "I")
-    public static int field1594;
+    public static int centerX;
 
     @OriginalMember(owner = "client!YIBHWZVJ", name = "F", descriptor = "I")
-    public static int field1595;
+    public static int centerY;
 
     @OriginalMember(owner = "client!YIBHWZVJ", name = "L", descriptor = "I")
     public static int field1601;
@@ -74,7 +74,7 @@ public class Draw3D extends Draw2D {
     private static boolean field1588;
 
     @OriginalMember(owner = "client!YIBHWZVJ", name = "A", descriptor = "Z")
-    public static boolean field1590;
+    public static boolean clipX;
 
     @OriginalMember(owner = "client!YIBHWZVJ", name = "B", descriptor = "Z")
     public static boolean field1591;
@@ -113,8 +113,8 @@ public class Draw3D extends Draw2D {
         for (int var2 = 0; var2 < Draw2D.field1096; var2++) {
             field1600[var2] = Draw2D.field1095 * var2;
         }
-        field1594 = Draw2D.field1095 / 2;
-        field1595 = Draw2D.field1096 / 2;
+        centerX = Draw2D.field1095 / 2;
+        centerY = Draw2D.field1096 / 2;
     }
 
     @OriginalMember(owner = "client!YIBHWZVJ", name = "a", descriptor = "(III)V")
@@ -126,8 +126,8 @@ public class Draw3D extends Draw2D {
         for (int var3 = 0; var3 < arg0; var3++) {
             field1600[var3] = arg2 * var3;
         }
-        field1594 = arg2 / 2;
-        field1595 = arg0 / 2;
+        centerX = arg2 / 2;
+        centerY = arg0 / 2;
     }
 
     @OriginalMember(owner = "client!YIBHWZVJ", name = "b", descriptor = "(B)V")
@@ -383,7 +383,7 @@ public class Draw3D extends Draw2D {
     }
 
     @OriginalMember(owner = "client!YIBHWZVJ", name = "a", descriptor = "(IIIIIIIII)V")
-    public static final void method555(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8) {
+    public static final void fillGouraudTriangle(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8) {
         int var9 = 0;
         int var10 = 0;
         if (arg0 != arg1) {
@@ -883,15 +883,15 @@ public class Draw3D extends Draw2D {
             int var9;
             int var10;
             int var11;
-            if (field1590) {
+            if (clipX) {
                 int var8;
                 if (arg5 - arg4 > 3) {
                     var8 = (arg7 - arg6) / (arg5 - arg4);
                 } else {
                     var8 = 0;
                 }
-                if (arg5 > Draw2D.field1101) {
-                    arg5 = Draw2D.field1101;
+                if (arg5 > Draw2D.boundX) {
+                    arg5 = Draw2D.boundX;
                 }
                 if (arg4 < 0) {
                     arg6 -= arg4 * var8;
@@ -914,7 +914,7 @@ public class Draw3D extends Draw2D {
             } else {
                 return;
             }
-            if (field1593 == 0) {
+            if (alpha == 0) {
                 while (true) {
                     var10--;
                     if (var10 < 0) {
@@ -937,8 +937,8 @@ public class Draw3D extends Draw2D {
                     arg0[var9++] = var14;
                 }
             } else {
-                int var15 = field1593;
-                int var16 = 256 - field1593;
+                int var15 = alpha;
+                int var16 = 256 - alpha;
                 while (true) {
                     var10--;
                     if (var10 < 0) {
@@ -964,9 +964,9 @@ public class Draw3D extends Draw2D {
             }
         } else if (arg4 < arg5) {
             int var22 = (arg7 - arg6) / (arg5 - arg4);
-            if (field1590) {
-                if (arg5 > Draw2D.field1101) {
-                    arg5 = Draw2D.field1101;
+            if (clipX) {
+                if (arg5 > Draw2D.boundX) {
+                    arg5 = Draw2D.boundX;
                 }
                 if (arg4 < 0) {
                     arg6 -= arg4 * var22;
@@ -978,15 +978,15 @@ public class Draw3D extends Draw2D {
             }
             int var23 = arg1 + arg4;
             int var24 = arg5 - arg4;
-            if (field1593 == 0) {
+            if (alpha == 0) {
                 do {
                     arg0[var23++] = field1610[arg6 >> 8];
                     arg6 += var22;
                     var24--;
                 } while (var24 > 0);
             } else {
-                int var25 = field1593;
-                int var26 = 256 - field1593;
+                int var25 = alpha;
+                int var26 = 256 - alpha;
                 do {
                     int var27 = field1610[arg6 >> 8];
                     arg6 += var22;
@@ -1405,9 +1405,9 @@ public class Draw3D extends Draw2D {
 
     @OriginalMember(owner = "client!YIBHWZVJ", name = "a", descriptor = "([IIIIII)V")
     public static final void method558(int[] arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
-        if (field1590) {
-            if (arg5 > Draw2D.field1101) {
-                arg5 = Draw2D.field1101;
+        if (clipX) {
+            if (arg5 > Draw2D.boundX) {
+                arg5 = Draw2D.boundX;
             }
             if (arg4 < 0) {
                 arg4 = 0;
@@ -1418,7 +1418,7 @@ public class Draw3D extends Draw2D {
         }
         int var6 = arg1 + arg4;
         int var7 = arg5 - arg4 >> 2;
-        if (field1593 == 0) {
+        if (alpha == 0) {
             while (true) {
                 var7--;
                 if (var7 < 0) {
@@ -1437,8 +1437,8 @@ public class Draw3D extends Draw2D {
                 arg0[var6++] = arg2;
             }
         }
-        int var9 = field1593;
-        int var10 = 256 - field1593;
+        int var9 = alpha;
+        int var10 = 256 - alpha;
         int var11 = ((arg2 & 0xFF00FF) * var10 >> 8 & 0xFF00FF) + ((arg2 & 0xFF00) * var10 >> 8 & 0xFF00);
         while (true) {
             var7--;
@@ -1460,7 +1460,7 @@ public class Draw3D extends Draw2D {
     }
 
     @OriginalMember(owner = "client!YIBHWZVJ", name = "a", descriptor = "(IIIIIIIIIIIIIIIIIII)V")
-    public static final void method559(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9, int arg10, int arg11, int arg12, int arg13, int arg14, int arg15, int arg16, int arg17, int arg18) {
+    public static final void fillTexturedTriangle(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9, int arg10, int arg11, int arg12, int arg13, int arg14, int arg15, int arg16, int arg17, int arg18) {
         int[] var19 = method552(arg18);
         field1591 = !field1603[arg18];
         int var20 = arg9 - arg10;
@@ -1523,7 +1523,7 @@ public class Draw3D extends Draw2D {
                         var46 -= arg1 * var38;
                         arg1 = 0;
                     }
-                    int var47 = arg0 - field1595;
+                    int var47 = arg0 - centerY;
                     int var48 = var28 * var47 + var26;
                     int var49 = var31 * var47 + var29;
                     int var50 = var34 * var47 + var32;
@@ -1613,7 +1613,7 @@ public class Draw3D extends Draw2D {
                         var62 -= arg2 * var38;
                         arg2 = 0;
                     }
-                    int var63 = arg0 - field1595;
+                    int var63 = arg0 - centerY;
                     int var64 = var28 * var63 + var26;
                     int var65 = var31 * var63 + var29;
                     int var66 = var34 * var63 + var32;
@@ -1713,7 +1713,7 @@ public class Draw3D extends Draw2D {
                         var78 -= arg2 * var40;
                         arg2 = 0;
                     }
-                    int var79 = arg1 - field1595;
+                    int var79 = arg1 - centerY;
                     int var80 = var28 * var79 + var26;
                     int var81 = var31 * var79 + var29;
                     int var82 = var34 * var79 + var32;
@@ -1803,7 +1803,7 @@ public class Draw3D extends Draw2D {
                         var94 -= arg0 * var40;
                         arg0 = 0;
                     }
-                    int var95 = arg1 - field1595;
+                    int var95 = arg1 - centerY;
                     int var96 = var28 * var95 + var26;
                     int var97 = var31 * var95 + var29;
                     int var98 = var34 * var95 + var32;
@@ -1902,7 +1902,7 @@ public class Draw3D extends Draw2D {
                     var110 -= arg0 * var36;
                     arg0 = 0;
                 }
-                int var111 = arg2 - field1595;
+                int var111 = arg2 - centerY;
                 int var112 = var28 * var111 + var26;
                 int var113 = var31 * var111 + var29;
                 int var114 = var34 * var111 + var32;
@@ -1992,7 +1992,7 @@ public class Draw3D extends Draw2D {
                     var126 -= arg1 * var36;
                     arg1 = 0;
                 }
-                int var127 = arg2 - field1595;
+                int var127 = arg2 - centerY;
                 int var128 = var28 * var127 + var26;
                 int var129 = var31 * var127 + var29;
                 int var130 = var34 * var127 + var32;
@@ -2075,10 +2075,10 @@ public class Draw3D extends Draw2D {
         int var16;
         int var17;
         int var18;
-        if (field1590) {
+        if (clipX) {
             int var15 = (arg8 - arg7) / (arg6 - arg5);
-            if (arg6 > Draw2D.field1101) {
-                arg6 = Draw2D.field1101;
+            if (arg6 > Draw2D.boundX) {
+                arg6 = Draw2D.boundX;
             }
             if (arg5 < 0) {
                 arg7 -= arg5 * var15;
@@ -2104,7 +2104,7 @@ public class Draw3D extends Draw2D {
         if (!field1589) {
             int var78 = 0;
             int var79 = 0;
-            int var80 = arg5 - field1594;
+            int var80 = arg5 - centerX;
             int var81 = (arg12 >> 3) * var80 + arg9;
             int var82 = (arg13 >> 3) * var80 + arg10;
             int var83 = (arg14 >> 3) * var80 + arg11;
@@ -2278,7 +2278,7 @@ public class Draw3D extends Draw2D {
         }
         int var20 = 0;
         int var21 = 0;
-        int var22 = arg5 - field1594;
+        int var22 = arg5 - centerX;
         int var23 = (arg12 >> 3) * var22 + arg9;
         int var24 = (arg13 >> 3) * var22 + arg10;
         int var25 = (arg14 >> 3) * var22 + arg11;

@@ -8,7 +8,7 @@ import rs2.dash3d.entity.Entity;
 public class Wall {
 
     @OriginalMember(owner = "client!WQXKHZYN", name = "i", descriptor = "B")
-    public byte field1540;
+    public byte info;
 
     @OriginalMember(owner = "client!WQXKHZYN", name = "a", descriptor = "I")
     public int field1532;
@@ -20,29 +20,29 @@ public class Wall {
     public int field1534;
 
     @OriginalMember(owner = "client!WQXKHZYN", name = "d", descriptor = "I")
-    public int field1535;
+    public int typeA;
 
     @OriginalMember(owner = "client!WQXKHZYN", name = "e", descriptor = "I")
-    public int field1536;
+    public int typeB;
 
     @OriginalMember(owner = "client!WQXKHZYN", name = "h", descriptor = "I")
     public int typecode;
 
     @OriginalMember(owner = "client!WQXKHZYN", name = "f", descriptor = "LZOXDNIET;")
-    public Entity field1537;
+    public Entity entityA;
 
     @OriginalMember(owner = "client!WQXKHZYN", name = "g", descriptor = "LZOXDNIET;")
-    public Entity field1538;
+    public Entity entityB;
 
-    public Wall(byte field1540, int field1532, int field1533, int field1534, int field1535, int field1536, int typecode, Entity field1537, Entity field1538) {
-        this.field1540 = field1540;
+    public Wall(byte info, int field1532, int field1533, int field1534, int typeA, int typeB, int typecode, Entity entityA, Entity entityB) {
+        this.info = info;
         this.field1532 = field1532;
         this.field1533 = field1533;
         this.field1534 = field1534;
-        this.field1535 = field1535;
-        this.field1536 = field1536;
+        this.typeA = typeA;
+        this.typeB = typeB;
         this.typecode = typecode;
-        this.field1537 = field1537;
-        this.field1538 = field1538;
+        this.entityA = entityA;
+        this.entityB = entityB;
     }
 }

@@ -583,13 +583,13 @@ public class LocType {
         }
         if (this.field1623) {
             int var9 = (arg2 + arg3 + arg4 + arg5) / 4;
-            for (int var10 = 0; var10 < var8.field1195; var10++) {
-                int var11 = var8.field1196[var10];
-                int var12 = var8.field1198[var10];
+            for (int var10 = 0; var10 < var8.vertexCount; var10++) {
+                int var11 = var8.vertexX[var10];
+                int var12 = var8.vertexZ[var10];
                 int var13 = (arg3 - arg2) * (var11 + 64) / 128 + arg2;
                 int var14 = (arg4 - arg5) * (var11 + 64) / 128 + arg5;
                 int var15 = (var14 - var13) * (var12 + 64) / 128 + var13;
-                var8.field1197[var10] += var15 - var9;
+                var8.vertexY[var10] += var15 - var9;
             }
             var8.method364(6);
         }

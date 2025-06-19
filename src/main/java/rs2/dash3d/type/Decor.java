@@ -8,7 +8,7 @@ import rs2.dash3d.entity.Entity;
 public class Decor {
 
     @OriginalMember(owner = "client!SEMZHDXN", name = "h", descriptor = "B")
-    public byte field1413;
+    public byte info;
 
     @OriginalMember(owner = "client!SEMZHDXN", name = "a", descriptor = "I")
     public int field1406;
@@ -20,25 +20,25 @@ public class Decor {
     public int z;
 
     @OriginalMember(owner = "client!SEMZHDXN", name = "d", descriptor = "I")
-    public int field1409;
+    public int decorType;
 
     @OriginalMember(owner = "client!SEMZHDXN", name = "e", descriptor = "I")
-    public int field1410;
+    public int decorAngle;
 
     @OriginalMember(owner = "client!SEMZHDXN", name = "g", descriptor = "I")
-    public int field1412;
+    public int typecode;
 
     @OriginalMember(owner = "client!SEMZHDXN", name = "f", descriptor = "LZOXDNIET;")
-    public Entity field1411;
+    public Entity entity;
 
-    public Decor(byte field1413, int field1406, int field1407, int field1408, int field1409, int field1410, int field1412, Entity field1411) {
-        this.field1413 = field1413;
+    public Decor(byte info, int field1406, int field1407, int field1408, int decorType, int decorAngle, int typecode, Entity entity) {
+        this.info = info;
         this.field1406 = field1406;
         this.x = field1407;
         this.z = field1408;
-        this.field1409 = field1409;
-        this.field1410 = field1410;
-        this.field1412 = field1412;
-        this.field1411 = field1411;
+        this.decorType = decorType;
+        this.decorAngle = decorAngle;
+        this.typecode = typecode;
+        this.entity = entity;
     }
 }

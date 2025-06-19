@@ -4,59 +4,59 @@ import org.openrs2.deob.annotation.OriginalClass;
 import org.openrs2.deob.annotation.OriginalMember;
 
 @OriginalClass("client!VEDUNTJR")
-public class Occluder {
+public class Occlude {
 
     @OriginalMember(owner = "client!VEDUNTJR", name = "a", descriptor = "I")
-    public int field1478;
+    public int minTileX;
 
     @OriginalMember(owner = "client!VEDUNTJR", name = "b", descriptor = "I")
-    public int field1479;
+    public int maxTileX;
 
     @OriginalMember(owner = "client!VEDUNTJR", name = "c", descriptor = "I")
-    public int field1480;
+    public int minTileZ;
 
     @OriginalMember(owner = "client!VEDUNTJR", name = "d", descriptor = "I")
-    public int field1481;
+    public int maxTileZ;
 
     @OriginalMember(owner = "client!VEDUNTJR", name = "e", descriptor = "I")
-    public int field1482;
+    public int type;
 
     @OriginalMember(owner = "client!VEDUNTJR", name = "f", descriptor = "I")
-    public int field1483;
+    public int minX;
 
     @OriginalMember(owner = "client!VEDUNTJR", name = "g", descriptor = "I")
-    public int field1484;
+    public int maxX;
 
     @OriginalMember(owner = "client!VEDUNTJR", name = "h", descriptor = "I")
-    public int field1485;
+    public int minZ;
 
     @OriginalMember(owner = "client!VEDUNTJR", name = "i", descriptor = "I")
-    public int field1486;
+    public int maxZ;
 
     @OriginalMember(owner = "client!VEDUNTJR", name = "j", descriptor = "I")
-    public int field1487;
+    public int minY;
 
     @OriginalMember(owner = "client!VEDUNTJR", name = "k", descriptor = "I")
-    public int field1488;
+    public int maxY;
 
     @OriginalMember(owner = "client!VEDUNTJR", name = "l", descriptor = "I")
-    public int field1489;
+    public int mode;
 
     @OriginalMember(owner = "client!VEDUNTJR", name = "m", descriptor = "I")
-    public int field1490;
+    public int minDeltaX;
 
     @OriginalMember(owner = "client!VEDUNTJR", name = "n", descriptor = "I")
-    public int field1491;
+    public int maxDeltaX;
 
     @OriginalMember(owner = "client!VEDUNTJR", name = "o", descriptor = "I")
-    public int field1492;
+    public int minDeltaZ;
 
     @OriginalMember(owner = "client!VEDUNTJR", name = "p", descriptor = "I")
-    public int field1493;
+    public int maxDeltaZ;
 
     @OriginalMember(owner = "client!VEDUNTJR", name = "q", descriptor = "I")
-    public int field1494;
+    public int minDeltaY;
 
     @OriginalMember(owner = "client!VEDUNTJR", name = "r", descriptor = "I")
-    public int field1495;
+    public int maxDeltaY;
 }

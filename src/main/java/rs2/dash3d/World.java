@@ -553,7 +553,7 @@ public class World {
                 }
             }
         }
-        arg2.method305((byte) 2, -10, -50, -50);
+        arg2.buildModels(-50, -10, -50);
         for (int var6 = 0; var6 < this.field114; var6++) {
             for (int var47 = 0; var47 < this.field115; var47++) {
                 if ((this.field101[1][var6][var47] & 0x2) == 2) {
@@ -608,7 +608,7 @@ public class World {
                                 short var21 = 240;
                                 int var22 = this.field112[var17][var13][var14] - var21;
                                 int var23 = this.field112[var16][var13][var14];
-                                World3D.method277(-8967, var13 * 128, var23, var13 * 128, var15 * 128 + 128, var10, var14 * 128, var22, 1);
+                                World3D.addOccluder(var13 * 128, var23, var13 * 128, var15 * 128 + 128, var10, var14 * 128, var22, 1);
                                 for (int var24 = var16; var24 <= var17; var24++) {
                                     for (int var25 = var14; var25 <= var15; var25++) {
                                         this.field131[var24][var13][var25] &= ~var7;
@@ -648,7 +648,7 @@ public class World {
                                 short var33 = 240;
                                 int var34 = this.field112[var29][var26][var12] - var33;
                                 int var35 = this.field112[var28][var26][var12];
-                                World3D.method277(-8967, var26 * 128, var35, var27 * 128 + 128, var12 * 128, var10, var12 * 128, var34, 2);
+                                World3D.addOccluder(var26 * 128, var35, var27 * 128 + 128, var12 * 128, var10, var12 * 128, var34, 2);
                                 for (int var36 = var28; var36 <= var29; var36++) {
                                     for (int var37 = var26; var37 <= var27; var37++) {
                                         this.field131[var36][var37][var12] &= ~var8;
@@ -685,7 +685,7 @@ public class World {
                             }
                             if ((var39 + 1 - var38) * (var41 + 1 - var40) >= 4) {
                                 int var44 = this.field112[var11][var38][var40];
-                                World3D.method277(-8967, var38 * 128, var44, var39 * 128 + 128, var41 * 128 + 128, var10, var40 * 128, var44, 4);
+                                World3D.addOccluder(var38 * 128, var44, var39 * 128 + 128, var41 * 128 + 128, var10, var40 * 128, var44, 4);
                                 for (int var45 = var38; var45 <= var39; var45++) {
                                     for (int var46 = var40; var46 <= var41; var46++) {
                                         this.field131[var11][var45][var46] &= ~var9;

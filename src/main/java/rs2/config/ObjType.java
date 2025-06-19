@@ -583,8 +583,8 @@ public class ObjType {
             }
         }
         Pix24 var10 = new Pix24(32, 32);
-        int var11 = Draw3D.field1594;
-        int var12 = Draw3D.field1595;
+        int var11 = Draw3D.centerX;
+        int var12 = Draw3D.centerY;
         int[] var13 = Draw3D.field1600;
         int[] var14 = Draw2D.field1094;
         int var15 = Draw2D.field1095;
@@ -661,8 +661,8 @@ public class ObjType {
         }
         Draw2D.method332(field832, var15, var16, var14);
         Draw2D.method334(var19, var17, var20, var18, true);
-        Draw3D.field1594 = var11;
-        Draw3D.field1595 = var12;
+        Draw3D.centerX = var11;
+        Draw3D.centerY = var12;
         Draw3D.field1600 = var13;
         Draw3D.field1592 = true;
         if (var5.field853) {

@@ -20,13 +20,13 @@ public class Ground extends Linkable {
     public int groundLevel;
 
     @OriginalMember(owner = "client!RIEEXHOP", name = "i", descriptor = "I")
-    public int field1383;
+    public int occludeLevel;
 
     @OriginalMember(owner = "client!RIEEXHOP", name = "g", descriptor = "I")
-    public int field1381;
+    public int x;
 
     @OriginalMember(owner = "client!RIEEXHOP", name = "h", descriptor = "I")
-    public int field1382;
+    public int z;
 
     @OriginalMember(owner = "client!RIEEXHOP", name = "p", descriptor = "I")
     public int locCount;
@@ -38,16 +38,16 @@ public class Ground extends Linkable {
     public int drawLevel;
 
     @OriginalMember(owner = "client!RIEEXHOP", name = "x", descriptor = "I")
-    public int field1398;
+    public int checkLocSpans;
 
     @OriginalMember(owner = "client!RIEEXHOP", name = "y", descriptor = "I")
-    public int field1399;
+    public int blockLocSpans;
 
     @OriginalMember(owner = "client!RIEEXHOP", name = "z", descriptor = "I")
-    public int field1400;
+    public int inverseBlockLocSpans;
 
     @OriginalMember(owner = "client!RIEEXHOP", name = "A", descriptor = "I")
-    public int field1401;
+    public int backWallTypes;
 
     @OriginalMember(owner = "client!RIEEXHOP", name = "n", descriptor = "LMOLUZZPG;")
     public GroundDecor groundDecoration;
@@ -71,18 +71,18 @@ public class Ground extends Linkable {
     public Decor wallDecoration;
 
     @OriginalMember(owner = "client!RIEEXHOP", name = "u", descriptor = "Z")
-    public boolean field1395;
+    public boolean groundVisible;
 
     @OriginalMember(owner = "client!RIEEXHOP", name = "v", descriptor = "Z")
-    public boolean field1396;
+    public boolean update;
 
     @OriginalMember(owner = "client!RIEEXHOP", name = "w", descriptor = "Z")
-    public boolean field1397;
+    public boolean containsLocs;
 
     @OriginalMember(owner = "client!RIEEXHOP", name = "<init>", descriptor = "(III)V")
     public Ground(int arg0, int arg1, int arg2) {
-        this.field1383 = this.groundLevel = arg0;
-        this.field1381 = arg1;
-        this.field1382 = arg2;
+        this.occludeLevel = this.groundLevel = arg0;
+        this.x = arg1;
+        this.z = arg2;
     }
 }

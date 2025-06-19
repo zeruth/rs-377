@@ -29,7 +29,7 @@ public class LinkList {
     }
 
     @OriginalMember(owner = "client!BOHLFXVX", name = "a", descriptor = "(LZUOIJLRD;)V")
-    public void method3(Linkable arg0) {
+    public void addTail(Linkable arg0) {
         if (arg0.field1771 != null) {
             arg0.method604();
         }
@@ -54,7 +54,7 @@ public class LinkList {
     }
 
     @OriginalMember(owner = "client!BOHLFXVX", name = "a", descriptor = "()LZUOIJLRD;")
-    public Linkable method5() {
+    public Linkable removeHead() {
         Linkable var1 = this.field92.field1770;
         if (this.field92 == var1) {
             return null;

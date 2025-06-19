@@ -1912,7 +1912,7 @@ public class client extends GameShell {
         super.field952 = null;
         PlayerEntity.field1683 = null;
         Draw3D.method544(false);
-        World3D.method273(false);
+        World3D.reset2();
         Model.method355(false);
         AnimFrame.method263(false);
         System.gc();
@@ -2167,7 +2167,7 @@ public class client extends GameShell {
 
     @OriginalMember(owner = "client!client", name = "d", descriptor = "(Z)V")
     public static final void method47(boolean arg0) {
-        World3D.field1013 = false;
+        World3D.lowMemory = false;
         Draw3D.field1589 = false;
         field222 = false;
         World.field132 = false;
@@ -2393,11 +2393,11 @@ public class client extends GameShell {
                     super.field965 = 0;
                 }
             }
-            if (World3D.field1047 != -1) {
-                int var26 = World3D.field1047;
-                int var27 = World3D.field1048;
+            if (World3D.clickTileX != -1) {
+                int var26 = World3D.clickTileX;
+                int var27 = World3D.clickTileZ;
                 boolean var28 = this.method55(true, false, var27, field463.field1134[0], 0, 0, 0, 0, var26, 0, 0, field463.field1133[0]);
-                World3D.field1047 = -1;
+                World3D.clickTileX = -1;
                 if (var28) {
                     this.field316 = super.field966;
                     this.field317 = super.field967;
@@ -4683,7 +4683,7 @@ public class client extends GameShell {
             int var8 = var4 >> 14 & 32767;
             if (var2 != var4) {
                 var2 = var4;
-                if (var7 == 2 && this.field460.method304(this.field387, var5, var6, var4) >= 0) {
+                if (var7 == 2 && this.field460.getInfo(this.field387, var5, var6, var4) >= 0) {
                     LocType var9 = LocType.method561(var8);
                     if (var9.field1659 != null) {
                         var9 = var9.method562(0);
@@ -4872,13 +4872,13 @@ public class client extends GameShell {
                 var9 = this.field460.getDecorTypecode(arg1, arg4, arg3);
             }
             if (arg7 == 2) {
-                var9 = this.field460.method302(arg4, arg1, arg3);
+                var9 = this.field460.getLocTypecode(arg4, arg1, arg3);
             }
             if (arg7 == 3) {
-                var9 = this.field460.method303(arg4, arg1, arg3);
+                var9 = this.field460.getGroundDecorTypecode(arg4, arg1, arg3);
             }
             if (var9 != 0) {
-                int var13 = this.field460.method304(arg4, arg1, arg3, var9);
+                int var13 = this.field460.getInfo(arg4, arg1, arg3, var9);
                 int var14 = var9 >> 14 & 32767;
                 int var15 = var13 & 31;
                 int var16 = var13 >> 6;
@@ -5309,8 +5309,8 @@ public class client extends GameShell {
         }
         if (var5 > 4225 && var5 < 90000) {
             int var6 = this.field548 + this.field212 & 2047;
-            int var7 = Model.field1257[var6];
-            int var8 = Model.field1258[var6];
+            int var7 = Model.sin[var6];
+            int var8 = Model.cos[var6];
             int var9 = var7 * 256 / (this.field529 + 256);
             int var10 = var8 * 256 / (this.field529 + 256);
             int var11 = arg0 * var9 + arg3 * var10 >> 16;
@@ -6329,7 +6329,7 @@ public class client extends GameShell {
                         int var69 = Draw3D.field1598[var67];
                         var65[var66] = var68 * var69 >> 16;
                     }
-                    World3D.method310(334, 22845, var65, 800, 500, 512);
+                    World3D.init(334, var65, 800, 500, 512);
                     WordFilter.method494(var8);
                     this.field544 = new MouseTracking(this, (byte) -116);
                     this.method142(this.field544, 10);
@@ -7681,7 +7681,7 @@ public class client extends GameShell {
     @OriginalMember(owner = "client!client", name = "a", descriptor = "(IIII)Z")
     public final boolean method102(int arg0, int arg1, int arg2, int arg3) {
         int var5 = arg3 >> 14 & 32767;
-        int var6 = this.field460.method304(this.field387, arg2, arg0, arg3);
+        int var6 = this.field460.getInfo(this.field387, arg2, arg0, arg3);
         if (var6 == -1) {
             return false;
         } else {
@@ -8723,15 +8723,15 @@ public class client extends GameShell {
         int var11 = 0;
         int var12 = arg3;
         if (var8 != 0) {
-            int var13 = Model.field1257[var8];
-            int var14 = Model.field1258[var8];
+            int var13 = Model.sin[var8];
+            int var14 = Model.cos[var8];
             int var15 = var11 * var14 - arg3 * var13 >> 16;
             var12 = var11 * var13 + arg3 * var14 >> 16;
             var11 = var15;
         }
         if (var9 != 0) {
-            int var16 = Model.field1257[var9];
-            int var17 = Model.field1258[var9];
+            int var16 = Model.sin[var9];
+            int var17 = Model.cos[var9];
             int var18 = var10 * var17 + var12 * var16 >> 16;
             var12 = var12 * var17 - var10 * var16 >> 16;
             var10 = var18;
@@ -8940,7 +8940,7 @@ public class client extends GameShell {
 
     @OriginalMember(owner = "client!client", name = "l", descriptor = "(Z)V")
     public static final void method124(boolean arg0) {
-        World3D.field1013 = true;
+        World3D.lowMemory = true;
         if (!arg0) {
             field538 = true;
         }
@@ -9788,10 +9788,10 @@ public class client extends GameShell {
             int var23 = (103 - var6) * 512 * 4 + 24628;
             for (int var24 = 1; var24 < 103; ++var24) {
                 if ((this.field421[arg0][var24][var6] & 24) == 0) {
-                    this.field460.method309(var3, var23, 512, arg0, var24, var6);
+                    this.field460.drawMinimapTile(var3, var23, 512, arg0, var24, var6);
                 }
                 if (arg0 < 3 && (this.field421[arg0 + 1][var24][var6] & 8) != 0) {
-                    this.field460.method309(var3, var23, 512, arg0 + 1, var24, var6);
+                    this.field460.drawMinimapTile(var3, var23, 512, arg0 + 1, var24, var6);
                 }
                 var23 += 4;
             }
@@ -9825,7 +9825,7 @@ public class client extends GameShell {
         this.field372 = 0;
         for (int var10 = 0; var10 < 104; ++var10) {
             for (int var11 = 0; var11 < 104; ++var11) {
-                int var12 = this.field460.method303(this.field387, var10, var11);
+                int var12 = this.field460.getGroundDecorTypecode(this.field387, var10, var11);
                 if (var12 != 0) {
                     int var13 = var12 >> 14 & 32767;
                     int var14 = LocType.method561(var13).field1660;
@@ -10282,9 +10282,9 @@ public class client extends GameShell {
             }
             if (var5 == 14) {
                 if (!this.field361) {
-                    this.field460.method312(0, super.field966 - 4, super.field967 - 4);
+                    this.field460.click(super.field966 - 4, super.field967 - 4);
                 } else {
-                    this.field460.method312(0, var3 - 4, var4 - 4);
+                    this.field460.click(var3 - 4, var4 - 4);
                 }
             }
             if (var5 == 903) {
@@ -11454,8 +11454,8 @@ public class client extends GameShell {
             int var5 = this.field548 + this.field212 & 2047;
             int var6 = arg0 * arg0 + arg3 * arg3;
             if (var6 <= 6400) {
-                int var7 = Model.field1257[var5];
-                int var8 = Model.field1258[var5];
+                int var7 = Model.sin[var5];
+                int var8 = Model.cos[var5];
                 int var9 = var7 * 256 / (this.field529 + 256);
                 int var10 = var8 * 256 / (this.field529 + 256);
                 if (!arg1) {
@@ -11670,7 +11670,7 @@ public class client extends GameShell {
                 if (this.field619[this.field387][var31][var32] == null) {
                     this.field619[this.field387][var31][var32] = new LinkList(true);
                 }
-                this.field619[this.field387][var31][var32].method3(var36);
+                this.field619[this.field387][var31][var32].addTail(var36);
                 this.method46(var31, var32);
             }
         } else if (arg2 == 142) {
@@ -11688,21 +11688,21 @@ public class client extends GameShell {
                 int var47 = this.field187[this.field387][var43 + 1][var44 + 1];
                 int var48 = this.field187[this.field387][var43][var44 + 1];
                 if (var41 == 0) {
-                    Wall var49 = this.field460.getWall(this.field387, 17734, var43, var44);
+                    Wall var49 = this.field460.getWall(this.field387, var43, var44);
                     if (var49 != null) {
                         int var50 = var49.typecode >> 14 & 32767;
                         if (var39 == 2) {
-                            var49.field1537 = new LocEntity(var37, var47, var48, var46, 2, (byte) 3, var50, false, var45, var40 + 4);
-                            var49.field1538 = new LocEntity(var37, var47, var48, var46, 2, (byte) 3, var50, false, var45, var40 + 1 & 3);
+                            var49.entityA = new LocEntity(var37, var47, var48, var46, 2, (byte) 3, var50, false, var45, var40 + 4);
+                            var49.entityB = new LocEntity(var37, var47, var48, var46, 2, (byte) 3, var50, false, var45, var40 + 1 & 3);
                         } else {
-                            var49.field1537 = new LocEntity(var37, var47, var48, var46, var39, (byte) 3, var50, false, var45, var40);
+                            var49.entityA = new LocEntity(var37, var47, var48, var46, var39, (byte) 3, var50, false, var45, var40);
                         }
                     }
                 }
                 if (var41 == 1) {
                     Decor var51 = this.field460.getWallDecoration(this.field387, var44, var43);
                     if (var51 != null) {
-                        var51.field1411 = new LocEntity(var37, var47, var48, var46, 4, (byte) 3, var51.field1412 >> 14 & 32767, false, var45, 0);
+                        var51.entity = new LocEntity(var37, var47, var48, var46, 4, (byte) 3, var51.typecode >> 14 & 32767, false, var45, 0);
                     }
                 }
                 if (var41 == 2) {
@@ -11717,7 +11717,7 @@ public class client extends GameShell {
                 if (var41 == 3) {
                     GroundDecor var53 = this.field460.getGroundDecor(this.field387, var44, var43);
                     if (var53 != null) {
-                        var53.entity = new LocEntity(var37, var47, var48, var46, 22, (byte) 3, var53.field1314 >> 14 & 32767, false, var45, var40);
+                        var53.entity = new LocEntity(var37, var47, var48, var46, 22, (byte) 3, var53.typecode >> 14 & 32767, false, var45, var40);
                     }
                 }
             }
@@ -11734,7 +11734,7 @@ public class client extends GameShell {
                 if (this.field619[this.field387][var56][var57] == null) {
                     this.field619[this.field387][var56][var57] = new LinkList(true);
                 }
-                this.field619[this.field387][var56][var57].method3(var59);
+                this.field619[this.field387][var56][var57].addTail(var59);
                 this.method46(var56, var57);
             }
         } else if (arg2 == 121) {
@@ -11777,7 +11777,7 @@ public class client extends GameShell {
                 int var84 = var72 * 128 + 64;
                 ProjectileEntity var85 = new ProjectileEntity(this.field387, var76, var80, var82, var74, field621 + var78, var79, var73, (byte) -41, this.method133(var82, var81, (byte) 9, this.field387) - var75, var81, field621 + var77);
                 var85.method271(var83, var84, this.method133(var84, var83, (byte) 9, this.field387) - var76, field621 + var77, 0);
-                this.field578.method3(var85);
+                this.field578.addTail(var85);
             }
         } else {
             if (arg2 == 41) {
@@ -11806,7 +11806,7 @@ public class client extends GameShell {
                     int var99 = var94 * 128 + 64;
                     int var100 = var95 * 128 + 64;
                     SpotAnimEntity var101 = new SpotAnimEntity(var99, this.field387, this.method133(var100, var99, (byte) 9, this.field387) - var97, var98, var96, field621, var100, 10709);
-                    this.field506.method3(var101);
+                    this.field506.addTail(var101);
                 }
             } else if (arg2 == 152) {
                 int var102 = arg0.g1_alt2(-34545);
@@ -11911,10 +11911,10 @@ public class client extends GameShell {
             int var6 = arg0 - this.field512;
             int var7 = var5 - this.field513;
             int var8 = arg2 - this.field514;
-            int var9 = Model.field1257[this.field515];
-            int var10 = Model.field1258[this.field515];
-            int var11 = Model.field1257[this.field516];
-            int var12 = Model.field1258[this.field516];
+            int var9 = Model.sin[this.field515];
+            int var10 = Model.cos[this.field515];
+            int var11 = Model.sin[this.field516];
+            int var12 = Model.cos[this.field516];
             int var13 = var6 * var12 + var8 * var11 >> 16;
             int var14 = var8 * var12 - var6 * var11 >> 16;
             int var16 = var7 * var10 - var9 * var14 >> 16;
@@ -11923,8 +11923,8 @@ public class client extends GameShell {
                 this.field166 = -1;
             }
             if (var17 >= 50) {
-                this.field228 = (var13 << 9) / var17 + Draw3D.field1594;
-                this.field229 = (var16 << 9) / var17 + Draw3D.field1595;
+                this.field228 = (var13 << 9) / var17 + Draw3D.centerX;
+                this.field229 = (var16 << 9) / var17 + Draw3D.centerY;
             } else {
                 this.field228 = -1;
                 this.field229 = -1;
@@ -12089,13 +12089,13 @@ public class client extends GameShell {
             var3 = this.field460.getDecorTypecode(arg1.field1325, arg1.field1323, arg1.field1326);
         }
         if (arg1.field1324 == 2) {
-            var3 = this.field460.method302(arg1.field1323, arg1.field1325, arg1.field1326);
+            var3 = this.field460.getLocTypecode(arg1.field1323, arg1.field1325, arg1.field1326);
         }
         if (arg1.field1324 == 3) {
-            var3 = this.field460.method303(arg1.field1323, arg1.field1325, arg1.field1326);
+            var3 = this.field460.getGroundDecorTypecode(arg1.field1323, arg1.field1325, arg1.field1326);
         }
         if (var3 != 0) {
-            int var7 = this.field460.method304(arg1.field1323, arg1.field1325, arg1.field1326, var3);
+            int var7 = this.field460.getInfo(arg1.field1323, arg1.field1325, arg1.field1326, var3);
             var4 = var3 >> 14 & 32767;
             var5 = var7 & 31;
             var6 = var7 >> 6;
@@ -12371,10 +12371,10 @@ public class client extends GameShell {
                                 var45.method195(var16, var15, -488);
                             }
                         } else if (var14.field718 == 6) {
-                            int var46 = Draw3D.field1594;
-                            int var47 = Draw3D.field1595;
-                            Draw3D.field1594 = var14.field723 / 2 + var15;
-                            Draw3D.field1595 = var14.field720 / 2 + var16;
+                            int var46 = Draw3D.centerX;
+                            int var47 = Draw3D.centerY;
+                            Draw3D.centerX = var14.field723 / 2 + var15;
+                            Draw3D.centerY = var14.field720 / 2 + var16;
                             int var48 = Draw3D.field1598[var14.field734] * var14.field733 >> 16;
                             int var49 = Draw3D.field1599[var14.field734] * var14.field733 >> 16;
                             boolean var50 = this.method118(var14, -693);
@@ -12394,8 +12394,8 @@ public class client extends GameShell {
                             if (var52 != null) {
                                 var52.method380(0, var14.field735, 0, var14.field734, 0, var48, var49);
                             }
-                            Draw3D.field1594 = var46;
-                            Draw3D.field1595 = var47;
+                            Draw3D.centerX = var46;
+                            Draw3D.centerY = var47;
                         } else {
                             if (var14.field718 == 7) {
                                 PixFont var54 = var14.field719;
@@ -12558,7 +12558,7 @@ public class client extends GameShell {
             var11.field1325 = arg2;
             var11.field1326 = arg9;
             this.method167((byte) -61, var11);
-            this.field557.method3(var11);
+            this.field557.addTail(var11);
         }
         var11.field1316 = arg6;
         var11.field1318 = arg5;
@@ -12761,7 +12761,7 @@ public class client extends GameShell {
         int var7 = this.field460.getWallTypecode(arg1, arg2, arg0);
         int var8 = 62 / arg4;
         if (var7 != 0) {
-            int var9 = this.field460.method304(arg1, arg2, arg0, var7);
+            int var9 = this.field460.getInfo(arg1, arg2, arg0, var7);
             int var10 = var9 >> 6 & 3;
             int var11 = var9 & 31;
             int var12 = arg5;
@@ -12839,9 +12839,9 @@ public class client extends GameShell {
                 }
             }
         }
-        int var20 = this.field460.method302(arg1, arg2, arg0);
+        int var20 = this.field460.getLocTypecode(arg1, arg2, arg0);
         if (var20 != 0) {
-            int var21 = this.field460.method304(arg1, arg2, arg0, var20);
+            int var21 = this.field460.getInfo(arg1, arg2, arg0, var20);
             int var22 = var21 >> 6 & 3;
             int var23 = var21 & 31;
             int var24 = var20 >> 14 & 32767;
@@ -12873,7 +12873,7 @@ public class client extends GameShell {
                 }
             }
         }
-        int var32 = this.field460.method303(arg1, arg2, arg0);
+        int var32 = this.field460.getGroundDecorTypecode(arg1, arg2, arg0);
         if (var32 != 0) {
             int var33 = var32 >> 14 & 32767;
             LocType var34 = LocType.method561(var33);
@@ -12955,8 +12955,8 @@ public class client extends GameShell {
         Model.field1253 = super.field959 - 4;
         Model.field1254 = super.field960 - 4;
         Draw2D.method335(4);
-        this.field460.method313(this.field512, var4, 0, this.field513, this.field514, this.field516, this.field515);
-        this.field460.clearTemporaryLocs(this.field193);
+        this.field460.draw(this.field512, var4, 0, this.field513, this.field514, this.field516, this.field515);
+        this.field460.clearTemporaryLocs();
         this.method145(false);
         this.method151(true);
         this.method87(var11, -927);

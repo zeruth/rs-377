@@ -190,7 +190,7 @@ public class OnDemand extends OnDemandProvider implements Runnable {
                         if (this.field1749.field1367) {
                             LinkList var9 = this.field1734;
                             synchronized (this.field1734) {
-                                this.field1734.method3(this.field1749);
+                                this.field1734.addTail(this.field1749);
                             }
                         } else {
                             this.field1749.method604();
@@ -232,7 +232,7 @@ public class OnDemand extends OnDemandProvider implements Runnable {
                     if (this.field1749.field1367) {
                         LinkList var13 = this.field1734;
                         synchronized (this.field1734) {
-                            this.field1734.method3(this.field1749);
+                            this.field1734.addTail(this.field1749);
                         }
                     } else {
                         this.field1749.method604();
@@ -274,12 +274,12 @@ public class OnDemand extends OnDemandProvider implements Runnable {
             LinkList var2 = this.field1735;
             OnDemandRequest var3;
             synchronized (this.field1735) {
-                var3 = (OnDemandRequest) this.field1735.method5();
+                var3 = (OnDemandRequest) this.field1735.removeHead();
             }
             while (var3 != null) {
                 if (this.field1714[var3.field1363][var3.field1364] != 0) {
                     this.field1714[var3.field1363][var3.field1364] = 0;
-                    this.field1751.method3(var3);
+                    this.field1751.addTail(var3);
                     this.method599(this.field1722, var3);
                     this.field1715 = true;
                     if (this.field1711 < this.field1727) {
@@ -293,7 +293,7 @@ public class OnDemand extends OnDemandProvider implements Runnable {
                 }
                 LinkList var4 = this.field1735;
                 synchronized (this.field1735) {
-                    var3 = (OnDemandRequest) this.field1735.method5();
+                    var3 = (OnDemandRequest) this.field1735.removeHead();
                 }
             }
             for (int var5 = 0; var5 < 4; var5++) {
@@ -306,7 +306,7 @@ public class OnDemand extends OnDemandProvider implements Runnable {
                         var9.field1363 = var5;
                         var9.field1364 = var8;
                         var9.field1367 = false;
-                        this.field1751.method3(var9);
+                        this.field1751.addTail(var9);
                         this.method599(this.field1722, var9);
                         this.field1715 = true;
                         if (this.field1711 < this.field1727) {
@@ -366,7 +366,7 @@ public class OnDemand extends OnDemandProvider implements Runnable {
             var5.field1367 = true;
             LinkList var6 = this.field1717;
             synchronized (this.field1717) {
-                this.field1717.method3(var5);
+                this.field1717.addTail(var5);
             }
             this.field1746.method180(var5);
         }
@@ -377,7 +377,7 @@ public class OnDemand extends OnDemandProvider implements Runnable {
         LinkList var1 = this.field1734;
         OnDemandRequest var2;
         synchronized (this.field1734) {
-            var2 = (OnDemandRequest) this.field1734.method5();
+            var2 = (OnDemandRequest) this.field1734.removeHead();
         }
         if (var2 == null) {
             return null;
@@ -511,7 +511,7 @@ public class OnDemand extends OnDemandProvider implements Runnable {
             }
         }
         while (this.field1719 < 10) {
-            OnDemandRequest var3 = (OnDemandRequest) this.field1728.method5();
+            OnDemandRequest var3 = (OnDemandRequest) this.field1728.removeHead();
             if (var3 == null) {
                 break;
             }
@@ -519,7 +519,7 @@ public class OnDemand extends OnDemandProvider implements Runnable {
                 this.field1711++;
             }
             this.field1714[var3.field1363][var3.field1364] = 0;
-            this.field1751.method3(var3);
+            this.field1751.addTail(var3);
             this.field1719++;
             this.method599(this.field1722, var3);
             this.field1715 = true;
@@ -651,7 +651,7 @@ public class OnDemand extends OnDemandProvider implements Runnable {
         var4.field1367 = false;
         LinkList var5 = this.field1735;
         synchronized (this.field1735) {
-            this.field1735.method3(var4);
+            this.field1735.addTail(var4);
         }
     }
 
@@ -660,7 +660,7 @@ public class OnDemand extends OnDemandProvider implements Runnable {
         LinkList var2 = this.field1717;
         OnDemandRequest var3;
         synchronized (this.field1717) {
-            var3 = (OnDemandRequest) this.field1717.method5();
+            var3 = (OnDemandRequest) this.field1717.removeHead();
         }
         if (!arg0) {
             for (int var4 = 1; var4 > 0; var4++) {
@@ -678,15 +678,15 @@ public class OnDemand extends OnDemandProvider implements Runnable {
             LinkList var6 = this.field1717;
             synchronized (this.field1717) {
                 if (var5 == null) {
-                    this.field1728.method3(var3);
+                    this.field1728.addTail(var3);
                 } else {
                     var3.field1366 = var5;
                     LinkList var7 = this.field1734;
                     synchronized (this.field1734) {
-                        this.field1734.method3(var3);
+                        this.field1734.addTail(var3);
                     }
                 }
-                var3 = (OnDemandRequest) this.field1717.method5();
+                var3 = (OnDemandRequest) this.field1717.removeHead();
             }
         }
     }

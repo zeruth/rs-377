@@ -2,7 +2,6 @@ package rs2.dash3d.type;
 
 import org.openrs2.deob.annotation.OriginalClass;
 import org.openrs2.deob.annotation.OriginalMember;
-import rs2.datastruct.Linkable;
 
 @OriginalClass("client!JQCVNYYR")
 public class TileOverlay {
@@ -56,19 +55,19 @@ public class TileOverlay {
     public int[] triangleTextureIds;
 
     @OriginalMember(owner = "client!JQCVNYYR", name = "q", descriptor = "[I")
-    public static int[] field917 = new int[6];
+    public static int[] tmpScreenX = new int[6];
 
     @OriginalMember(owner = "client!JQCVNYYR", name = "r", descriptor = "[I")
-    public static int[] field918 = new int[6];
+    public static int[] tmpScreenY = new int[6];
 
     @OriginalMember(owner = "client!JQCVNYYR", name = "s", descriptor = "[I")
-    public static int[] field919 = new int[6];
+    public static int[] tmpViewspaceX = new int[6];
 
     @OriginalMember(owner = "client!JQCVNYYR", name = "t", descriptor = "[I")
-    public static int[] field920 = new int[6];
+    public static int[] tmpViewspaceY = new int[6];
 
     @OriginalMember(owner = "client!JQCVNYYR", name = "u", descriptor = "[I")
-    public static int[] field921 = new int[6];
+    public static int[] tmpViewspaceZ = new int[6];
 
     @OriginalMember(owner = "client!JQCVNYYR", name = "v", descriptor = "[I")
     public static int[] field922 = new int[] { 1, 0 };
