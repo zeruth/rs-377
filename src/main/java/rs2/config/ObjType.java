@@ -531,14 +531,14 @@ public class ObjType {
             return null;
         }
         if (this.field848 != 128 || this.field839 != 128 || this.field850 != 128) {
-            var5.method375(this.field839, this.field850, 9, this.field848);
+            var5.scale(this.field839, this.field850, 9, this.field848);
         }
         if (this.field846 != null) {
             for (int var6 = 0; var6 < this.field846.length; var6++) {
                 var5.method373(this.field846[var6], this.field823[var6]);
             }
         }
-        var5.method376(this.field836 + 64, this.field840 + 768, -50, -10, -50, true);
+        var5.calculateNormals(this.field836 + 64, this.field840 + 768, -50, -10, -50, true);
         var5.field1227 = true;
         field819.method459(var5, (long) this.field845, 5);
         return var5;

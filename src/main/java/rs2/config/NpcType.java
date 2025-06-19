@@ -370,8 +370,8 @@ public class NpcType {
                     var6.method373(this.field1437[var11], this.field1459[var11]);
                 }
             }
-            var6.method366(7);
-            var6.method376(this.field1466 + 64, this.field1461 + 850, -30, -50, -30, true);
+            var6.createLabelReferences(7);
+            var6.calculateNormals(this.field1466 + 64, this.field1461 + 850, -30, -50, -30, true);
             field1438.method459(var6, this.field1431, 5);
         }
         Model var12 = Model.field1190;
@@ -382,14 +382,14 @@ public class NpcType {
         if (arg0 != -1 && arg1 != -1) {
             var12.method368(arg1, 0, arg0, arg3);
         } else if (arg0 != -1) {
-            var12.method367(arg0, (byte) 6);
+            var12.applyTransform(arg0, (byte) 6);
         }
         if (this.field1435 != 128 || this.field1433 != 128) {
-            var12.method375(this.field1433, this.field1435, 9, this.field1435);
+            var12.scale(this.field1433, this.field1435, 9, this.field1435);
         }
         var12.method363(this.field1427);
-        var12.field1226 = null;
-        var12.field1225 = null;
+        var12.labelFaces = null;
+        var12.labelVertices = null;
         if (this.field1445 == 1) {
             var12.field1227 = true;
         }

@@ -631,15 +631,15 @@ public class Component {
                 this.field753 = !this.field753;
             }
             if (arg0 != -1 || arg1 != -1) {
-                var6.method366(7);
+                var6.createLabelReferences(7);
             }
             if (arg0 != -1) {
-                var6.method367(arg0, (byte) 6);
+                var6.applyTransform(arg0, (byte) 6);
             }
             if (arg1 != -1) {
-                var6.method367(arg1, (byte) 6);
+                var6.applyTransform(arg1, (byte) 6);
             }
-            var6.method376(field762, field725, -50, -10, -50, true);
+            var6.calculateNormals(field762, field725, -50, -10, -50, true);
             return var6;
         }
     }

@@ -13,67 +13,56 @@ public class SpotAnimEntity extends Entity {
     private boolean field1526 = true;
 
     @OriginalMember(owner = "client!WHUAOHZM", name = "r", descriptor = "Z")
-    public boolean field1527 = false;
+    public boolean seqComplete = false;
 
     @OriginalMember(owner = "client!WHUAOHZM", name = "u", descriptor = "LMNZYLKNY;")
-    private SpotAnimType field1530;
+    private SpotAnimType spotType;
 
     @OriginalMember(owner = "client!WHUAOHZM", name = "m", descriptor = "I")
-    public int field1522;
+    public int spotLevel;
 
     @OriginalMember(owner = "client!WHUAOHZM", name = "n", descriptor = "I")
-    public int field1523;
+    public int x;
 
     @OriginalMember(owner = "client!WHUAOHZM", name = "o", descriptor = "I")
-    public int field1524;
+    public int z;
 
     @OriginalMember(owner = "client!WHUAOHZM", name = "p", descriptor = "I")
-    public int field1525;
+    public int y;
 
     @OriginalMember(owner = "client!WHUAOHZM", name = "v", descriptor = "I")
-    public int field1531;
+    public int startCycle;
 
     @OriginalMember(owner = "client!WHUAOHZM", name = "s", descriptor = "I")
-    private int field1528;
+    private int seqFrame;
 
     @OriginalMember(owner = "client!WHUAOHZM", name = "t", descriptor = "I")
-    private int field1529;
-
-    @OriginalMember(owner = "client!WHUAOHZM", name = "a", descriptor = "(BI)V")
-    public final void method486(byte arg0, int arg1) {
-        this.field1529 += arg1;
-        if (arg0 != 1) {
-            return;
-        }
-        boolean var3 = false;
-        while (true) {
-            do {
-                do {
-                    if (this.field1529 <= this.field1530.field1301.method214(0, this.field1528)) {
-                        return;
-                    }
-                    this.field1529 -= this.field1530.field1301.method214(0, this.field1528);
-                    this.field1528++;
-                } while (this.field1528 < this.field1530.field1301.field776);
-            } while (this.field1528 >= 0 && this.field1528 < this.field1530.field1301.field776);
-            this.field1528 = 0;
-            this.field1527 = true;
-        }
-    }
+    private int seqCycle;
 
     @OriginalMember(owner = "client!WHUAOHZM", name = "<init>", descriptor = "(IIIIIIII)V")
-    public SpotAnimEntity(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7) {
-        this.field1530 = SpotAnimType.field1297[arg4];
-        this.field1522 = arg1;
-        this.field1523 = arg0;
-        this.field1524 = arg6;
-        if (arg7 != 10709) {
-            for (int var9 = 1; var9 > 0; var9++) {
-            }
+    public SpotAnimEntity(int x, int level, int y, int cycle, int id, int delay, int z) {
+        this.spotType = SpotAnimType.instances[id];
+        this.spotLevel = level;
+        this.x = x;
+        this.z = z;
+        this.y = y;
+        this.startCycle = cycle + delay;
+    }
+
+    @OriginalMember(owner = "client!WHUAOHZM", name = "a", descriptor = "(BI)V")
+    public final void update(int delta) {
+        this.seqCycle += delta;
+        while (true) {
+            do {
+                if (this.seqCycle <= this.spotType.seq.getDelay(0, this.seqFrame)) {
+                    return;
+                }
+                this.seqCycle -= this.spotType.seq.getDelay(0, this.seqFrame);
+                this.seqFrame++;
+            } while (this.seqFrame < this.spotType.seq.field776);
+            this.seqFrame = 0;
+            this.seqComplete = true;
         }
-        this.field1525 = arg2;
-        this.field1531 = arg3 + arg5;
-        this.field1527 = false;
     }
 
     @OriginalMember(owner = "client!WHUAOHZM", name = "a", descriptor = "(B)LLZYQDKJV;")
@@ -81,36 +70,36 @@ public class SpotAnimEntity extends Entity {
         if (loopCycle != 3) {
             throw new NullPointerException();
         }
-        Model var2 = this.field1530.method439();
-        if (var2 == null) {
+        Model tmp = this.spotType.getModel();
+        if (tmp == null) {
             return null;
         }
-        int var3 = this.field1530.field1301.field777[this.field1528];
-        Model var4 = new Model(false, false, true, var2, AnimFrame.method265(this.field1526, var3));
-        if (!this.field1527) {
-            var4.method366(7);
-            var4.method367(var3, (byte) 6);
-            var4.field1226 = null;
-            var4.field1225 = null;
+        int delay = this.spotType.seq.seqDelay[this.seqFrame];
+        Model model = new Model(false, false, true, tmp, AnimFrame.method265(this.field1526, delay));
+        if (!this.seqComplete) {
+            model.createLabelReferences(7);
+            model.applyTransform(delay, (byte) 6);
+            model.labelFaces = null;
+            model.labelVertices = null;
         }
-        if (this.field1530.field1304 != 128 || this.field1530.field1305 != 128) {
-            var4.method375(this.field1530.field1305, this.field1530.field1304, 9, this.field1530.field1304);
+        if (this.spotType.resizeh != 128 || this.spotType.resizev != 128) {
+            model.scale(this.spotType.resizev, this.spotType.resizeh, 9, this.spotType.resizeh);
         }
-        if (this.field1530.field1306 != 0) {
-            if (this.field1530.field1306 == 90) {
-                var4.method370(true);
+        if (this.spotType.spotAngle != 0) {
+            if (this.spotType.spotAngle == 90) {
+                model.rotateY90(true);
             }
-            if (this.field1530.field1306 == 180) {
-                var4.method370(true);
-                var4.method370(true);
+            if (this.spotType.spotAngle == 180) {
+                model.rotateY90(true);
+                model.rotateY90(true);
             }
-            if (this.field1530.field1306 == 270) {
-                var4.method370(true);
-                var4.method370(true);
-                var4.method370(true);
+            if (this.spotType.spotAngle == 270) {
+                model.rotateY90(true);
+                model.rotateY90(true);
+                model.rotateY90(true);
             }
         }
-        var4.method376(this.field1530.field1307 + 64, this.field1530.field1308 + 850, -30, -50, -30, true);
-        return var4;
+        model.calculateNormals(this.spotType.ambient + 64, this.spotType.contrast + 850, -30, -50, -30, true);
+        return model;
     }
 }

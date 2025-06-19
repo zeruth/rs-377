@@ -1,10 +1,10 @@
-package rs2.dash3d;
+package rs2;
 
 import org.openrs2.deob.annotation.OriginalClass;
 import org.openrs2.deob.annotation.OriginalMember;
 
 @OriginalClass("client!RKBCLNKC")
-public class WorldRegion {
+public class Statics {
 
     @OriginalMember(owner = "client!RKBCLNKC", name = "b", descriptor = "Z")
     private static boolean field1404 = true;

@@ -329,13 +329,13 @@ public class LocType {
             this.field1622 = 487;
         }
         if (arg1 != -1) {
-            var20.method366(7);
-            var20.method367(arg1, (byte) 6);
-            var20.field1226 = null;
-            var20.field1225 = null;
+            var20.createLabelReferences(7);
+            var20.applyTransform(arg1, (byte) 6);
+            var20.labelFaces = null;
+            var20.labelVertices = null;
         }
         while (arg0-- > 0) {
-            var20.method370(true);
+            var20.rotateY90(true);
         }
         if (this.field1653 != null) {
             for (int var21 = 0; var21 < this.field1653.length; var21++) {
@@ -343,12 +343,12 @@ public class LocType {
             }
         }
         if (var18) {
-            var20.method375(this.field1614, this.field1650, 9, this.field1634);
+            var20.scale(this.field1614, this.field1650, 9, this.field1634);
         }
         if (var19) {
             var20.method372(this.field1615, this.field1620, false, this.field1639);
         }
-        var20.method376(this.field1638 + 64, this.field1641 * 5 + 768, -50, -10, -50, !this.field1658);
+        var20.calculateNormals(this.field1638 + 64, this.field1641 * 5 + 768, -50, -10, -50, !this.field1658);
         if (this.field1648 == 1) {
             var20.objRaise = var20.field1709;
         }

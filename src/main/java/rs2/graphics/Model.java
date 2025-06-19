@@ -239,10 +239,10 @@ public class Model extends Entity {
     public static Metadata[] field1229;
 
     @OriginalMember(owner = "client!LZYQDKJV", name = "cb", descriptor = "[[I")
-    public int[][] field1225;
+    public int[][] labelVertices;
 
     @OriginalMember(owner = "client!LZYQDKJV", name = "db", descriptor = "[[I")
-    public int[][] field1226;
+    public int[][] labelFaces;
 
     @OriginalMember(owner = "client!LZYQDKJV", name = "a", descriptor = "(Z)V")
     public static void method355(boolean arg0) {
@@ -951,8 +951,8 @@ public class Model extends Entity {
             this.field1209 = arg1.field1209;
             this.field1207 = arg1.field1207;
             this.field1210 = arg1.field1210;
-            this.field1226 = arg1.field1226;
-            this.field1225 = arg1.field1225;
+            this.labelFaces = arg1.labelFaces;
+            this.labelVertices = arg1.labelVertices;
             this.faceVertexA = arg1.faceVertexA;
             this.faceVertexB = arg1.faceVertexB;
             this.faceVertexC = arg1.faceVertexC;
@@ -1081,7 +1081,7 @@ public class Model extends Entity {
     }
 
     @OriginalMember(owner = "client!LZYQDKJV", name = "f", descriptor = "(I)V")
-    public void method366(int arg0) {
+    public void createLabelReferences(int arg0) {
         if (arg0 == 7) {
             int var10002;
             if (this.field1223 != null) {
@@ -1094,15 +1094,15 @@ public class Model extends Entity {
                         var3 = var8;
                     }
                 }
-                this.field1225 = new int[var3 + 1][];
+                this.labelVertices = new int[var3 + 1][];
                 for (int var5 = 0; var5 <= var3; ++var5) {
-                    this.field1225[var5] = new int[var2[var5]];
+                    this.labelVertices[var5] = new int[var2[var5]];
                     var2[var5] = 0;
                 }
                 int var6 = 0;
                 while (var6 < this.vertexCount) {
                     int var7 = this.field1223[var6];
-                    this.field1225[var7][var2[var7]++] = var6++;
+                    this.labelVertices[var7][var2[var7]++] = var6++;
                 }
                 this.field1223 = null;
             }
@@ -1116,15 +1116,15 @@ public class Model extends Entity {
                         var10 = var15;
                     }
                 }
-                this.field1226 = new int[var10 + 1][];
+                this.labelFaces = new int[var10 + 1][];
                 for (int var12 = 0; var12 <= var10; ++var12) {
-                    this.field1226[var12] = new int[var9[var12]];
+                    this.labelFaces[var12] = new int[var9[var12]];
                     var9[var12] = 0;
                 }
                 int var13 = 0;
                 while (var13 < this.faceCount) {
                     int var14 = this.field1224[var13];
-                    this.field1226[var14][var9[var14]++] = var13++;
+                    this.labelFaces[var14][var9[var14]++] = var13++;
                 }
                 this.field1224 = null;
             }
@@ -1132,8 +1132,8 @@ public class Model extends Entity {
     }
 
     @OriginalMember(owner = "client!LZYQDKJV", name = "a", descriptor = "(IB)V")
-    public void method367(int arg0, byte arg1) {
-        if (this.field1225 != null) {
+    public void applyTransform(int arg0, byte arg1) {
+        if (this.labelVertices != null) {
             if (arg0 != -1) {
                 AnimFrame var3 = AnimFrame.method264(arg0);
                 if (var3 != null) {
@@ -1161,7 +1161,7 @@ public class Model extends Entity {
                 if (var5 != null) {
                     AnimFrame var6 = AnimFrame.method264(arg0);
                     if (var6 == null) {
-                        this.method367(arg2, (byte) 6);
+                        this.applyTransform(arg2, (byte) 6);
                     } else {
                         AnimBase var7 = var5.field931;
                         field1249 = 0;
@@ -1200,7 +1200,7 @@ public class Model extends Entity {
                     }
                 }
             } else {
-                this.method367(arg2, (byte) 6);
+                this.applyTransform(arg2, (byte) 6);
             }
         }
     }
@@ -1215,8 +1215,8 @@ public class Model extends Entity {
             field1251 = 0;
             for (int var8 = 0; var8 < var6; ++var8) {
                 int var9 = arg1[var8];
-                if (var9 < this.field1225.length) {
-                    int[] var10 = this.field1225[var9];
+                if (var9 < this.labelVertices.length) {
+                    int[] var10 = this.labelVertices[var9];
                     for (int var11 = 0; var11 < var10.length; ++var11) {
                         int var12 = var10[var11];
                         field1249 += this.vertexX[var12];
@@ -1238,8 +1238,8 @@ public class Model extends Entity {
         } else if (arg0 == 1) {
             for (int var13 = 0; var13 < var6; ++var13) {
                 int var14 = arg1[var13];
-                if (var14 < this.field1225.length) {
-                    int[] var15 = this.field1225[var14];
+                if (var14 < this.labelVertices.length) {
+                    int[] var15 = this.labelVertices[var14];
                     for (int var16 = 0; var16 < var15.length; ++var16) {
                         int var17 = var15[var16];
                         this.vertexX[var17] += arg2;
@@ -1251,8 +1251,8 @@ public class Model extends Entity {
         } else if (arg0 == 2) {
             for (int var18 = 0; var18 < var6; ++var18) {
                 int var19 = arg1[var18];
-                if (var19 < this.field1225.length) {
-                    int[] var20 = this.field1225[var19];
+                if (var19 < this.labelVertices.length) {
+                    int[] var20 = this.labelVertices[var19];
                     for (int var21 = 0; var21 < var20.length; ++var21) {
                         int var22 = var20[var21];
                         this.vertexX[var22] -= field1249;
@@ -1291,8 +1291,8 @@ public class Model extends Entity {
         } else if (arg0 == 3) {
             for (int var35 = 0; var35 < var6; ++var35) {
                 int var36 = arg1[var35];
-                if (var36 < this.field1225.length) {
-                    int[] var37 = this.field1225[var36];
+                if (var36 < this.labelVertices.length) {
+                    int[] var37 = this.labelVertices[var36];
                     for (int var38 = 0; var38 < var37.length; ++var38) {
                         int var39 = var37[var38];
                         this.vertexX[var39] -= field1249;
@@ -1308,11 +1308,11 @@ public class Model extends Entity {
                 }
             }
         } else if (arg0 == 5) {
-            if (this.field1226 != null && this.field1208 != null) {
+            if (this.labelFaces != null && this.field1208 != null) {
                 for (int var40 = 0; var40 < var6; ++var40) {
                     int var41 = arg1[var40];
-                    if (var41 < this.field1226.length) {
-                        int[] var42 = this.field1226[var41];
+                    if (var41 < this.labelFaces.length) {
+                        int[] var42 = this.labelFaces[var41];
                         for (int var43 = 0; var43 < var42.length; ++var43) {
                             int var44 = var42[var43];
                             this.field1208[var44] += arg2 * 8;
@@ -1330,7 +1330,7 @@ public class Model extends Entity {
     }
 
     @OriginalMember(owner = "client!LZYQDKJV", name = "b", descriptor = "(Z)V")
-    public void method370(boolean arg0) {
+    public void rotateY90(boolean arg0) {
         if (arg0) {
             for (int var2 = 0; var2 < this.vertexCount; ++var2) {
                 int var3 = this.vertexX[var2];
@@ -1341,7 +1341,7 @@ public class Model extends Entity {
     }
 
     @OriginalMember(owner = "client!LZYQDKJV", name = "b", descriptor = "(II)V")
-    public void method371(int arg0, int arg1) {
+    public void rotateX(int arg0, int arg1) {
         int var3 = sin[arg0];
         int var4 = cos[arg0];
         for (int var5 = 0; var5 < this.vertexCount; ++var5) {
@@ -1390,7 +1390,7 @@ public class Model extends Entity {
     }
 
     @OriginalMember(owner = "client!LZYQDKJV", name = "a", descriptor = "(IIII)V")
-    public void method375(int arg0, int arg1, int arg2, int arg3) {
+    public void scale(int arg0, int arg1, int arg2, int arg3) {
         for (int var5 = 0; var5 < this.vertexCount; ++var5) {
             this.vertexX[var5] = this.vertexX[var5] * arg3 / 128;
             this.vertexY[var5] = this.vertexY[var5] * arg0 / 128;
@@ -1402,7 +1402,7 @@ public class Model extends Entity {
     }
 
     @OriginalMember(owner = "client!LZYQDKJV", name = "a", descriptor = "(IIIIIZ)V")
-    public final void method376(int arg0, int arg1, int arg2, int arg3, int arg4, boolean arg5) {
+    public final void calculateNormals(int arg0, int arg1, int arg2, int arg3, int arg4, boolean arg5) {
         int var7 = (int) Math.sqrt((double) (arg4 * arg4 + arg2 * arg2 + arg3 * arg3));
         int var8 = arg1 * var7 >> 8;
         if (this.field1203 == null) {

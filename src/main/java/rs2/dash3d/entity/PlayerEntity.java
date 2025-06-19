@@ -163,9 +163,9 @@ public class PlayerEntity extends PathingEntity {
         if (this.field1679 != null) {
             int var2 = -1;
             if (super.field1171 >= 0 && super.field1174 == 0) {
-                var2 = SeqType.field775[super.field1171].field777[super.field1172];
+                var2 = SeqType.field775[super.field1171].seqDelay[super.field1172];
             } else if (super.field1135 >= 0) {
-                var2 = SeqType.field775[super.field1135].field777[super.field1136];
+                var2 = SeqType.field775[super.field1135].seqDelay[super.field1136];
             }
             return this.field1679.method475(var2, -1, 0, (int[]) null);
         } else {
@@ -179,9 +179,9 @@ public class PlayerEntity extends PathingEntity {
             }
             if (super.field1171 >= 0 && super.field1174 == 0) {
                 SeqType var10 = SeqType.field775[super.field1171];
-                var6 = var10.field777[super.field1172];
+                var6 = var10.seqDelay[super.field1172];
                 if (super.field1135 >= 0 && super.field1181 != super.field1135) {
-                    var7 = SeqType.field775[super.field1135].field777[super.field1136];
+                    var7 = SeqType.field775[super.field1135].seqDelay[super.field1136];
                 }
                 if (var10.field784 >= 0) {
                     var8 = var10.field784;
@@ -192,7 +192,7 @@ public class PlayerEntity extends PathingEntity {
                     var4 += (long) (var9 - this.field1674[3] << 16);
                 }
             } else if (super.field1135 >= 0) {
-                var6 = SeqType.field775[super.field1135].field777[super.field1136];
+                var6 = SeqType.field775[super.field1135].seqDelay[super.field1136];
             }
             Model var11 = (Model) field1683.method458(var4);
             if (var11 == null) {
@@ -254,8 +254,8 @@ public class PlayerEntity extends PathingEntity {
                         }
                     }
                 }
-                var11.method366(7);
-                var11.method376(64, 850, -30, -50, -30, true);
+                var11.createLabelReferences(7);
+                var11.calculateNormals(64, 850, -30, -50, -30, true);
                 field1683.method459(var11, var4, 5);
                 this.field1671 = var4;
             }
@@ -267,11 +267,11 @@ public class PlayerEntity extends PathingEntity {
                 if (var6 != -1 && var7 != -1) {
                     var22.method368(var7, 0, var6, SeqType.field775[super.field1171].field781);
                 } else if (var6 != -1) {
-                    var22.method367(var6, (byte) 6);
+                    var22.applyTransform(var6, (byte) 6);
                 }
                 var22.method363(this.field1694);
-                var22.field1226 = null;
-                var22.field1225 = null;
+                var22.labelFaces = null;
+                var22.labelVertices = null;
                 return var22;
             }
         }
@@ -301,19 +301,19 @@ public class PlayerEntity extends PathingEntity {
                     return var2;
                 } else {
                     if (super.field1161 != -1 && super.field1162 != -1) {
-                        SpotAnimType var3 = SpotAnimType.field1297[super.field1161];
-                        Model var4 = var3.method439();
+                        SpotAnimType var3 = SpotAnimType.instances[super.field1161];
+                        Model var4 = var3.getModel();
                         if (var4 != null) {
                             Model var5 = new Model(false, false, true, var4, AnimFrame.method265(this.field1684, super.field1162));
                             var5.method372(0, 0, false, -super.field1165);
-                            var5.method366(7);
-                            var5.method367(var3.field1301.field777[super.field1162], (byte) 6);
-                            var5.field1226 = null;
-                            var5.field1225 = null;
-                            if (var3.field1304 != 128 || var3.field1305 != 128) {
-                                var5.method375(var3.field1305, var3.field1304, 9, var3.field1304);
+                            var5.createLabelReferences(7);
+                            var5.applyTransform(var3.seq.seqDelay[super.field1162], (byte) 6);
+                            var5.labelFaces = null;
+                            var5.labelVertices = null;
+                            if (var3.resizeh != 128 || var3.resizev != 128) {
+                                var5.scale(var3.resizev, var3.resizeh, 9, var3.resizeh);
                             }
-                            var5.method376(var3.field1307 + 64, var3.field1308 + 850, -30, -50, -30, true);
+                            var5.calculateNormals(var3.ambient + 64, var3.contrast + 850, -30, -50, -30, true);
                             Model[] var6 = new Model[] { var2, var5 };
                             var2 = new Model(2, true, 0, var6);
                         }
@@ -326,26 +326,26 @@ public class PlayerEntity extends PathingEntity {
                             Model var7 = this.field1668;
                             var7.method372(this.field1665 - super.field1157, this.field1667 - super.field1158, false, this.field1666 - this.field1672);
                             if (super.field1131 == 512) {
-                                var7.method370(true);
-                                var7.method370(true);
-                                var7.method370(true);
+                                var7.rotateY90(true);
+                                var7.rotateY90(true);
+                                var7.rotateY90(true);
                             } else if (super.field1131 == 1024) {
-                                var7.method370(true);
-                                var7.method370(true);
+                                var7.rotateY90(true);
+                                var7.rotateY90(true);
                             } else if (super.field1131 == 1536) {
-                                var7.method370(true);
+                                var7.rotateY90(true);
                             }
                             Model[] var8 = new Model[] { var2, var7 };
                             var2 = new Model(2, true, 0, var8);
                             if (super.field1131 == 512) {
-                                var7.method370(true);
+                                var7.rotateY90(true);
                             } else if (super.field1131 == 1024) {
-                                var7.method370(true);
-                                var7.method370(true);
+                                var7.rotateY90(true);
+                                var7.rotateY90(true);
                             } else if (super.field1131 == 1536) {
-                                var7.method370(true);
-                                var7.method370(true);
-                                var7.method370(true);
+                                var7.rotateY90(true);
+                                var7.rotateY90(true);
+                                var7.rotateY90(true);
                             }
                             var7.method372(super.field1157 - this.field1665, super.field1158 - this.field1667, false, this.field1672 - this.field1666);
                         }

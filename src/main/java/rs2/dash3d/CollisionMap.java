@@ -2,7 +2,6 @@ package rs2.dash3d;
 
 import org.openrs2.deob.annotation.OriginalClass;
 import org.openrs2.deob.annotation.OriginalMember;
-import rs2.datastruct.Linkable;
 
 @OriginalClass("client!XRENONSA")
 public class CollisionMap {
@@ -26,39 +25,34 @@ public class CollisionMap {
     public int field1581 = 0;
 
     @OriginalMember(owner = "client!XRENONSA", name = "g", descriptor = "I")
-    public int field1582;
+    public int start;
 
     @OriginalMember(owner = "client!XRENONSA", name = "h", descriptor = "I")
-    public int field1583;
+    public int sizeX;
 
     @OriginalMember(owner = "client!XRENONSA", name = "i", descriptor = "I")
-    public int field1584;
+    public int sizeZ;
 
     @OriginalMember(owner = "client!XRENONSA", name = "j", descriptor = "[[I")
-    public int[][] field1585;
+    public int[][] flags;
 
     @OriginalMember(owner = "client!XRENONSA", name = "<init>", descriptor = "(III)V")
-    public CollisionMap(int arg0, int arg1, int arg2) {
-        if (arg1 != 0) {
-            throw new NullPointerException();
-        }
-        this.field1582 = 0;
-        this.field1583 = arg2;
-        this.field1584 = arg0;
-        this.field1585 = new int[this.field1583][this.field1584];
-        this.method532();
-        if (Linkable.field1772) {
-        }
+    public CollisionMap(int height, int width) {
+        this.start = 0;
+        this.sizeX = width;
+        this.sizeZ = height;
+        this.flags = new int[this.sizeX][this.sizeZ];
+        this.reset();
     }
 
     @OriginalMember(owner = "client!XRENONSA", name = "a", descriptor = "()V")
-    public void method532() {
-        for (int var1 = 0; var1 < this.field1583; var1++) {
-            for (int var2 = 0; var2 < this.field1584; var2++) {
-                if (var1 == 0 || var2 == 0 || this.field1583 - 1 == var1 || this.field1584 - 1 == var2) {
-                    this.field1585[var1][var2] = 16777215;
+    public void reset() {
+        for (int x = 0; x < this.sizeX; x++) {
+            for (int z = 0; z < this.sizeZ; z++) {
+                if (x == 0 || z == 0 || this.sizeX - 1 == x || this.sizeZ - 1 == z) {
+                    this.flags[x][z] = 16777215;
                 } else {
-                    this.field1585[var1][var2] = 16777216;
+                    this.flags[x][z] = 16777216;
                 }
             }
         }
@@ -70,7 +64,7 @@ public class CollisionMap {
         if (arg1 != 37679) {
             return;
         }
-        int var8 = arg5 - this.field1582;
+        int var8 = arg5 - this.start;
         if (arg3 == 0) {
             if (arg0 == 0) {
                 this.method536(var7, var8, 128);
@@ -204,16 +198,16 @@ public class CollisionMap {
             var8 += 131072;
         }
         int var9 = arg5 - this.field1581;
-        int var10 = arg0 - this.field1582;
+        int var10 = arg0 - this.start;
         if (arg1 == 1 || arg1 == 3) {
             int var11 = arg3;
             arg3 = arg2;
             arg2 = var11;
         }
         for (int var12 = var9; var12 < arg3 + var9; var12++) {
-            if (var12 >= 0 && var12 < this.field1583) {
+            if (var12 >= 0 && var12 < this.sizeX) {
                 for (int var13 = var10; var13 < arg2 + var10; var13++) {
-                    if (var13 >= 0 && var13 < this.field1584) {
+                    if (var13 >= 0 && var13 < this.sizeZ) {
                         this.method536(var12, var13, var8);
                     }
                 }
@@ -224,16 +218,16 @@ public class CollisionMap {
     @OriginalMember(owner = "client!XRENONSA", name = "a", descriptor = "(III)V")
     public void method535(int arg0, int arg1, int arg2) {
         int var4 = arg2 - this.field1581;
-        int var5 = arg1 - this.field1582;
+        int var5 = arg1 - this.start;
         if (arg0 < 8 || arg0 > 8) {
             this.field1579 = 84;
         }
-        this.field1585[var4][var5] |= 0x200000;
+        this.flags[var4][var5] |= 0x200000;
     }
 
     @OriginalMember(owner = "client!XRENONSA", name = "b", descriptor = "(III)V")
     private void method536(int arg0, int arg1, int arg2) {
-        this.field1585[arg0][arg1] |= arg2;
+        this.flags[arg0][arg1] |= arg2;
     }
 
     @OriginalMember(owner = "client!XRENONSA", name = "a", descriptor = "(IIIIIZ)V")
@@ -242,7 +236,7 @@ public class CollisionMap {
             this.field1578 = !this.field1578;
         }
         int var7 = arg1 - this.field1581;
-        int var8 = arg3 - this.field1582;
+        int var8 = arg3 - this.start;
         if (arg4 == 0) {
             if (arg0 == 0) {
                 this.method539(var7, 128, (byte) 17, var8);
@@ -376,16 +370,16 @@ public class CollisionMap {
         if (arg0 != 2) {
             this.field1578 = !this.field1578;
         }
-        int var10 = arg1 - this.field1582;
+        int var10 = arg1 - this.start;
         if (arg3 == 1 || arg3 == 3) {
             int var11 = arg6;
             arg6 = arg4;
             arg4 = var11;
         }
         for (int var12 = var9; var12 < arg6 + var9; var12++) {
-            if (var12 >= 0 && var12 < this.field1583) {
+            if (var12 >= 0 && var12 < this.sizeX) {
                 for (int var13 = var10; var13 < arg4 + var10; var13++) {
-                    if (var13 >= 0 && var13 < this.field1584) {
+                    if (var13 >= 0 && var13 < this.sizeZ) {
                         this.method539(var12, var8, (byte) 17, var13);
                     }
                 }
@@ -395,7 +389,7 @@ public class CollisionMap {
 
     @OriginalMember(owner = "client!XRENONSA", name = "a", descriptor = "(IIBI)V")
     private void method539(int arg0, int arg1, byte arg2, int arg3) {
-        this.field1585[arg0][arg3] &= 16777215 - arg1;
+        this.flags[arg0][arg3] &= 16777215 - arg1;
         if (arg2 == 17) {
             ;
         }
@@ -405,8 +399,8 @@ public class CollisionMap {
     public void method540(int arg0, byte arg1, int arg2) {
         if (arg1 == -122) {
             int var4 = arg0 - this.field1581;
-            int var5 = arg2 - this.field1582;
-            this.field1585[var4][var5] &= 0xDFFFFF;
+            int var5 = arg2 - this.start;
+            this.flags[var4][var5] &= 0xDFFFFF;
         }
     }
 
@@ -419,48 +413,48 @@ public class CollisionMap {
         if (arg1 != 0) {
             this.field1580 = !this.field1580;
         }
-        int var9 = arg5 - this.field1582;
+        int var9 = arg5 - this.start;
         int var10 = arg0 - this.field1581;
-        int var11 = arg2 - this.field1582;
+        int var11 = arg2 - this.start;
         if (arg3 == 0) {
             if (arg6 == 0) {
                 if (var10 - 1 == var8 && var9 == var11) {
                     return true;
                 }
-                if (var8 == var10 && var11 + 1 == var9 && (this.field1585[var8][var9] & 0x1280120) == 0) {
+                if (var8 == var10 && var11 + 1 == var9 && (this.flags[var8][var9] & 0x1280120) == 0) {
                     return true;
                 }
-                if (var8 == var10 && var11 - 1 == var9 && (this.field1585[var8][var9] & 0x1280102) == 0) {
+                if (var8 == var10 && var11 - 1 == var9 && (this.flags[var8][var9] & 0x1280102) == 0) {
                     return true;
                 }
             } else if (arg6 == 1) {
                 if (var8 == var10 && var11 + 1 == var9) {
                     return true;
                 }
-                if (var10 - 1 == var8 && var9 == var11 && (this.field1585[var8][var9] & 0x1280108) == 0) {
+                if (var10 - 1 == var8 && var9 == var11 && (this.flags[var8][var9] & 0x1280108) == 0) {
                     return true;
                 }
-                if (var10 + 1 == var8 && var9 == var11 && (this.field1585[var8][var9] & 0x1280180) == 0) {
+                if (var10 + 1 == var8 && var9 == var11 && (this.flags[var8][var9] & 0x1280180) == 0) {
                     return true;
                 }
             } else if (arg6 == 2) {
                 if (var10 + 1 == var8 && var9 == var11) {
                     return true;
                 }
-                if (var8 == var10 && var11 + 1 == var9 && (this.field1585[var8][var9] & 0x1280120) == 0) {
+                if (var8 == var10 && var11 + 1 == var9 && (this.flags[var8][var9] & 0x1280120) == 0) {
                     return true;
                 }
-                if (var8 == var10 && var11 - 1 == var9 && (this.field1585[var8][var9] & 0x1280102) == 0) {
+                if (var8 == var10 && var11 - 1 == var9 && (this.flags[var8][var9] & 0x1280102) == 0) {
                     return true;
                 }
             } else if (arg6 == 3) {
                 if (var8 == var10 && var11 - 1 == var9) {
                     return true;
                 }
-                if (var10 - 1 == var8 && var9 == var11 && (this.field1585[var8][var9] & 0x1280108) == 0) {
+                if (var10 - 1 == var8 && var9 == var11 && (this.flags[var8][var9] & 0x1280108) == 0) {
                     return true;
                 }
-                if (var10 + 1 == var8 && var9 == var11 && (this.field1585[var8][var9] & 0x1280180) == 0) {
+                if (var10 + 1 == var8 && var9 == var11 && (this.flags[var8][var9] & 0x1280180) == 0) {
                     return true;
                 }
             }
@@ -473,14 +467,14 @@ public class CollisionMap {
                 if (var8 == var10 && var11 + 1 == var9) {
                     return true;
                 }
-                if (var10 + 1 == var8 && var9 == var11 && (this.field1585[var8][var9] & 0x1280180) == 0) {
+                if (var10 + 1 == var8 && var9 == var11 && (this.flags[var8][var9] & 0x1280180) == 0) {
                     return true;
                 }
-                if (var8 == var10 && var11 - 1 == var9 && (this.field1585[var8][var9] & 0x1280102) == 0) {
+                if (var8 == var10 && var11 - 1 == var9 && (this.flags[var8][var9] & 0x1280102) == 0) {
                     return true;
                 }
             } else if (arg6 == 1) {
-                if (var10 - 1 == var8 && var9 == var11 && (this.field1585[var8][var9] & 0x1280108) == 0) {
+                if (var10 - 1 == var8 && var9 == var11 && (this.flags[var8][var9] & 0x1280108) == 0) {
                     return true;
                 }
                 if (var8 == var10 && var11 + 1 == var9) {
@@ -489,14 +483,14 @@ public class CollisionMap {
                 if (var10 + 1 == var8 && var9 == var11) {
                     return true;
                 }
-                if (var8 == var10 && var11 - 1 == var9 && (this.field1585[var8][var9] & 0x1280102) == 0) {
+                if (var8 == var10 && var11 - 1 == var9 && (this.flags[var8][var9] & 0x1280102) == 0) {
                     return true;
                 }
             } else if (arg6 == 2) {
-                if (var10 - 1 == var8 && var9 == var11 && (this.field1585[var8][var9] & 0x1280108) == 0) {
+                if (var10 - 1 == var8 && var9 == var11 && (this.flags[var8][var9] & 0x1280108) == 0) {
                     return true;
                 }
-                if (var8 == var10 && var11 + 1 == var9 && (this.field1585[var8][var9] & 0x1280120) == 0) {
+                if (var8 == var10 && var11 + 1 == var9 && (this.flags[var8][var9] & 0x1280120) == 0) {
                     return true;
                 }
                 if (var10 + 1 == var8 && var9 == var11) {
@@ -509,10 +503,10 @@ public class CollisionMap {
                 if (var10 - 1 == var8 && var9 == var11) {
                     return true;
                 }
-                if (var8 == var10 && var11 + 1 == var9 && (this.field1585[var8][var9] & 0x1280120) == 0) {
+                if (var8 == var10 && var11 + 1 == var9 && (this.flags[var8][var9] & 0x1280120) == 0) {
                     return true;
                 }
-                if (var10 + 1 == var8 && var9 == var11 && (this.field1585[var8][var9] & 0x1280180) == 0) {
+                if (var10 + 1 == var8 && var9 == var11 && (this.flags[var8][var9] & 0x1280180) == 0) {
                     return true;
                 }
                 if (var8 == var10 && var11 - 1 == var9) {
@@ -521,16 +515,16 @@ public class CollisionMap {
             }
         }
         if (arg3 == 9) {
-            if (var8 == var10 && var11 + 1 == var9 && (this.field1585[var8][var9] & 0x20) == 0) {
+            if (var8 == var10 && var11 + 1 == var9 && (this.flags[var8][var9] & 0x20) == 0) {
                 return true;
             }
-            if (var8 == var10 && var11 - 1 == var9 && (this.field1585[var8][var9] & 0x2) == 0) {
+            if (var8 == var10 && var11 - 1 == var9 && (this.flags[var8][var9] & 0x2) == 0) {
                 return true;
             }
-            if (var10 - 1 == var8 && var9 == var11 && (this.field1585[var8][var9] & 0x8) == 0) {
+            if (var10 - 1 == var8 && var9 == var11 && (this.flags[var8][var9] & 0x8) == 0) {
                 return true;
             }
-            if (var10 + 1 == var8 && var9 == var11 && (this.field1585[var8][var9] & 0x80) == 0) {
+            if (var10 + 1 == var8 && var9 == var11 && (this.flags[var8][var9] & 0x80) == 0) {
                 return true;
             }
         }
@@ -543,57 +537,57 @@ public class CollisionMap {
             return true;
         }
         int var8 = arg3 - this.field1581;
-        int var9 = arg1 - this.field1582;
+        int var9 = arg1 - this.start;
         int var10 = arg2 - this.field1581;
         if (arg0 >= 0) {
             throw new NullPointerException();
         }
-        int var11 = arg6 - this.field1582;
+        int var11 = arg6 - this.start;
         if (arg5 == 6 || arg5 == 7) {
             if (arg5 == 7) {
                 arg4 = arg4 + 2 & 0x3;
             }
             if (arg4 == 0) {
-                if (var10 + 1 == var8 && var9 == var11 && (this.field1585[var8][var9] & 0x80) == 0) {
+                if (var10 + 1 == var8 && var9 == var11 && (this.flags[var8][var9] & 0x80) == 0) {
                     return true;
                 }
-                if (var8 == var10 && var11 - 1 == var9 && (this.field1585[var8][var9] & 0x2) == 0) {
+                if (var8 == var10 && var11 - 1 == var9 && (this.flags[var8][var9] & 0x2) == 0) {
                     return true;
                 }
             } else if (arg4 == 1) {
-                if (var10 - 1 == var8 && var9 == var11 && (this.field1585[var8][var9] & 0x8) == 0) {
+                if (var10 - 1 == var8 && var9 == var11 && (this.flags[var8][var9] & 0x8) == 0) {
                     return true;
                 }
-                if (var8 == var10 && var11 - 1 == var9 && (this.field1585[var8][var9] & 0x2) == 0) {
+                if (var8 == var10 && var11 - 1 == var9 && (this.flags[var8][var9] & 0x2) == 0) {
                     return true;
                 }
             } else if (arg4 == 2) {
-                if (var10 - 1 == var8 && var9 == var11 && (this.field1585[var8][var9] & 0x8) == 0) {
+                if (var10 - 1 == var8 && var9 == var11 && (this.flags[var8][var9] & 0x8) == 0) {
                     return true;
                 }
-                if (var8 == var10 && var11 + 1 == var9 && (this.field1585[var8][var9] & 0x20) == 0) {
+                if (var8 == var10 && var11 + 1 == var9 && (this.flags[var8][var9] & 0x20) == 0) {
                     return true;
                 }
             } else if (arg4 == 3) {
-                if (var10 + 1 == var8 && var9 == var11 && (this.field1585[var8][var9] & 0x80) == 0) {
+                if (var10 + 1 == var8 && var9 == var11 && (this.flags[var8][var9] & 0x80) == 0) {
                     return true;
                 }
-                if (var8 == var10 && var11 + 1 == var9 && (this.field1585[var8][var9] & 0x20) == 0) {
+                if (var8 == var10 && var11 + 1 == var9 && (this.flags[var8][var9] & 0x20) == 0) {
                     return true;
                 }
             }
         }
         if (arg5 == 8) {
-            if (var8 == var10 && var11 + 1 == var9 && (this.field1585[var8][var9] & 0x20) == 0) {
+            if (var8 == var10 && var11 + 1 == var9 && (this.flags[var8][var9] & 0x20) == 0) {
                 return true;
             }
-            if (var8 == var10 && var11 - 1 == var9 && (this.field1585[var8][var9] & 0x2) == 0) {
+            if (var8 == var10 && var11 - 1 == var9 && (this.flags[var8][var9] & 0x2) == 0) {
                 return true;
             }
-            if (var10 - 1 == var8 && var9 == var11 && (this.field1585[var8][var9] & 0x8) == 0) {
+            if (var10 - 1 == var8 && var9 == var11 && (this.flags[var8][var9] & 0x8) == 0) {
                 return true;
             }
-            if (var10 + 1 == var8 && var9 == var11 && (this.field1585[var8][var9] & 0x80) == 0) {
+            if (var10 + 1 == var8 && var9 == var11 && (this.flags[var8][var9] & 0x80) == 0) {
                 return true;
             }
         }
@@ -609,14 +603,14 @@ public class CollisionMap {
         }
         if (arg1 >= arg3 && arg1 <= var9 && arg7 >= arg6 && arg7 <= var10) {
             return true;
-        } else if (arg3 - 1 == arg1 && arg7 >= arg6 && arg7 <= var10 && (this.field1585[arg1 - this.field1581][arg7 - this.field1582] & 0x8) == 0 && (arg4 & 0x8) == 0) {
+        } else if (arg3 - 1 == arg1 && arg7 >= arg6 && arg7 <= var10 && (this.flags[arg1 - this.field1581][arg7 - this.start] & 0x8) == 0 && (arg4 & 0x8) == 0) {
             return true;
-        } else if (var9 + 1 == arg1 && arg7 >= arg6 && arg7 <= var10 && (this.field1585[arg1 - this.field1581][arg7 - this.field1582] & 0x80) == 0 && (arg4 & 0x2) == 0) {
+        } else if (var9 + 1 == arg1 && arg7 >= arg6 && arg7 <= var10 && (this.flags[arg1 - this.field1581][arg7 - this.start] & 0x80) == 0 && (arg4 & 0x2) == 0) {
             return true;
-        } else if (arg6 - 1 == arg7 && arg1 >= arg3 && arg1 <= var9 && (this.field1585[arg1 - this.field1581][arg7 - this.field1582] & 0x2) == 0 && (arg4 & 0x4) == 0) {
+        } else if (arg6 - 1 == arg7 && arg1 >= arg3 && arg1 <= var9 && (this.flags[arg1 - this.field1581][arg7 - this.start] & 0x2) == 0 && (arg4 & 0x4) == 0) {
             return true;
         } else {
-            return var10 + 1 == arg7 && arg1 >= arg3 && arg1 <= var9 && (this.field1585[arg1 - this.field1581][arg7 - this.field1582] & 0x20) == 0 && (arg4 & 0x1) == 0;
+            return var10 + 1 == arg7 && arg1 >= arg3 && arg1 <= var9 && (this.flags[arg1 - this.field1581][arg7 - this.start] & 0x20) == 0 && (arg4 & 0x1) == 0;
         }
     }
 }

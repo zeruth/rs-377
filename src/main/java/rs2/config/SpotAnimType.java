@@ -23,10 +23,10 @@ public class SpotAnimType {
     public int[] field1303 = new int[6];
 
     @OriginalMember(owner = "client!MNZYLKNY", name = "l", descriptor = "I")
-    public int field1304 = 128;
+    public int resizeh = 128;
 
     @OriginalMember(owner = "client!MNZYLKNY", name = "m", descriptor = "I")
-    public int field1305 = 128;
+    public int resizev = 128;
 
     @OriginalMember(owner = "client!MNZYLKNY", name = "a", descriptor = "B")
     private static byte field1293 = 6;
@@ -47,19 +47,19 @@ public class SpotAnimType {
     public int field1299;
 
     @OriginalMember(owner = "client!MNZYLKNY", name = "n", descriptor = "I")
-    public int field1306;
+    public int spotAngle;
 
     @OriginalMember(owner = "client!MNZYLKNY", name = "o", descriptor = "I")
-    public int field1307;
+    public int ambient;
 
     @OriginalMember(owner = "client!MNZYLKNY", name = "p", descriptor = "I")
-    public int field1308;
+    public int contrast;
 
     @OriginalMember(owner = "client!MNZYLKNY", name = "i", descriptor = "LFHWCLIAS;")
-    public SeqType field1301;
+    public SeqType seq;
 
     @OriginalMember(owner = "client!MNZYLKNY", name = "e", descriptor = "[LMNZYLKNY;")
-    public static SpotAnimType[] field1297;
+    public static SpotAnimType[] instances;
 
     @OriginalMember(owner = "client!MNZYLKNY", name = "a", descriptor = "(LATJMVOZR;I)V")
     public static void method437(Jagfile arg0, int arg1) {
@@ -68,15 +68,15 @@ public class SpotAnimType {
         if (arg1 != 36135) {
             field1294 = !field1294;
         }
-        if (field1297 == null) {
-            field1297 = new SpotAnimType[field1296];
+        if (instances == null) {
+            instances = new SpotAnimType[field1296];
         }
         for (int var3 = 0; var3 < field1296; var3++) {
-            if (field1297[var3] == null) {
-                field1297[var3] = new SpotAnimType();
+            if (instances[var3] == null) {
+                instances[var3] = new SpotAnimType();
             }
-            field1297[var3].field1298 = var3;
-            field1297[var3].method438(field1293, var2);
+            instances[var3].field1298 = var3;
+            instances[var3].method438(field1293, var2);
         }
     }
 
@@ -98,18 +98,18 @@ public class SpotAnimType {
                 } else if (var4 == 2) {
                     this.field1300 = arg1.g2();
                     if (SeqType.field775 != null) {
-                        this.field1301 = SeqType.field775[this.field1300];
+                        this.seq = SeqType.field775[this.field1300];
                     }
                 } else if (var4 == 4) {
-                    this.field1304 = arg1.g2();
+                    this.resizeh = arg1.g2();
                 } else if (var4 == 5) {
-                    this.field1305 = arg1.g2();
+                    this.resizev = arg1.g2();
                 } else if (var4 == 6) {
-                    this.field1306 = arg1.g2();
+                    this.spotAngle = arg1.g2();
                 } else if (var4 == 7) {
-                    this.field1307 = arg1.g1();
+                    this.ambient = arg1.g1();
                 } else if (var4 == 8) {
-                    this.field1308 = arg1.g1();
+                    this.contrast = arg1.g1();
                 } else if (var4 >= 40 && var4 < 50) {
                     this.field1302[var4 - 40] = arg1.g2();
                 } else if (var4 >= 50 && var4 < 60) {
@@ -122,7 +122,7 @@ public class SpotAnimType {
     }
 
     @OriginalMember(owner = "client!MNZYLKNY", name = "a", descriptor = "()LLZYQDKJV;")
-    public Model method439() {
+    public Model getModel() {
         Model var1 = (Model) field1309.method458((long) this.field1298);
         if (var1 != null) {
             return var1;

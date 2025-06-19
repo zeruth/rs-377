@@ -96,7 +96,7 @@ public class LocEntity extends Entity {
             this.field1343 = client.field621 - 1;
             if (arg7 && this.field1338.field780 != -1) {
                 this.field1344 = (int) (Math.random() * (double) this.field1338.field776);
-                this.field1343 -= (int) (Math.random() * (double) this.field1338.method214(0, this.field1344));
+                this.field1343 -= (int) (Math.random() * (double) this.field1338.getDelay(0, this.field1344));
             }
         }
         LocType var11 = LocType.method561(this.field1334);
@@ -122,10 +122,10 @@ public class LocEntity extends Entity {
             label49: {
                 do {
                     do {
-                        if (var3 <= this.field1338.method214(0, this.field1344)) {
+                        if (var3 <= this.field1338.getDelay(0, this.field1344)) {
                             break label49;
                         }
-                        var3 -= this.field1338.method214(0, this.field1344);
+                        var3 -= this.field1338.getDelay(0, this.field1344);
                         this.field1344++;
                     } while (this.field1344 < this.field1338.field776);
                     this.field1344 -= this.field1338.field780;
@@ -134,7 +134,7 @@ public class LocEntity extends Entity {
             }
             this.field1343 = client.field621 - var3;
             if (this.field1338 != null) {
-                var2 = this.field1338.field777[this.field1344];
+                var2 = this.field1338.seqDelay[this.field1344];
             }
         }
         LocType var4;

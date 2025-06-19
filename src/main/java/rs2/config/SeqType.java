@@ -55,7 +55,7 @@ public class SeqType {
     public static int field791;
 
     @OriginalMember(owner = "client!FHWCLIAS", name = "f", descriptor = "[I")
-    public int[] field777;
+    public int[] seqDelay;
 
     @OriginalMember(owner = "client!FHWCLIAS", name = "g", descriptor = "[I")
     public int[] field778;
@@ -88,13 +88,13 @@ public class SeqType {
     }
 
     @OriginalMember(owner = "client!FHWCLIAS", name = "a", descriptor = "(II)I")
-    public int method214(int arg0, int arg1) {
+    public int getDelay(int arg0, int arg1) {
         int var3 = this.field779[arg1];
         if (arg0 != 0) {
             return 1;
         }
         if (var3 == 0) {
-            AnimFrame var4 = AnimFrame.method264(this.field777[arg1]);
+            AnimFrame var4 = AnimFrame.method264(this.seqDelay[arg1]);
             if (var4 != null) {
                 var3 = this.field779[arg1] = var4.field930;
             }
@@ -118,8 +118,8 @@ public class SeqType {
                 if (var4 == 0) {
                     if (this.field776 == 0) {
                         this.field776 = 1;
-                        this.field777 = new int[1];
-                        this.field777[0] = -1;
+                        this.seqDelay = new int[1];
+                        this.seqDelay[0] = -1;
                         this.field778 = new int[1];
                         this.field778[0] = -1;
                         this.field779 = new int[1];
@@ -144,11 +144,11 @@ public class SeqType {
                 }
                 if (var4 == 1) {
                     this.field776 = arg1.g1();
-                    this.field777 = new int[this.field776];
+                    this.seqDelay = new int[this.field776];
                     this.field778 = new int[this.field776];
                     this.field779 = new int[this.field776];
                     for (int var5 = 0; var5 < this.field776; var5++) {
-                        this.field777[var5] = arg1.g2();
+                        this.seqDelay[var5] = arg1.g2();
                         this.field778[var5] = arg1.g2();
                         if (this.field778[var5] == 65535) {
                             this.field778[var5] = -1;

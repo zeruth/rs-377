@@ -1906,7 +1906,7 @@ public class client extends GameShell {
         IdkType.field1699 = null;
         UnkType.field66 = null;
         SeqType.field775 = null;
-        SpotAnimType.field1297 = null;
+        SpotAnimType.instances = null;
         SpotAnimType.field1309 = null;
         VarpType.field1507 = null;
         super.field952 = null;
@@ -2771,7 +2771,7 @@ public class client extends GameShell {
                                         for (int var15 = 0; var15 < 4; ++var15) {
                                             for (int var16 = 1; var16 < 103; ++var16) {
                                                 for (int var17 = 1; var17 < 103; ++var17) {
-                                                    this.field556[var15].field1585[var16][var17] = 0;
+                                                    this.field556[var15].flags[var16][var17] = 0;
                                                 }
                                             }
                                         }
@@ -4193,7 +4193,7 @@ public class client extends GameShell {
         this.field420[var18] = arg3;
         boolean var20 = false;
         int var21 = this.field419.length;
-        int[][] var22 = this.field556[this.field387].field1585;
+        int[][] var22 = this.field556[this.field387].flags;
         while (var40 != var19) {
             var16 = this.field419[var19];
             var17 = this.field420[var19];
@@ -5061,16 +5061,16 @@ public class client extends GameShell {
             this.field624 = 153;
         }
         while (var2 != null) {
-            if (this.field387 == var2.field975 && field621 <= var2.field987) {
-                if (field621 >= var2.field986) {
-                    if (var2.field981 > 0) {
-                        NpcEntity var3 = this.field428[var2.field981 - 1];
+            if (this.field387 == var2.projLevel && field621 <= var2.lastCycle) {
+                if (field621 >= var2.startCycle) {
+                    if (var2.projTarget > 0) {
+                        NpcEntity var3 = this.field428[var2.projTarget - 1];
                         if (var3 != null && var3.field1157 >= 0 && var3.field1157 < 13312 && var3.field1158 >= 0 && var3.field1158 < 13312) {
-                            var2.method271(var3.field1157, var3.field1158, this.method133(var3.field1158, var3.field1157, (byte) 9, var2.field975) - var2.field1000, field621, 0);
+                            var2.updateVelocity(var3.field1157, var3.field1158, this.method133(var3.field1158, var3.field1157, (byte) 9, var2.projLevel) - var2.projOffsetY, field621);
                         }
                     }
-                    if (var2.field981 < 0) {
-                        int var4 = -var2.field981 - 1;
+                    if (var2.projTarget < 0) {
+                        int var4 = -var2.projTarget - 1;
                         PlayerEntity var5;
                         if (this.field257 == var4) {
                             var5 = field463;
@@ -5078,11 +5078,11 @@ public class client extends GameShell {
                             var5 = this.field266[var4];
                         }
                         if (var5 != null && var5.field1157 >= 0 && var5.field1157 < 13312 && var5.field1158 >= 0 && var5.field1158 < 13312) {
-                            var2.method271(var5.field1157, var5.field1158, this.method133(var5.field1158, var5.field1157, (byte) 9, var2.field975) - var2.field1000, field621, 0);
+                            var2.updateVelocity(var5.field1157, var5.field1158, this.method133(var5.field1158, var5.field1157, (byte) 9, var2.projLevel) - var2.projOffsetY, field621);
                         }
                     }
-                    var2.method272(this.field247, false);
-                    this.field460.addTemporary(-1, var2, (int) var2.field976, (int) var2.field978, false, 0, this.field387, 60, (int) var2.field977, var2.field983);
+                    var2.update(this.field247);
+                    this.field460.addTemporary(-1, var2, (int) var2.x, (int) var2.y, false, 0, this.field387, 60, (int) var2.z, var2.yaw);
                 }
             } else {
                 var2.method604();
@@ -6018,7 +6018,7 @@ public class client extends GameShell {
                     this.field187 = new int[4][105][105];
                     this.field460 = new World3D(this.field187, 4, 104, 104);
                     for (int var10 = 0; var10 < 4; ++var10) {
-                        this.field556[var10] = new CollisionMap(104, 0, 104);
+                        this.field556[var10] = new CollisionMap(104, 104);
                     }
                     this.field418 = new Pix24(512, 512);
                     Jagfile var11 = this.method81(14076, this.field133[5], "versionlist", 60, 5, "update list");
@@ -6653,7 +6653,7 @@ public class client extends GameShell {
 
     @OriginalMember(owner = "client!client", name = "a", descriptor = "(LLRUWCBNN;I)V")
     public final void method92(PathingEntity arg0, int arg1) {
-        if (field621 == arg0.field1154 || arg0.field1171 == -1 || arg0.field1174 != 0 || arg0.field1173 + 1 > SeqType.field775[arg0.field1171].method214(0, arg0.field1172)) {
+        if (field621 == arg0.field1154 || arg0.field1171 == -1 || arg0.field1174 != 0 || arg0.field1173 + 1 > SeqType.field775[arg0.field1171].getDelay(0, arg0.field1172)) {
             int var3 = arg0.field1154 - arg0.field1153;
             int var4 = field621 - arg0.field1153;
             int var5 = arg0.field1149 * 128 + arg0.field1148 * 64;
@@ -6872,7 +6872,7 @@ public class client extends GameShell {
         if (arg0.field1135 != -1) {
             SeqType var3 = SeqType.field775[arg0.field1135];
             ++arg0.field1137;
-            if (arg0.field1136 < var3.field776 && arg0.field1137 > var3.method214(0, arg0.field1136)) {
+            if (arg0.field1136 < var3.field776 && arg0.field1137 > var3.getDelay(0, arg0.field1136)) {
                 arg0.field1137 = 1;
                 ++arg0.field1136;
             }
@@ -6885,9 +6885,9 @@ public class client extends GameShell {
             if (arg0.field1162 < 0) {
                 arg0.field1162 = 0;
             }
-            SeqType var4 = SpotAnimType.field1297[arg0.field1161].field1301;
+            SeqType var4 = SpotAnimType.instances[arg0.field1161].seq;
             ++arg0.field1163;
-            if (arg0.field1162 < var4.field776 && arg0.field1163 > var4.method214(0, arg0.field1162)) {
+            if (arg0.field1162 < var4.field776 && arg0.field1163 > var4.getDelay(0, arg0.field1162)) {
                 arg0.field1163 = 1;
                 ++arg0.field1162;
             }
@@ -6905,7 +6905,7 @@ public class client extends GameShell {
         if (arg0.field1171 != -1 && arg0.field1174 == 0) {
             SeqType var6 = SeqType.field775[arg0.field1171];
             ++arg0.field1173;
-            if (arg0.field1172 < var6.field776 && arg0.field1173 > var6.method214(0, arg0.field1172)) {
+            if (arg0.field1172 < var6.field776 && arg0.field1173 > var6.getDelay(0, arg0.field1172)) {
                 arg0.field1173 = 1;
                 ++arg0.field1172;
             }
@@ -7321,13 +7321,13 @@ public class client extends GameShell {
             this.field619 = null;
         }
         for (SpotAnimEntity var2 = (SpotAnimEntity) this.field506.method6(); var2 != null; var2 = (SpotAnimEntity) this.field506.method8(1)) {
-            if (this.field387 == var2.field1522 && !var2.field1527) {
-                if (field621 >= var2.field1531) {
-                    var2.method486((byte) 1, this.field247);
-                    if (var2.field1527) {
+            if (this.field387 == var2.spotLevel && !var2.seqComplete) {
+                if (field621 >= var2.startCycle) {
+                    var2.update(this.field247);
+                    if (var2.seqComplete) {
                         var2.method604();
                     } else {
-                        this.field460.addTemporary(-1, var2, var2.field1523, var2.field1525, false, 0, var2.field1522, 60, var2.field1524, 0);
+                        this.field460.addTemporary(-1, var2, var2.x, var2.y, false, 0, var2.spotLevel, 60, var2.z, 0);
                     }
                 }
             } else {
@@ -8315,8 +8315,8 @@ public class client extends GameShell {
                 if (var9 != -1) {
                     SeqType var10 = SeqType.field775[var9];
                     var7.field709 += arg0;
-                    while (var7.field709 > var10.method214(0, var7.field717)) {
-                        var7.field709 -= var10.method214(0, var7.field717);
+                    while (var7.field709 > var10.getDelay(0, var7.field717)) {
+                        var7.field709 -= var10.getDelay(0, var7.field717);
                         ++var7.field717;
                         if (var7.field717 >= var10.field776) {
                             var7.field717 -= var10.field780;
@@ -8537,7 +8537,7 @@ public class client extends GameShell {
             this.field460.reset();
             System.gc();
             for (int var2 = 0; var2 < 4; ++var2) {
-                this.field556[var2].method532();
+                this.field556[var2].reset();
             }
             for (int var3 = 0; var3 < 4; ++var3) {
                 for (int var4 = 0; var4 < 104; ++var4) {
@@ -9060,9 +9060,9 @@ public class client extends GameShell {
                                 }
                             }
                         }
-                        var13.method366(7);
-                        var13.method367(SeqType.field775[field463.field1181].field777[0], (byte) 6);
-                        var13.method376(64, 850, -30, -50, -30, true);
+                        var13.createLabelReferences(7);
+                        var13.applyTransform(SeqType.field775[field463.field1181].seqDelay[0], (byte) 6);
+                        var13.calculateNormals(64, 850, -30, -50, -30, true);
                         arg1.field765 = 5;
                         arg1.field766 = 0;
                         Component.method210(5, var13, 0, 6);
@@ -9835,7 +9835,7 @@ public class client extends GameShell {
                         if (var14 != 22 && var14 != 29 && var14 != 34 && var14 != 36 && var14 != 46 && var14 != 47 && var14 != 48) {
                             byte var17 = 104;
                             byte var18 = 104;
-                            int[][] var19 = this.field556[this.field387].field1585;
+                            int[][] var19 = this.field556[this.field387].flags;
                             for (int var20 = 0; var20 < 10; ++var20) {
                                 int var21 = (int) (Math.random() * 4.0D);
                                 if (var21 == 0 && var15 > 0 && var15 > var10 - 3 && (var19[var15 - 1][var16] & 19398920) == 0) {
@@ -11180,7 +11180,7 @@ public class client extends GameShell {
         this.field433 &= arg0;
         this.field460.reset();
         for (int var2 = 0; var2 < 4; ++var2) {
-            this.field556[var2].method532();
+            this.field556[var2].reset();
         }
         System.gc();
         this.method70(false);
@@ -11775,8 +11775,8 @@ public class client extends GameShell {
                 int var82 = var70 * 128 + 64;
                 int var83 = var71 * 128 + 64;
                 int var84 = var72 * 128 + 64;
-                ProjectileEntity var85 = new ProjectileEntity(this.field387, var76, var80, var82, var74, field621 + var78, var79, var73, (byte) -41, this.method133(var82, var81, (byte) 9, this.field387) - var75, var81, field621 + var77);
-                var85.method271(var83, var84, this.method133(var84, var83, (byte) 9, this.field387) - var76, field621 + var77, 0);
+                ProjectileEntity var85 = new ProjectileEntity(this.field387, var76, var80, var82, var74, field621 + var78, var79, var73, this.method133(var82, var81, (byte) 9, this.field387) - var75, var81, field621 + var77);
+                var85.updateVelocity(var83, var84, this.method133(var84, var83, (byte) 9, this.field387) - var76, field621 + var77);
                 this.field578.addTail(var85);
             }
         } else {
@@ -11805,7 +11805,7 @@ public class client extends GameShell {
                 if (var94 >= 0 && var95 >= 0 && var94 < 104 && var95 < 104) {
                     int var99 = var94 * 128 + 64;
                     int var100 = var95 * 128 + 64;
-                    SpotAnimEntity var101 = new SpotAnimEntity(var99, this.field387, this.method133(var100, var99, (byte) 9, this.field387) - var97, var98, var96, field621, var100, 10709);
+                    SpotAnimEntity var101 = new SpotAnimEntity(var99, this.field387, this.method133(var100, var99, (byte) 9, this.field387) - var97, var98, var96, field621, var100);
                     this.field506.addTail(var101);
                 }
             } else if (arg2 == 152) {
@@ -12389,7 +12389,7 @@ public class client extends GameShell {
                                 var52 = var14.method212(-1, -1, 0, var50);
                             } else {
                                 SeqType var53 = SeqType.field775[var51];
-                                var52 = var14.method212(var53.field777[var14.field717], var53.field778[var14.field717], 0, var50);
+                                var52 = var14.method212(var53.seqDelay[var14.field717], var53.field778[var14.field717], 0, var50);
                             }
                             if (var52 != null) {
                                 var52.method380(0, var14.field735, 0, var14.field734, 0, var48, var49);

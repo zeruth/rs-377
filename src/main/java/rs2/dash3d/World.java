@@ -2,6 +2,7 @@ package rs2.dash3d;
 
 import org.openrs2.deob.annotation.OriginalClass;
 import org.openrs2.deob.annotation.OriginalMember;
+import rs2.Statics;
 import rs2.config.FloType;
 import rs2.config.LocType;
 import rs2.dash3d.entity.Entity;
@@ -707,7 +708,7 @@ public class World {
         for (int var11 = 0; var11 < 8; var11++) {
             for (int var16 = 0; var16 < 8; var16++) {
                 if (arg6 + var11 > 0 && arg6 + var11 < 103 && arg8 + var16 > 0 && arg8 + var16 < 103) {
-                    arg7[arg4].field1585[arg6 + var11][arg8 + var16] &= 0xFEFFFFFF;
+                    arg7[arg4].flags[arg6 + var11][arg8 + var16] &= 0xFEFFFFFF;
                 }
             }
         }
@@ -716,7 +717,7 @@ public class World {
             for (int var14 = 0; var14 < 64; var14++) {
                 for (int var15 = 0; var15 < 64; var15++) {
                     if (arg5 == var13 && var14 >= arg9 && var14 < arg9 + 8 && var15 >= arg1 && var15 < arg1 + 8) {
-                        this.method31(0, (byte) -61, 0, var12, arg0, arg6 + WorldRegion.method461((byte) 7, arg0, var14 & 0x7, var15 & 0x7), arg4, arg8 + WorldRegion.method462(var15 & 0x7, var14 & 0x7, arg0, (byte) 5));
+                        this.method31(0, (byte) -61, 0, var12, arg0, arg6 + Statics.method461((byte) 7, arg0, var14 & 0x7, var15 & 0x7), arg4, arg8 + Statics.method462(var15 & 0x7, var14 & 0x7, arg0, (byte) 5));
                     } else {
                         this.method31(0, (byte) -61, 0, var12, 0, -1, 0, -1);
                     }
@@ -807,8 +808,8 @@ public class World {
                 int var22 = var20 & 0x3;
                 if (arg10 == var19 && var18 >= arg7 && var18 < arg7 + 8 && var17 >= arg9 && var17 < arg9 + 8) {
                     LocType var23 = LocType.method561(var13);
-                    int var24 = arg8 + WorldRegion.method463(arg6, var23.field1629, var22, var18 & 0x7, (byte) -117, var23.field1655, var17 & 0x7);
-                    int var25 = arg5 + WorldRegion.method464(var23.field1655, arg6, 671, var18 & 0x7, var17 & 0x7, var23.field1629, var22);
+                    int var24 = arg8 + Statics.method463(arg6, var23.field1629, var22, var18 & 0x7, (byte) -117, var23.field1655, var17 & 0x7);
+                    int var25 = arg5 + Statics.method464(var23.field1655, arg6, 671, var18 & 0x7, var17 & 0x7, var23.field1629, var22);
                     if (var24 > 0 && var25 > 0 && var24 < 103 && var25 < 103) {
                         int var26 = arg0;
                         if ((this.field101[1][var24][var25] & 0x2) == 2) {
@@ -1141,7 +1142,7 @@ public class World {
             for (int var13 = 0; var13 < 64; var13++) {
                 for (int var14 = 0; var14 < 64; var14++) {
                     if (arg3 + var13 > 0 && arg3 + var13 < 103 && arg0 + var14 > 0 && arg0 + var14 < 103) {
-                        arg6[var8].field1585[arg3 + var13][arg0 + var14] &= 0xFEFFFFFF;
+                        arg6[var8].flags[arg3 + var13][arg0 + var14] &= 0xFEFFFFFF;
                     }
                 }
             }
