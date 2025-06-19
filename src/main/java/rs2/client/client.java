@@ -2161,7 +2161,7 @@ public class client extends GameShell {
                 }
             }
             int var10 = (arg1 << 7) + arg0 + 1610612736;
-            this.field460.method281(this.method133(arg1 * 128 + 64, arg0 * 128 + 64, (byte) 9, this.field387), this.field387, var5, var7, var10, var8, 2, arg1, arg0);
+            this.field460.addObjStack(this.method133(arg1 * 128 + 64, arg0 * 128 + 64, (byte) 9, this.field387), this.field387, var5, var7, var10, var8, 2, arg1, arg0);
         }
     }
 
@@ -5082,7 +5082,7 @@ public class client extends GameShell {
                         }
                     }
                     var2.method272(this.field247, false);
-                    this.field460.method285(-1, var2, (int) var2.field976, (int) var2.field978, false, 0, this.field387, 60, (int) var2.field977, var2.field983);
+                    this.field460.addTemporary(-1, var2, (int) var2.field976, (int) var2.field978, false, 0, this.field387, 60, (int) var2.field977, var2.field983);
                 }
             } else {
                 var2.method604();
@@ -5367,7 +5367,7 @@ public class client extends GameShell {
                     if (!var5.npcType.field1434) {
                         var6 += Integer.MIN_VALUE;
                     }
-                    this.field460.method285(var6, var5, var5.field1157, this.method133(var5.field1158, var5.field1157, (byte) 9, this.field387), var5.field1139, 0, this.field387, (var5.field1148 - 1) * 64 + 60, var5.field1158, var5.field1159);
+                    this.field460.addTemporary(var6, var5, var5.field1157, this.method133(var5.field1158, var5.field1157, (byte) 9, this.field387), var5.field1139, 0, this.field387, (var5.field1148 - 1) * 64 + 60, var5.field1158, var5.field1159);
                 }
             }
         }
@@ -7327,7 +7327,7 @@ public class client extends GameShell {
                     if (var2.field1527) {
                         var2.method604();
                     } else {
-                        this.field460.method285(-1, var2, var2.field1523, var2.field1525, false, 0, var2.field1522, 60, var2.field1524, 0);
+                        this.field460.addTemporary(-1, var2, var2.field1523, var2.field1525, false, 0, var2.field1522, 60, var2.field1524, 0);
                     }
                 }
             } else {
@@ -10028,7 +10028,7 @@ public class client extends GameShell {
                     if (var5.field1668 != null && field621 >= var5.field1686 && field621 < var5.field1687) {
                         var5.field1685 = false;
                         var5.field1672 = this.method133(var5.field1158, var5.field1157, (byte) 9, this.field387);
-                        this.field460.method286(var5.field1672, var5.field1691, 60, 7, var5, var5.field1690, var5.field1158, var5.field1693, var5.field1157, var5.field1159, var5.field1692, this.field387, var6);
+                        this.field460.addTemporary2(var5.field1672, var5.field1691, 60, var5, var5.field1690, var5.field1158, var5.field1693, var5.field1157, var5.field1159, var5.field1692, this.field387, var6);
                     } else {
                         if ((var5.field1157 & 127) == 64 && (var5.field1158 & 127) == 64) {
                             if (this.field182[var7][var8] == this.field434) {
@@ -10037,7 +10037,7 @@ public class client extends GameShell {
                             this.field182[var7][var8] = this.field434;
                         }
                         var5.field1672 = this.method133(var5.field1158, var5.field1157, (byte) 9, this.field387);
-                        this.field460.method285(var6, var5, var5.field1157, var5.field1672, var5.field1139, 0, this.field387, 60, var5.field1158, var5.field1159);
+                        this.field460.addTemporary(var6, var5, var5.field1157, var5.field1672, var5.field1139, 0, this.field387, 60, var5.field1158, var5.field1159);
                     }
                 }
             }
@@ -11711,13 +11711,13 @@ public class client extends GameShell {
                         var39 = 10;
                     }
                     if (var52 != null) {
-                        var52.field80 = new LocEntity(var37, var47, var48, var46, var39, (byte) 3, var52.typecode >> 14 & 32767, false, var45, var40);
+                        var52.entity = new LocEntity(var37, var47, var48, var46, var39, (byte) 3, var52.typecode >> 14 & 32767, false, var45, var40);
                     }
                 }
                 if (var41 == 3) {
                     GroundDecor var53 = this.field460.method299(this.field387, var44, 0, var43);
                     if (var53 != null) {
-                        var53.field1313 = new LocEntity(var37, var47, var48, var46, 22, (byte) 3, var53.field1314 >> 14 & 32767, false, var45, var40);
+                        var53.entity = new LocEntity(var37, var47, var48, var46, 22, (byte) 3, var53.field1314 >> 14 & 32767, false, var45, var40);
                     }
                 }
             }

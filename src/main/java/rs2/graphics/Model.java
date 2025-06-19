@@ -209,7 +209,7 @@ public class Model extends Entity {
     public static int field1189;
 
     @OriginalMember(owner = "client!LZYQDKJV", name = "Z", descriptor = "I")
-    public int field1222;
+    public int objRaise;
 
     @OriginalMember(owner = "client!LZYQDKJV", name = "Ab", descriptor = "I")
     public static int field1249;

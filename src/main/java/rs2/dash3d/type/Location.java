@@ -47,5 +47,22 @@ public class Location {
     public int typecode;
 
     @OriginalMember(owner = "client!BHOSVTIT", name = "e", descriptor = "LZOXDNIET;")
-    public Entity field80;
+    public Entity entity;
+
+    public Location(byte field89, int level, int field77, int field78, int field79, int field81, int tileX, int field83, int tileZ, int field85, int field86, int field87, int typecode, Entity entity) {
+        this.field89 = field89;
+        this.level = level;
+        this.field77 = field77;
+        this.field78 = field78;
+        this.field79 = field79;
+        this.field81 = field81;
+        this.tileX = tileX;
+        this.field83 = field83;
+        this.tileZ = tileZ;
+        this.field85 = field85;
+        this.field86 = field86;
+        this.field87 = field87;
+        this.typecode = typecode;
+        this.entity = entity;
+    }
 }

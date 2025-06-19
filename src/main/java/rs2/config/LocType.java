@@ -350,7 +350,7 @@ public class LocType {
         }
         var20.method376(this.field1638 + 64, this.field1641 * 5 + 768, -50, -10, -50, !this.field1658);
         if (this.field1648 == 1) {
-            var20.field1222 = var20.field1709;
+            var20.objRaise = var20.field1709;
         }
         field1616.method459(var20, var6, 5);
         return var20;

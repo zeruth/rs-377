@@ -161,7 +161,7 @@ public class World {
             } else {
                 var19 = new LocEntity(var16.field1657, var13, var14, var12, 22, (byte) 3, arg0, true, var11, arg5);
             }
-            arg9.method280(arg6, arg3, 669, var18, var17, var15, arg8, var19);
+            arg9.addGroundDecoration(arg6, arg3, var18, var17, var15, arg8, var19);
             if (var16.field1664 && var16.field1613) {
                 arg4.method535(8, arg3, arg6);
             }
@@ -186,7 +186,7 @@ public class World {
                     var41 = var16.field1655;
                     var42 = var16.field1629;
                 }
-                arg9.method284(arg8, var41, arg3, var39, var18, var40, arg6, -896, var42, var15, var17);
+                arg9.addLoc(arg8, var41, arg3, var39, var18, var40, arg6, var42, var15, var17);
             }
             if (var16.field1664) {
                 arg4.method534(arg3, arg5, var16.field1629, var16.field1655, var16.field1663, arg6, (byte) 52);
@@ -198,7 +198,7 @@ public class World {
             } else {
                 var20 = new LocEntity(var16.field1657, var13, var14, var12, arg2, (byte) 3, arg0, true, var11, arg5);
             }
-            arg9.method284(arg8, 1, arg3, var20, var18, 0, arg6, -896, 1, var15, var17);
+            arg9.addLoc(arg8, 1, arg3, var20, var18, 0, arg6, 1, var15, var17);
             if (var16.field1664) {
                 arg4.method534(arg3, arg5, var16.field1629, var16.field1655, var16.field1663, arg6, (byte) 52);
             }
@@ -209,7 +209,7 @@ public class World {
             } else {
                 var21 = new LocEntity(var16.field1657, var13, var14, var12, 0, (byte) 3, arg0, true, var11, arg5);
             }
-            arg9.method282(var15, 49878, 0, field121[arg5], null, arg6, var17, var18, arg3, var21, arg8);
+            arg9.addWall(var15, 0, field121[arg5], null, arg6, var17, var18, arg3, var21, arg8);
             if (var16.field1664) {
                 arg4.method533(arg5, 37679, var16.field1663, arg2, arg6, arg3);
             }
@@ -220,7 +220,7 @@ public class World {
             } else {
                 var22 = new LocEntity(var16.field1657, var13, var14, var12, 1, (byte) 3, arg0, true, var11, arg5);
             }
-            arg9.method282(var15, 49878, 0, field130[arg5], null, arg6, var17, var18, arg3, var22, arg8);
+            arg9.addWall(var15, 0, field130[arg5], null, arg6, var17, var18, arg3, var22, arg8);
             if (var16.field1664) {
                 arg4.method533(arg5, 37679, var16.field1663, arg2, arg6, arg3);
             }
@@ -235,7 +235,7 @@ public class World {
                 var24 = new LocEntity(var16.field1657, var13, var14, var12, 2, (byte) 3, arg0, true, var11, arg5 + 4);
                 var25 = new LocEntity(var16.field1657, var13, var14, var12, 2, (byte) 3, arg0, true, var11, var23);
             }
-            arg9.method282(var15, 49878, field121[var23], field121[arg5], var25, arg6, var17, var18, arg3, var24, arg8);
+            arg9.addWall(var15, field121[var23], field121[arg5], var25, arg6, var17, var18, arg3, var24, arg8);
             if (var16.field1664) {
                 arg4.method533(arg5, 37679, var16.field1663, arg2, arg6, arg3);
             }
@@ -246,7 +246,7 @@ public class World {
             } else {
                 var26 = new LocEntity(var16.field1657, var13, var14, var12, 3, (byte) 3, arg0, true, var11, arg5);
             }
-            arg9.method282(var15, 49878, 0, field130[arg5], null, arg6, var17, var18, arg3, var26, arg8);
+            arg9.addWall(var15, 0, field130[arg5], null, arg6, var17, var18, arg3, var26, arg8);
             if (var16.field1664) {
                 arg4.method533(arg5, 37679, var16.field1663, arg2, arg6, arg3);
             }
@@ -257,7 +257,7 @@ public class World {
             } else {
                 var27 = new LocEntity(var16.field1657, var13, var14, var12, arg2, (byte) 3, arg0, true, var11, arg5);
             }
-            arg9.method284(arg8, 1, arg3, var27, var18, 0, arg6, -896, 1, var15, var17);
+            arg9.addLoc(arg8, 1, arg3, var27, var18, 0, arg6, 1, var15, var17);
             if (var16.field1664) {
                 arg4.method534(arg3, arg5, var16.field1629, var16.field1655, var16.field1663, arg6, (byte) 52);
             }
@@ -291,7 +291,7 @@ public class World {
                 } else {
                     var32 = new LocEntity(var16.field1657, var13, var14, var12, 4, (byte) 3, arg0, true, var11, 0);
                 }
-                arg9.method283(arg8, field121[arg5], arg5 * 512, var17, var18, arg6, 0, arg3, 0, var15, var32, -930);
+                arg9.setWallDecoration(arg8, field121[arg5], arg5 * 512, var17, var18, arg6, 0, arg3, 0, var15, var32);
             } else if (arg2 == 5) {
                 int var33 = 16;
                 int var34 = arg9.method300(arg8, arg6, arg3);
@@ -304,7 +304,7 @@ public class World {
                 } else {
                     var35 = new LocEntity(var16.field1657, var13, var14, var12, 4, (byte) 3, arg0, true, var11, 0);
                 }
-                arg9.method283(arg8, field121[arg5], arg5 * 512, var17, var18, arg6, field106[arg5] * var33, arg3, field124[arg5] * var33, var15, var35, -930);
+                arg9.setWallDecoration(arg8, field121[arg5], arg5 * 512, var17, var18, arg6, field106[arg5] * var33, arg3, field124[arg5] * var33, var15, var35);
             } else if (arg2 == 6) {
                 Entity var36;
                 if (var16.field1657 == -1 && var16.field1659 == null) {
@@ -312,7 +312,7 @@ public class World {
                 } else {
                     var36 = new LocEntity(var16.field1657, var13, var14, var12, 4, (byte) 3, arg0, true, var11, 0);
                 }
-                arg9.method283(arg8, 256, arg5, var17, var18, arg6, 0, arg3, 0, var15, var36, -930);
+                arg9.setWallDecoration(arg8, 256, arg5, var17, var18, arg6, 0, arg3, 0, var15, var36);
             } else if (arg2 == 7) {
                 Entity var37;
                 if (var16.field1657 == -1 && var16.field1659 == null) {
@@ -320,7 +320,7 @@ public class World {
                 } else {
                     var37 = new LocEntity(var16.field1657, var13, var14, var12, 4, (byte) 3, arg0, true, var11, 0);
                 }
-                arg9.method283(arg8, 512, arg5, var17, var18, arg6, 0, arg3, 0, var15, var37, -930);
+                arg9.setWallDecoration(arg8, 512, arg5, var17, var18, arg6, 0, arg3, 0, var15, var37);
             } else if (arg2 == 8) {
                 Entity var38;
                 if (var16.field1657 == -1 && var16.field1659 == null) {
@@ -328,7 +328,7 @@ public class World {
                 } else {
                     var38 = new LocEntity(var16.field1657, var13, var14, var12, 4, (byte) 3, arg0, true, var11, 0);
                 }
-                arg9.method283(arg8, 768, arg5, var17, var18, arg6, 0, arg3, 0, var15, var38, -930);
+                arg9.setWallDecoration(arg8, 768, arg5, var17, var18, arg6, 0, arg3, 0, var15, var38);
             }
         }
     }
@@ -860,7 +860,7 @@ public class World {
                 } else {
                     var18 = new LocEntity(var15.field1657, var12, var13, var11, 22, (byte) 3, arg8, true, var10, arg6);
                 }
-                arg0.method280(arg4, arg2, 669, var17, var16, var14, arg3, var18);
+                arg0.addGroundDecoration(arg4, arg2, var17, var16, var14, arg3, var18);
                 if (var15.field1664 && var15.field1613 && arg1 != null) {
                     arg1.method535(8, arg2, arg4);
                 }
@@ -886,7 +886,7 @@ public class World {
                     var40 = var15.field1655;
                     var41 = var15.field1629;
                 }
-                if (arg0.method284(arg3, var40, arg2, var38, var17, var39, arg4, -896, var41, var14, var16) && var15.field1661) {
+                if (arg0.addLoc(arg3, var40, arg2, var38, var17, var39, arg4, var41, var14, var16) && var15.field1661) {
                     Model var42;
                     if (var38 instanceof Model) {
                         var42 = (Model) var38;
@@ -918,7 +918,7 @@ public class World {
             } else {
                 var19 = new LocEntity(var15.field1657, var12, var13, var11, arg7, (byte) 3, arg8, true, var10, arg6);
             }
-            arg0.method284(arg3, 1, arg2, var19, var17, 0, arg4, -896, 1, var14, var16);
+            arg0.addLoc(arg3, 1, arg2, var19, var17, 0, arg4, 1, var14, var16);
             if (arg7 >= 12 && arg7 <= 17 && arg7 != 13 && arg3 > 0) {
                 this.field131[arg3][arg4][arg2] |= 0x924;
             }
@@ -932,7 +932,7 @@ public class World {
             } else {
                 var20 = new LocEntity(var15.field1657, var12, var13, var11, 0, (byte) 3, arg8, true, var10, arg6);
             }
-            arg0.method282(var14, 49878, 0, field121[arg6], null, arg4, var16, var17, arg2, var20, arg3);
+            arg0.addWall(var14, 0, field121[arg6], null, arg4, var16, var17, arg2, var20, arg3);
             if (arg6 == 0) {
                 if (var15.field1661) {
                     this.field127[arg3][arg4][arg2] = 50;
@@ -979,7 +979,7 @@ public class World {
             } else {
                 var21 = new LocEntity(var15.field1657, var12, var13, var11, 1, (byte) 3, arg8, true, var10, arg6);
             }
-            arg0.method282(var14, 49878, 0, field130[arg6], null, arg4, var16, var17, arg2, var21, arg3);
+            arg0.addWall(var14, 0, field130[arg6], null, arg4, var16, var17, arg2, var21, arg3);
             if (var15.field1661) {
                 if (arg6 == 0) {
                     this.field127[arg3][arg4][arg2 + 1] = 50;
@@ -1005,7 +1005,7 @@ public class World {
                 var23 = new LocEntity(var15.field1657, var12, var13, var11, 2, (byte) 3, arg8, true, var10, arg6 + 4);
                 var24 = new LocEntity(var15.field1657, var12, var13, var11, 2, (byte) 3, arg8, true, var10, var22);
             }
-            arg0.method282(var14, 49878, field121[var22], field121[arg6], var24, arg4, var16, var17, arg2, var23, arg3);
+            arg0.addWall(var14, field121[var22], field121[arg6], var24, arg4, var16, var17, arg2, var23, arg3);
             if (var15.field1651) {
                 if (arg6 == 0) {
                     this.field131[arg3][arg4][arg2] |= 0x249;
@@ -1034,7 +1034,7 @@ public class World {
             } else {
                 var25 = new LocEntity(var15.field1657, var12, var13, var11, 3, (byte) 3, arg8, true, var10, arg6);
             }
-            arg0.method282(var14, 49878, 0, field130[arg6], null, arg4, var16, var17, arg2, var25, arg3);
+            arg0.addWall(var14, 0, field130[arg6], null, arg4, var16, var17, arg2, var25, arg3);
             if (var15.field1661) {
                 if (arg6 == 0) {
                     this.field127[arg3][arg4][arg2 + 1] = 50;
@@ -1056,7 +1056,7 @@ public class World {
             } else {
                 var26 = new LocEntity(var15.field1657, var12, var13, var11, arg7, (byte) 3, arg8, true, var10, arg6);
             }
-            arg0.method284(arg3, 1, arg2, var26, var17, 0, arg4, -896, 1, var14, var16);
+            arg0.addLoc(arg3, 1, arg2, var26, var17, 0, arg4, 1, var14, var16);
             if (var15.field1664 && arg1 != null) {
                 arg1.method534(arg2, arg6, var15.field1629, var15.field1655, var15.field1663, arg4, (byte) 52);
             }
@@ -1090,7 +1090,7 @@ public class World {
                 } else {
                     var31 = new LocEntity(var15.field1657, var12, var13, var11, 4, (byte) 3, arg8, true, var10, 0);
                 }
-                arg0.method283(arg3, field121[arg6], arg6 * 512, var16, var17, arg4, 0, arg2, 0, var14, var31, -930);
+                arg0.setWallDecoration(arg3, field121[arg6], arg6 * 512, var16, var17, arg4, 0, arg2, 0, var14, var31);
             } else if (arg7 == 5) {
                 int var32 = 16;
                 int var33 = arg0.method300(arg3, arg4, arg2);
@@ -1103,7 +1103,7 @@ public class World {
                 } else {
                     var34 = new LocEntity(var15.field1657, var12, var13, var11, 4, (byte) 3, arg8, true, var10, 0);
                 }
-                arg0.method283(arg3, field121[arg6], arg6 * 512, var16, var17, arg4, field106[arg6] * var32, arg2, field124[arg6] * var32, var14, var34, -930);
+                arg0.setWallDecoration(arg3, field121[arg6], arg6 * 512, var16, var17, arg4, field106[arg6] * var32, arg2, field124[arg6] * var32, var14, var34);
             } else if (arg7 == 6) {
                 Entity var35;
                 if (var15.field1657 == -1 && var15.field1659 == null) {
@@ -1111,7 +1111,7 @@ public class World {
                 } else {
                     var35 = new LocEntity(var15.field1657, var12, var13, var11, 4, (byte) 3, arg8, true, var10, 0);
                 }
-                arg0.method283(arg3, 256, arg6, var16, var17, arg4, 0, arg2, 0, var14, var35, -930);
+                arg0.setWallDecoration(arg3, 256, arg6, var16, var17, arg4, 0, arg2, 0, var14, var35);
             } else if (arg7 == 7) {
                 Entity var36;
                 if (var15.field1657 == -1 && var15.field1659 == null) {
@@ -1119,7 +1119,7 @@ public class World {
                 } else {
                     var36 = new LocEntity(var15.field1657, var12, var13, var11, 4, (byte) 3, arg8, true, var10, 0);
                 }
-                arg0.method283(arg3, 512, arg6, var16, var17, arg4, 0, arg2, 0, var14, var36, -930);
+                arg0.setWallDecoration(arg3, 512, arg6, var16, var17, arg4, 0, arg2, 0, var14, var36);
             } else if (arg7 == 8) {
                 Entity var37;
                 if (var15.field1657 == -1 && var15.field1659 == null) {
@@ -1127,7 +1127,7 @@ public class World {
                 } else {
                     var37 = new LocEntity(var15.field1657, var12, var13, var11, 4, (byte) 3, arg8, true, var10, 0);
                 }
-                arg0.method283(arg3, 768, arg6, var16, var17, arg4, 0, arg2, 0, var14, var37, -930);
+                arg0.setWallDecoration(arg3, 768, arg6, var16, var17, arg4, 0, arg2, 0, var14, var37);
             }
         }
     }

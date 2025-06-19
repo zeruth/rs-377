@@ -30,4 +30,15 @@ public class ObjStack {
 
     @OriginalMember(owner = "client!DVWJFUCK", name = "f", descriptor = "LZOXDNIET;")
     public Entity field641;
+
+    public ObjStack(int field636, int field637, int field638, int field642, int field643, Entity field639, Entity field640, Entity field641) {
+        this.field636 = field636;
+        this.field637 = field637;
+        this.field638 = field638;
+        this.field642 = field642;
+        this.field643 = field643;
+        this.field639 = field639;
+        this.field640 = field640;
+        this.field641 = field641;
+    }
 }

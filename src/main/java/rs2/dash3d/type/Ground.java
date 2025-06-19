@@ -50,10 +50,10 @@ public class Ground extends Linkable {
     public int field1401;
 
     @OriginalMember(owner = "client!RIEEXHOP", name = "n", descriptor = "LMOLUZZPG;")
-    public GroundDecor field1388;
+    public GroundDecor groundDecoration;
 
     @OriginalMember(owner = "client!RIEEXHOP", name = "o", descriptor = "LDVWJFUCK;")
-    public ObjStack field1389;
+    public ObjStack objStack;
 
     @OriginalMember(owner = "client!RIEEXHOP", name = "B", descriptor = "LRIEEXHOP;")
     public Ground bridge;
@@ -65,10 +65,10 @@ public class Ground extends Linkable {
     public TileUnderlay underlay;
 
     @OriginalMember(owner = "client!RIEEXHOP", name = "l", descriptor = "LWQXKHZYN;")
-    public Wall field1386;
+    public Wall wall;
 
     @OriginalMember(owner = "client!RIEEXHOP", name = "m", descriptor = "LSEMZHDXN;")
-    public Decor field1387;
+    public Decor wallDecoration;
 
     @OriginalMember(owner = "client!RIEEXHOP", name = "u", descriptor = "Z")
     public boolean field1395;
