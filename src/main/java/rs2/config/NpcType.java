@@ -91,7 +91,7 @@ public class NpcType {
     private boolean field1465 = false;
 
     @OriginalMember(owner = "client!SLDUQHOR", name = "o", descriptor = "LRHNYLZZL;")
-    public static LruCache field1438 = new LruCache(30, -572);
+    public static LruCache field1438 = new LruCache(30);
 
     @OriginalMember(owner = "client!SLDUQHOR", name = "G", descriptor = "B")
     private static byte field1456 = 6;
@@ -340,12 +340,12 @@ public class NpcType {
     }
 
     @OriginalMember(owner = "client!SLDUQHOR", name = "a", descriptor = "(III[I)LLZYQDKJV;")
-    public final Model method475(int arg0, int arg1, int arg2, int[] arg3) {
+    public final Model getSequencedModel(int arg0, int arg1, int arg2, int[] arg3) {
         if (this.field1425 != null) {
             NpcType var5 = this.method476(false);
-            return var5 == null ? null : var5.method475(arg0, arg1, 0, arg3);
+            return var5 == null ? null : var5.getSequencedModel(arg0, arg1, 0, arg3);
         }
-        Model var6 = (Model) field1438.method458(this.field1431);
+        Model var6 = (Model) field1438.get(this.field1431);
         if (var6 == null) {
             boolean var7 = false;
             for (int var8 = 0; var8 < this.field1429.length; var8++) {
@@ -372,7 +372,7 @@ public class NpcType {
             }
             var6.createLabelReferences(7);
             var6.calculateNormals(this.field1466 + 64, this.field1461 + 850, -30, -50, -30, true);
-            field1438.method459(var6, this.field1431, 5);
+            field1438.put(var6, this.field1431);
         }
         Model var12 = Model.field1190;
         if (arg2 != 0) {
@@ -391,7 +391,7 @@ public class NpcType {
         var12.labelFaces = null;
         var12.labelVertices = null;
         if (this.field1445 == 1) {
-            var12.field1227 = true;
+            var12.pickable = true;
         }
         return var12;
     }
@@ -412,11 +412,11 @@ public class NpcType {
         } else if (this.field1462 != -1) {
             var2 = field1432.field335[this.field1462];
         }
-        return var2 < 0 || var2 >= this.field1425.length || this.field1425[var2] == -1 ? null : method477(this.field1425[var2]);
+        return var2 < 0 || var2 >= this.field1425.length || this.field1425[var2] == -1 ? null : get(this.field1425[var2]);
     }
 
     @OriginalMember(owner = "client!SLDUQHOR", name = "c", descriptor = "(I)LSLDUQHOR;")
-    public static final NpcType method477(int arg0) {
+    public static final NpcType get(int arg0) {
         for (int var1 = 0; var1 < 20; var1++) {
             if ((long) arg0 == field1458[var1].field1431) {
                 return field1458[var1];

@@ -59,7 +59,7 @@ public class SpotAnimEntity extends Entity {
                 }
                 this.seqCycle -= this.spotType.seq.getDelay(0, this.seqFrame);
                 this.seqFrame++;
-            } while (this.seqFrame < this.spotType.seq.field776);
+            } while (this.seqFrame < this.spotType.seq.seqFrameCount);
             this.seqFrame = 0;
             this.seqComplete = true;
         }
@@ -74,7 +74,7 @@ public class SpotAnimEntity extends Entity {
         if (tmp == null) {
             return null;
         }
-        int delay = this.spotType.seq.seqDelay[this.seqFrame];
+        int delay = this.spotType.seq.seqFrames[this.seqFrame];
         Model model = new Model(false, false, true, tmp, AnimFrame.method265(this.field1526, delay));
         if (!this.seqComplete) {
             model.createLabelReferences(7);

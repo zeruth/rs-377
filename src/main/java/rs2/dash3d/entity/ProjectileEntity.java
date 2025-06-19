@@ -141,7 +141,7 @@ public class ProjectileEntity extends Entity {
         while (this.seqCycle > this.spotanim.seq.getDelay(0, this.seqFrame)) {
             this.seqCycle -= this.spotanim.seq.getDelay(0, this.seqFrame);
             this.seqFrame++;
-            if (this.seqFrame >= this.spotanim.seq.field776) {
+            if (this.seqFrame >= this.spotanim.seq.seqFrameCount) {
                 this.seqFrame = 0;
             }
         }
@@ -155,7 +155,7 @@ public class ProjectileEntity extends Entity {
         }
         int var3 = -1;
         if (this.spotanim.seq != null) {
-            var3 = this.spotanim.seq.seqDelay[this.seqFrame];
+            var3 = this.spotanim.seq.seqFrames[this.seqFrame];
         }
         Model model = new Model(false, false, true, tmp, AnimFrame.method265(this.field994, var3));
         if (var3 != -1) {

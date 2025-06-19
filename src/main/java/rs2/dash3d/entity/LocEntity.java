@@ -36,13 +36,13 @@ public class LocEntity extends Entity {
     private int field1332;
 
     @OriginalMember(owner = "client!NRPYRAWK", name = "w", descriptor = "LFHWCLIAS;")
-    private SeqType field1338;
+    private SeqType seq;
 
     @OriginalMember(owner = "client!NRPYRAWK", name = "C", descriptor = "I")
-    private int field1344;
+    private int seqFrame;
 
     @OriginalMember(owner = "client!NRPYRAWK", name = "B", descriptor = "I")
-    private int field1343;
+    private int seqCycle;
 
     @OriginalMember(owner = "client!NRPYRAWK", name = "x", descriptor = "I")
     public int field1339;
@@ -82,7 +82,7 @@ public class LocEntity extends Entity {
     }
 
     @OriginalMember(owner = "client!NRPYRAWK", name = "<init>", descriptor = "(IIIIIBIZII)V")
-    public LocEntity(int arg0, int arg1, int arg2, int arg3, int arg4, byte arg5, int arg6, boolean arg7, int arg8, int arg9) {
+    public LocEntity(int index, int arg1, int arg2, int arg3, int arg4, byte arg5, int arg6, boolean randomFrame, int arg8, int arg9) {
         this.field1334 = arg6;
         this.field1335 = arg4;
         this.field1336 = arg9;
@@ -90,19 +90,19 @@ public class LocEntity extends Entity {
         this.field1330 = arg3;
         this.field1331 = arg1;
         this.field1332 = arg2;
-        if (arg0 != -1) {
-            this.field1338 = SeqType.field775[arg0];
-            this.field1344 = 0;
-            this.field1343 = client.field621 - 1;
-            if (arg7 && this.field1338.field780 != -1) {
-                this.field1344 = (int) (Math.random() * (double) this.field1338.field776);
-                this.field1343 -= (int) (Math.random() * (double) this.field1338.getDelay(0, this.field1344));
+        if (index != -1) {
+            this.seq = SeqType.instances[index];
+            this.seqFrame = 0;
+            this.seqCycle = client.loopCycle - 1;
+            if (randomFrame && this.seq.replayoff != -1) {
+                this.seqFrame = (int) (Math.random() * (double) this.seq.seqFrameCount);
+                this.seqCycle -= (int) (Math.random() * (double) this.seq.getDelay(0, this.seqFrame));
             }
         }
-        LocType var11 = LocType.method561(this.field1334);
-        this.field1339 = var11.field1632;
-        this.field1340 = var11.field1635;
-        this.field1341 = var11.field1659;
+        LocType locType = LocType.method561(this.field1334);
+        this.field1339 = locType.field1632;
+        this.field1340 = locType.field1635;
+        this.field1341 = locType.field1659;
         if (arg5 != 3) {
             this.field1333 = -126;
         }
@@ -110,31 +110,28 @@ public class LocEntity extends Entity {
 
     @OriginalMember(owner = "client!NRPYRAWK", name = "a", descriptor = "(B)LLZYQDKJV;")
     public final Model draw(byte loopCycle) {
-        if (loopCycle != 3) {
-            this.field1328 = !this.field1328;
-        }
         int var2 = -1;
-        if (this.field1338 != null) {
-            int var3 = client.field621 - this.field1343;
-            if (var3 > 100 && this.field1338.field780 > 0) {
+        if (this.seq != null) {
+            int var3 = client.loopCycle - this.seqCycle;
+            if (var3 > 100 && this.seq.replayoff > 0) {
                 var3 = 100;
             }
             label49: {
                 do {
                     do {
-                        if (var3 <= this.field1338.getDelay(0, this.field1344)) {
+                        if (var3 <= this.seq.getDelay(0, this.seqFrame)) {
                             break label49;
                         }
-                        var3 -= this.field1338.getDelay(0, this.field1344);
-                        this.field1344++;
-                    } while (this.field1344 < this.field1338.field776);
-                    this.field1344 -= this.field1338.field780;
-                } while (this.field1344 >= 0 && this.field1344 < this.field1338.field776);
-                this.field1338 = null;
+                        var3 -= this.seq.getDelay(0, this.seqFrame);
+                        this.seqFrame++;
+                    } while (this.seqFrame < this.seq.seqFrameCount);
+                    this.seqFrame -= this.seq.replayoff;
+                } while (this.seqFrame >= 0 && this.seqFrame < this.seq.seqFrameCount);
+                this.seq = null;
             }
-            this.field1343 = client.field621 - var3;
-            if (this.field1338 != null) {
-                var2 = this.field1338.seqDelay[this.field1344];
+            this.seqCycle = client.loopCycle - var3;
+            if (this.seq != null) {
+                var2 = this.seq.seqFrames[this.seqFrame];
             }
         }
         LocType var4;

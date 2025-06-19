@@ -111,7 +111,7 @@ public class World3D {
     public static Occlude[] activeOccluders = new Occlude[500];
 
     @OriginalMember(owner = "client!KJCMXHNO", name = "bb", descriptor = "LBOHLFXVX;")
-    public static LinkList drawTileQueue = new LinkList(true);
+    public static LinkList drawTileQueue = new LinkList();
 
     @OriginalMember(owner = "client!KJCMXHNO", name = "cb", descriptor = "[I")
     public static final int[] FRONT_WALL_TYPES = new int[] { 19, 55, 38, 155, 255, 110, 137, 205, 76 };
@@ -1213,7 +1213,7 @@ public class World3D {
                                                     wall.entityB.draw(0, sinEyePitch, cosEyePitch, sinEyeYaw, cosEyeYaw, wall.field1533 - eyeX, wall.field1532 - eyeY, wall.field1534 - eyeZ, wall.typecode);
                                                 }
                                             }
-                                            if (decor != null && !this.visible(occludeLevel, tileX, tileZ, decor.entity.field1709)) {
+                                            if (decor != null && !this.visible(occludeLevel, tileX, tileZ, decor.entity.maxY)) {
                                                 if ((decor.decorType & frontWallTypes) != 0) {
                                                     decor.entity.draw(decor.decorAngle, sinEyePitch, cosEyePitch, sinEyeYaw, cosEyeYaw, decor.x - eyeX, decor.field1406 - eyeY, decor.z - eyeZ, decor.typecode);
                                                 } else if ((decor.decorType & 0x300) != 0) {
@@ -1386,7 +1386,7 @@ public class World3D {
                                                 }
                                                 Location farthest = locBuffer[farthestIndex];
                                                 farthest.cycle = cycle;
-                                                if (!this.locVisible(occludeLevel, farthest.tileX, farthest.maxSceneTileX, farthest.tileZ, farthest.maxSceneTileZ, farthest.entity.field1709)) {
+                                                if (!this.locVisible(occludeLevel, farthest.tileX, farthest.maxSceneTileX, farthest.tileZ, farthest.maxSceneTileZ, farthest.entity.maxY)) {
                                                     farthest.entity.draw(farthest.field81, sinEyePitch, cosEyePitch, sinEyeYaw, cosEyeYaw, farthest.field78 - eyeX, farthest.field77 - eyeY, farthest.field79 - eyeZ, farthest.typecode);
                                                 }
                                                 for (int x = farthest.tileX; x <= farthest.maxSceneTileX; x++) {
@@ -1446,7 +1446,7 @@ public class World3D {
             }
             if (tile.backWallTypes != 0) {
                 Decor decor = tile.wallDecoration;
-                if (decor != null && !this.visible(occludeLevel, tileX, tileZ, decor.entity.field1709)) {
+                if (decor != null && !this.visible(occludeLevel, tileX, tileZ, decor.entity.maxY)) {
                     if ((decor.decorType & tile.backWallTypes) != 0) {
                         decor.entity.draw(decor.decorAngle, sinEyePitch, cosEyePitch, sinEyeYaw, cosEyeYaw, decor.x - eyeX, decor.field1406 - eyeY, decor.z - eyeZ, decor.typecode);
                     } else if ((decor.decorType & 0x300) != 0) {

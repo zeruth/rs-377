@@ -9,20 +9,14 @@ import rs2.graphics.Model;
 public class ObjStackEntity extends Entity {
 
     @OriginalMember(owner = "client!HRIUIFAV", name = "m", descriptor = "I")
-    public int field873;
-
-    @OriginalMember(owner = "client!HRIUIFAV", name = "n", descriptor = "I")
-    private int field874;
+    public int objId;
 
     @OriginalMember(owner = "client!HRIUIFAV", name = "o", descriptor = "I")
-    public int field875;
+    public int objQuantity;
 
     @OriginalMember(owner = "client!HRIUIFAV", name = "a", descriptor = "(B)LLZYQDKJV;")
     public final Model draw(byte loopCycle) {
-        if (loopCycle != 3) {
-            this.field874 = -358;
-        }
-        ObjType var2 = ObjType.method221(this.field873);
-        return var2.method229(this.field875);
+        ObjType type = ObjType.get(this.objId);
+        return type.getModel(this.objQuantity);
     }
 }

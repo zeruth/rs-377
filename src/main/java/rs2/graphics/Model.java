@@ -29,7 +29,7 @@ public class Model extends Entity {
     private boolean field1188 = false;
 
     @OriginalMember(owner = "client!LZYQDKJV", name = "eb", descriptor = "Z")
-    public boolean field1227 = false;
+    public boolean pickable = false;
 
     @OriginalMember(owner = "client!LZYQDKJV", name = "y", descriptor = "I")
     public int vertexCount;
@@ -901,7 +901,7 @@ public class Model extends Entity {
         this.field1212 = arg3.field1212;
         this.field1213 = arg3.field1213;
         this.field1214 = arg3.field1214;
-        super.field1709 = arg3.field1709;
+        super.maxY = arg3.maxY;
         this.minY = arg3.minY;
         this.field1218 = arg3.field1218;
         this.field1221 = arg3.field1221;
@@ -991,15 +991,15 @@ public class Model extends Entity {
 
     @OriginalMember(owner = "client!LZYQDKJV", name = "c", descriptor = "(I)V")
     public void method363(int arg0) {
-        super.field1709 = 0;
+        super.maxY = 0;
         this.field1218 = 0;
         this.minY = 0;
         for (int var2 = 0; var2 < this.vertexCount; ++var2) {
             int var4 = this.vertexX[var2];
             int var5 = this.vertexY[var2];
             int var6 = this.vertexZ[var2];
-            if (-var5 > super.field1709) {
-                super.field1709 = -var5;
+            if (-var5 > super.maxY) {
+                super.maxY = -var5;
             }
             if (var5 > this.minY) {
                 this.minY = var5;
@@ -1010,33 +1010,33 @@ public class Model extends Entity {
             }
         }
         this.field1218 = (int) (Math.sqrt((double) this.field1218) + 0.99D);
-        this.field1221 = (int) (Math.sqrt((double) (this.field1218 * this.field1218 + super.field1709 * super.field1709)) + 0.99D);
+        this.field1221 = (int) (Math.sqrt((double) (this.field1218 * this.field1218 + super.maxY * super.maxY)) + 0.99D);
         int var3 = 64 / arg0;
         this.field1220 = this.field1221 + (int) (Math.sqrt((double) (this.minY * this.minY + this.field1218 * this.field1218)) + 0.99D);
     }
 
     @OriginalMember(owner = "client!LZYQDKJV", name = "d", descriptor = "(I)V")
     public void method364(int arg0) {
-        super.field1709 = 0;
+        super.maxY = 0;
         if (arg0 == 6) {
             this.minY = 0;
             for (int var2 = 0; var2 < this.vertexCount; ++var2) {
                 int var3 = this.vertexY[var2];
-                if (-var3 > super.field1709) {
-                    super.field1709 = -var3;
+                if (-var3 > super.maxY) {
+                    super.maxY = -var3;
                 }
                 if (var3 > this.minY) {
                     this.minY = var3;
                 }
             }
-            this.field1221 = (int) (Math.sqrt((double) (this.field1218 * this.field1218 + super.field1709 * super.field1709)) + 0.99D);
+            this.field1221 = (int) (Math.sqrt((double) (this.field1218 * this.field1218 + super.maxY * super.maxY)) + 0.99D);
             this.field1220 = this.field1221 + (int) (Math.sqrt((double) (this.minY * this.minY + this.field1218 * this.field1218)) + 0.99D);
         }
     }
 
     @OriginalMember(owner = "client!LZYQDKJV", name = "e", descriptor = "(I)V")
     public void method365(int arg0) {
-        super.field1709 = 0;
+        super.maxY = 0;
         this.field1218 = 0;
         this.minY = 0;
         int var2 = 32767;
@@ -1059,8 +1059,8 @@ public class Model extends Entity {
             if (var9 > var4) {
                 var4 = var9;
             }
-            if (-var8 > super.field1709) {
-                super.field1709 = -var8;
+            if (-var8 > super.maxY) {
+                super.maxY = -var8;
             }
             if (var8 > this.minY) {
                 this.minY = var8;
@@ -1071,7 +1071,7 @@ public class Model extends Entity {
             }
         }
         this.field1218 = (int) Math.sqrt((double) this.field1218);
-        this.field1221 = (int) Math.sqrt((double) (this.field1218 * this.field1218 + super.field1709 * super.field1709));
+        this.field1221 = (int) Math.sqrt((double) (this.field1218 * this.field1218 + super.maxY * super.maxY));
         this.field1220 = this.field1221 + (int) Math.sqrt((double) (this.minY * this.minY + this.field1218 * this.field1218));
         this.mergeX = (var2 << 16) + (var3 & 65535);
         if (arg0 <= 0) {
@@ -1353,7 +1353,7 @@ public class Model extends Entity {
     }
 
     @OriginalMember(owner = "client!LZYQDKJV", name = "a", descriptor = "(IIZI)V")
-    public void method372(int arg0, int arg1, boolean arg2, int arg3) {
+    public void translateModel(int arg0, int arg1, boolean arg2, int arg3) {
         if (arg2) {
             this.field1183 = -310;
         }
@@ -1626,10 +1626,10 @@ public class Model extends Entity {
                     int var18 = this.field1218 * arg1 >> 16;
                     int var19 = var17 + var18 << 9;
                     if (var19 / var13 > -Draw2D.field1103) {
-                        int var20 = (super.field1709 * arg2 >> 16) + var18;
+                        int var20 = (super.maxY * arg2 >> 16) + var18;
                         int var21 = var17 - var20 << 9;
                         if (var21 / var13 < Draw2D.field1103) {
-                            int var22 = (super.field1709 * arg1 >> 16) + var12;
+                            int var22 = (super.maxY * arg1 >> 16) + var12;
                             boolean var23 = false;
                             if (var11 - var22 <= 50) {
                                 var23 = true;
@@ -1661,7 +1661,7 @@ public class Model extends Entity {
                                 int var30 = field1253 - Draw3D.centerX;
                                 int var31 = field1254 - Draw3D.centerY;
                                 if (var30 > var26 && var30 < var27 && var31 > var28 && var31 < var29) {
-                                    if (this.field1227) {
+                                    if (this.pickable) {
                                         field1256[field1255++] = arg8;
                                     } else {
                                         var24 = true;

@@ -18,23 +18,20 @@ public class NpcEntity extends PathingEntity {
     public NpcType npcType;
 
     @OriginalMember(owner = "client!RGHBDSIJ", name = "b", descriptor = "(B)LLZYQDKJV;")
-    private final Model method457(byte arg0) {
-        if (super.field1171 >= 0 && super.field1174 == 0) {
-            int var2 = SeqType.field775[super.field1171].seqDelay[super.field1172];
-            int var3 = -1;
-            if (super.field1135 >= 0 && super.field1181 != super.field1135) {
-                var3 = SeqType.field775[super.field1135].seqDelay[super.field1136];
+    private final Model getSequencedModel() {
+        if (super.primarySeqId >= 0 && super.primarySeqDelay == 0) {
+            int primaryTransformId = SeqType.instances[super.primarySeqId].seqFrames[super.primarySeqFrame];
+            int secondaryTransformId = -1;
+            if (super.secondarySeqId >= 0 && super.seqStandId != super.secondarySeqId) {
+                secondaryTransformId = SeqType.instances[super.secondarySeqId].seqFrames[super.secondarySeqFrame];
             }
-            return this.npcType.method475(var2, var3, 0, SeqType.field775[super.field1171].field781);
+            return this.npcType.getSequencedModel(primaryTransformId, secondaryTransformId, 0, SeqType.instances[super.primarySeqId].field781);
         } else {
-            int var4 = -1;
-            if (arg0 != 122) {
-                this.field1369 = !this.field1369;
+            int secondaryTransformId = -1;
+            if (super.secondarySeqId >= 0) {
+                secondaryTransformId = SeqType.instances[super.secondarySeqId].seqFrames[super.secondarySeqFrame];
             }
-            if (super.field1135 >= 0) {
-                var4 = SeqType.field775[super.field1135].seqDelay[super.field1136];
-            }
-            return this.npcType.method475(var4, -1, 0, (int[]) null);
+            return this.npcType.getSequencedModel(secondaryTransformId, -1, 0, null);
         }
     }
 
@@ -47,45 +44,41 @@ public class NpcEntity extends PathingEntity {
             if (this.npcType == null) {
                 return null;
             } else {
-                Model var3 = this.method457((byte) 122);
-                if (var3 == null) {
+                Model model = this.getSequencedModel();
+                if (model == null) {
                     return null;
                 } else {
-                    super.field1141 = var3.field1709;
-                    if (super.field1161 != -1 && super.field1162 != -1) {
-                        SpotAnimType var4 = SpotAnimType.instances[super.field1161];
-                        Model var5 = var4.getModel();
-                        if (var5 != null) {
-                            int var6 = var4.seq.seqDelay[super.field1162];
-                            Model var7 = new Model(false, false, true, var5, AnimFrame.method265(this.field1369, var6));
-                            var7.method372(0, 0, false, -super.field1165);
-                            var7.createLabelReferences(7);
-                            var7.applyTransform(var6, (byte) 6);
-                            var7.labelFaces = null;
-                            var7.labelVertices = null;
-                            if (var4.resizeh != 128 || var4.resizev != 128) {
-                                var7.scale(var4.resizev, var4.resizeh, 9, var4.resizeh);
+                    super.maxY = model.maxY;
+                    if (super.spotanimId != -1 && super.spotanimFrame != -1) {
+                        SpotAnimType spotanim = SpotAnimType.instances[super.spotanimId];
+                        Model model1 = spotanim.getModel();
+                        if (model1 != null) {
+                            int delay = spotanim.seq.seqFrames[super.spotanimFrame];
+                            Model model2 = new Model(false, false, true, model1, AnimFrame.method265(this.field1369, delay));
+                            model2.translateModel(0, 0, false, -super.spotanimOffset);
+                            model2.createLabelReferences(7);
+                            model2.applyTransform(delay, (byte) 6);
+                            model2.labelFaces = null;
+                            model2.labelVertices = null;
+                            if (spotanim.resizeh != 128 || spotanim.resizev != 128) {
+                                model2.scale(spotanim.resizev, spotanim.resizeh, 9, spotanim.resizeh);
                             }
-                            var7.calculateNormals(var4.ambient + 64, var4.contrast + 850, -30, -50, -30, true);
-                            Model[] var8 = new Model[] { var3, var7 };
-                            var3 = new Model(2, true, 0, var8);
+                            model2.calculateNormals(spotanim.ambient + 64, spotanim.contrast + 850, -30, -50, -30, true);
+                            Model[] models = new Model[] { model, model2 };
+                            model = new Model(2, true, 0, models);
                         }
                     }
                     if (this.npcType.field1445 == 1) {
-                        var3.field1227 = true;
+                        model.pickable = true;
                     }
-                    return var3;
+                    return model;
                 }
             }
         }
     }
 
     @OriginalMember(owner = "client!RGHBDSIJ", name = "b", descriptor = "(I)Z")
-    public final boolean method351(int arg0) {
-        if (arg0 != 0) {
-            throw new NullPointerException();
-        } else {
-            return this.npcType != null;
-        }
+    public final boolean isVisibleNow(int arg0) {
+        return this.npcType != null;
     }
 }

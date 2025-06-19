@@ -13,7 +13,7 @@ public class Entity extends DoublyLinkable {
     private boolean field1707 = true;
 
     @OriginalMember(owner = "client!ZOXDNIET", name = "k", descriptor = "I")
-    public int field1709 = 1000;
+    public int maxY = 1000;
 
     @OriginalMember(owner = "client!ZOXDNIET", name = "h", descriptor = "B")
     private static byte field1706 = 3;
@@ -28,16 +28,13 @@ public class Entity extends DoublyLinkable {
     public void draw(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8) {
         Model var10 = this.draw(field1706);
         if (var10 != null) {
-            this.field1709 = var10.field1709;
+            this.maxY = var10.maxY;
             var10.draw(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8);
         }
     }
 
     @OriginalMember(owner = "client!ZOXDNIET", name = "a", descriptor = "(B)LLZYQDKJV;")
     public Model draw(byte loopCycle) {
-        if (loopCycle != 3) {
-            this.field1707 = !this.field1707;
-        }
         return null;
     }
 }

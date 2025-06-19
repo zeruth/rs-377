@@ -27,7 +27,7 @@ public class OnDemand extends OnDemandProvider implements Runnable {
     private boolean field1716 = true;
 
     @OriginalMember(owner = "client!ZPGPWCCV", name = "h", descriptor = "LBOHLFXVX;")
-    private LinkList field1717 = new LinkList(true);
+    private LinkList field1717 = new LinkList();
 
     @OriginalMember(owner = "client!ZPGPWCCV", name = "l", descriptor = "[[I")
     private int[][] field1721 = new int[4][];
@@ -36,7 +36,7 @@ public class OnDemand extends OnDemandProvider implements Runnable {
     public String field1724 = "";
 
     @OriginalMember(owner = "client!ZPGPWCCV", name = "s", descriptor = "LBOHLFXVX;")
-    private LinkList field1728 = new LinkList(true);
+    private LinkList field1728 = new LinkList();
 
     @OriginalMember(owner = "client!ZPGPWCCV", name = "t", descriptor = "Z")
     private boolean field1729 = false;
@@ -48,10 +48,10 @@ public class OnDemand extends OnDemandProvider implements Runnable {
     private boolean field1733 = false;
 
     @OriginalMember(owner = "client!ZPGPWCCV", name = "y", descriptor = "LBOHLFXVX;")
-    private LinkList field1734 = new LinkList(true);
+    private LinkList field1734 = new LinkList();
 
     @OriginalMember(owner = "client!ZPGPWCCV", name = "z", descriptor = "LBOHLFXVX;")
-    private LinkList field1735 = new LinkList(true);
+    private LinkList field1735 = new LinkList();
 
     @OriginalMember(owner = "client!ZPGPWCCV", name = "A", descriptor = "[B")
     private byte[] field1736 = new byte[65000];
@@ -63,13 +63,13 @@ public class OnDemand extends OnDemandProvider implements Runnable {
     private int field1744 = 591;
 
     @OriginalMember(owner = "client!ZPGPWCCV", name = "K", descriptor = "LCZYJUOKA;")
-    private DoublyLinkList field1746 = new DoublyLinkList(true);
+    private DoublyLinkList field1746 = new DoublyLinkList();
 
     @OriginalMember(owner = "client!ZPGPWCCV", name = "M", descriptor = "B")
     private byte field1748 = 6;
 
     @OriginalMember(owner = "client!ZPGPWCCV", name = "P", descriptor = "LBOHLFXVX;")
-    private LinkList field1751 = new LinkList(true);
+    private LinkList field1751 = new LinkList();
 
     @OriginalMember(owner = "client!ZPGPWCCV", name = "S", descriptor = "[[I")
     private int[][] field1754 = new int[4][];
@@ -174,7 +174,7 @@ public class OnDemand extends OnDemandProvider implements Runnable {
                 int var6 = ((this.field1741[3] & 0xFF) << 8) + (this.field1741[4] & 0xFF);
                 int var7 = this.field1741[5] & 0xFF;
                 this.field1749 = null;
-                for (OnDemandRequest var8 = (OnDemandRequest) this.field1751.method6(); var8 != null; var8 = (OnDemandRequest) this.field1751.method8(1)) {
+                for (OnDemandRequest var8 = (OnDemandRequest) this.field1751.head(); var8 != null; var8 = (OnDemandRequest) this.field1751.next()) {
                     if (var8.field1363 == var4 && var8.field1364 == var5) {
                         this.field1749 = var8;
                     }
@@ -193,7 +193,7 @@ public class OnDemand extends OnDemandProvider implements Runnable {
                                 this.field1734.addTail(this.field1749);
                             }
                         } else {
-                            this.field1749.method604();
+                            this.field1749.unlink();
                         }
                         this.field1749 = null;
                     } else {
@@ -235,7 +235,7 @@ public class OnDemand extends OnDemandProvider implements Runnable {
                             this.field1734.addTail(this.field1749);
                         }
                     } else {
-                        this.field1749.method604();
+                        this.field1749.unlink();
                     }
                 }
                 this.field1739 = 0;
@@ -355,7 +355,7 @@ public class OnDemand extends OnDemandProvider implements Runnable {
         }
         DoublyLinkList var3 = this.field1746;
         synchronized (this.field1746) {
-            for (OnDemandRequest var4 = (OnDemandRequest) this.field1746.method182(); var4 != null; var4 = (OnDemandRequest) this.field1746.method183(1)) {
+            for (OnDemandRequest var4 = (OnDemandRequest) this.field1746.startIteration(); var4 != null; var4 = (OnDemandRequest) this.field1746.nextIteration()) {
                 if (var4.field1363 == arg0 && var4.field1364 == arg1) {
                     return;
                 }
@@ -368,7 +368,7 @@ public class OnDemand extends OnDemandProvider implements Runnable {
             synchronized (this.field1717) {
                 this.field1717.addTail(var5);
             }
-            this.field1746.method180(var5);
+            this.field1746.push(var5);
         }
     }
 
@@ -384,7 +384,7 @@ public class OnDemand extends OnDemandProvider implements Runnable {
         }
         DoublyLinkList var3 = this.field1746;
         synchronized (this.field1746) {
-            var2.method185();
+            var2.unlink2();
         }
         if (var2.field1366 == null) {
             return var2;
@@ -439,7 +439,7 @@ public class OnDemand extends OnDemandProvider implements Runnable {
                     }
                 }
                 boolean var3 = false;
-                for (OnDemandRequest var4 = (OnDemandRequest) this.field1751.method6(); var4 != null; var4 = (OnDemandRequest) this.field1751.method8(1)) {
+                for (OnDemandRequest var4 = (OnDemandRequest) this.field1751.head(); var4 != null; var4 = (OnDemandRequest) this.field1751.next()) {
                     if (var4.field1367) {
                         var3 = true;
                         var4.field1365++;
@@ -450,7 +450,7 @@ public class OnDemand extends OnDemandProvider implements Runnable {
                     }
                 }
                 if (!var3) {
-                    for (OnDemandRequest var5 = (OnDemandRequest) this.field1751.method6(); var5 != null; var5 = (OnDemandRequest) this.field1751.method8(1)) {
+                    for (OnDemandRequest var5 = (OnDemandRequest) this.field1751.head(); var5 != null; var5 = (OnDemandRequest) this.field1751.next()) {
                         var3 = true;
                         var5.field1365++;
                         if (var5.field1365 > 50) {
@@ -503,7 +503,7 @@ public class OnDemand extends OnDemandProvider implements Runnable {
         if (arg0 != 0) {
             return;
         }
-        for (OnDemandRequest var2 = (OnDemandRequest) this.field1751.method6(); var2 != null; var2 = (OnDemandRequest) this.field1751.method8(1)) {
+        for (OnDemandRequest var2 = (OnDemandRequest) this.field1751.head(); var2 != null; var2 = (OnDemandRequest) this.field1751.next()) {
             if (var2.field1367) {
                 this.field1719++;
             } else {
@@ -544,7 +544,7 @@ public class OnDemand extends OnDemandProvider implements Runnable {
     public final int method590() {
         DoublyLinkList var1 = this.field1746;
         synchronized (this.field1746) {
-            return this.field1746.method184();
+            return this.field1746.size();
         }
     }
 
@@ -630,7 +630,7 @@ public class OnDemand extends OnDemandProvider implements Runnable {
     public final void method593(byte arg0) {
         LinkList var2 = this.field1735;
         synchronized (this.field1735) {
-            this.field1735.method10();
+            this.field1735.clear();
         }
         if (arg0 != -125) {
             this.field1729 = !this.field1729;

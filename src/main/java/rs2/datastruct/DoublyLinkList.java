@@ -5,80 +5,69 @@ import org.openrs2.deob.annotation.OriginalMember;
 
 @OriginalClass("client!CZYJUOKA")
 public class DoublyLinkList {
-
-    @OriginalMember(owner = "client!CZYJUOKA", name = "a", descriptor = "Z")
-    private boolean field630 = true;
-
     @OriginalMember(owner = "client!CZYJUOKA", name = "b", descriptor = "LDPPNUUMQ;")
-    public DoublyLinkable field631 = new DoublyLinkable();
+    public DoublyLinkable head = new DoublyLinkable();
 
     @OriginalMember(owner = "client!CZYJUOKA", name = "c", descriptor = "LDPPNUUMQ;")
-    private DoublyLinkable field632;
+    private DoublyLinkable current;
 
     @OriginalMember(owner = "client!CZYJUOKA", name = "<init>", descriptor = "(Z)V")
-    public DoublyLinkList(boolean arg0) {
-        this.field631.field633 = this.field631;
-        this.field631.field634 = this.field631;
-        if (!arg0) {
-            for (int var2 = 1; var2 > 0; var2++) {
-            }
-        }
+    public DoublyLinkList() {
+        this.head.next2 = this.head;
+        this.head.prev2 = this.head;
     }
 
     @OriginalMember(owner = "client!CZYJUOKA", name = "a", descriptor = "(LDPPNUUMQ;)V")
-    public void method180(DoublyLinkable arg0) {
-        if (arg0.field634 != null) {
-            arg0.method185();
+    public void push(DoublyLinkable node) {
+        if (node.prev2 != null) {
+            node.unlink2();
         }
-        arg0.field634 = this.field631.field634;
-        arg0.field633 = this.field631;
-        arg0.field634.field633 = arg0;
-        arg0.field633.field634 = arg0;
+        node.prev2 = this.head.prev2;
+        node.next2 = this.head;
+        node.prev2.next2 = node;
+        node.next2.prev2 = node;
     }
 
     @OriginalMember(owner = "client!CZYJUOKA", name = "a", descriptor = "()LDPPNUUMQ;")
-    public DoublyLinkable method181() {
-        DoublyLinkable var1 = this.field631.field633;
-        if (this.field631 == var1) {
+    public DoublyLinkable pop() {
+        DoublyLinkable node = this.head.next2;
+        if (this.head == node) {
             return null;
         } else {
-            var1.method185();
-            return var1;
+            node.unlink2();
+            return node;
         }
     }
 
     @OriginalMember(owner = "client!CZYJUOKA", name = "b", descriptor = "()LDPPNUUMQ;")
-    public DoublyLinkable method182() {
-        DoublyLinkable var1 = this.field631.field633;
-        if (this.field631 == var1) {
-            this.field632 = null;
+    public DoublyLinkable startIteration() {
+        DoublyLinkable first = this.head.next2;
+        if (this.head == first) {
+            this.current = null;
             return null;
         } else {
-            this.field632 = var1.field633;
-            return var1;
+            this.current = first.next2;
+            return first;
         }
     }
 
     @OriginalMember(owner = "client!CZYJUOKA", name = "a", descriptor = "(I)LDPPNUUMQ;")
-    public DoublyLinkable method183(int arg0) {
-        DoublyLinkable var2 = this.field632;
-        if (this.field631 == var2) {
-            this.field632 = null;
+    public DoublyLinkable nextIteration() {
+        DoublyLinkable current = this.current;
+        if (this.head == current) {
+            this.current = null;
             return null;
         }
-        this.field632 = var2.field633;
-        if (arg0 < 1 || arg0 > 1) {
-            this.field630 = !this.field630;
-        }
-        return var2;
+        this.current = current.next2;
+        return current;
     }
 
     @OriginalMember(owner = "client!CZYJUOKA", name = "c", descriptor = "()I")
-    public int method184() {
-        int var1 = 0;
-        for (DoublyLinkable var2 = this.field631.field633; var2 != this.field631; var2 = var2.field633) {
-            var1++;
+    public int size() {
+        int count = 0;
+        for (DoublyLinkable current = this.head.next2; current != this.head; current = current.next2) {
+            count++;
         }
-        return var1;
+        return count;
     }
 }

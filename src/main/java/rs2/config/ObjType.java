@@ -26,13 +26,13 @@ public class ObjType {
     private boolean field856 = true;
 
     @OriginalMember(owner = "client!GSCQQEUA", name = "l", descriptor = "LRHNYLZZL;")
-    public static LruCache field819 = new LruCache(50, -572);
+    public static LruCache field819 = new LruCache(50);
 
     @OriginalMember(owner = "client!GSCQQEUA", name = "s", descriptor = "Z")
     public static boolean field826 = true;
 
     @OriginalMember(owner = "client!GSCQQEUA", name = "u", descriptor = "LRHNYLZZL;")
-    public static LruCache field828 = new LruCache(100, -572);
+    public static LruCache field828 = new LruCache(100);
 
     @OriginalMember(owner = "client!GSCQQEUA", name = "v", descriptor = "B")
     private static byte field829 = 6;
@@ -197,7 +197,7 @@ public class ObjType {
     }
 
     @OriginalMember(owner = "client!GSCQQEUA", name = "a", descriptor = "(I)LGSCQQEUA;")
-    public static final ObjType method221(int arg0) {
+    public static final ObjType get(int arg0) {
         for (int var1 = 0; var1 < 10; var1++) {
             if (field818[var1].field845 == arg0) {
                 return field818[var1];
@@ -252,10 +252,10 @@ public class ObjType {
             }
         }
         if (arg1 == 0 && this.field860 != 0) {
-            var6.method372(0, 0, false, this.field860);
+            var6.translateModel(0, 0, false, this.field860);
         }
         if (arg1 == 1 && this.field812 != 0) {
-            var6.method372(0, 0, false, this.field812);
+            var6.translateModel(0, 0, false, this.field812);
         }
         if (this.field846 != null) {
             for (int var12 = 0; var12 < this.field846.length; var12++) {
@@ -284,7 +284,7 @@ public class ObjType {
 
     @OriginalMember(owner = "client!GSCQQEUA", name = "b", descriptor = "(I)V")
     public void method224(int arg0) {
-        ObjType var2 = method221(this.field825);
+        ObjType var2 = get(this.field825);
         this.field842 = var2.field842;
         this.field851 = var2.field851;
         if (arg0 != 0) {
@@ -298,7 +298,7 @@ public class ObjType {
         this.field822 = var2.field822;
         this.field846 = var2.field846;
         this.field823 = var2.field823;
-        ObjType var4 = method221(this.field815);
+        ObjType var4 = get(this.field815);
         this.field811 = var4.field811;
         this.field859 = var4.field859;
         this.field827 = var4.field827;
@@ -349,7 +349,7 @@ public class ObjType {
                 }
             }
             if (var3 != -1) {
-                return method221(var3).method226(this.field833, 1);
+                return get(var3).method226(this.field833, 1);
             }
         }
         Model var5 = Model.method359(this.field842);
@@ -510,19 +510,19 @@ public class ObjType {
     }
 
     @OriginalMember(owner = "client!GSCQQEUA", name = "c", descriptor = "(I)LLZYQDKJV;")
-    public final Model method229(int arg0) {
-        if (this.field847 != null && arg0 > 1) {
+    public final Model getModel(int count) {
+        if (this.field847 != null && count > 1) {
             int var2 = -1;
             for (int var3 = 0; var3 < 10; var3++) {
-                if (arg0 >= this.field858[var3] && this.field858[var3] != 0) {
+                if (count >= this.field858[var3] && this.field858[var3] != 0) {
                     var2 = this.field847[var3];
                 }
             }
             if (var2 != -1) {
-                return method221(var2).method229(1);
+                return get(var2).getModel(1);
             }
         }
-        Model var4 = (Model) field819.method458((long) this.field845);
+        Model var4 = (Model) field819.get((long) this.field845);
         if (var4 != null) {
             return var4;
         }
@@ -539,24 +539,24 @@ public class ObjType {
             }
         }
         var5.calculateNormals(this.field836 + 64, this.field840 + 768, -50, -10, -50, true);
-        var5.field1227 = true;
-        field819.method459(var5, (long) this.field845, 5);
+        var5.pickable = true;
+        field819.put(var5, (long) this.field845);
         return var5;
     }
 
     @OriginalMember(owner = "client!GSCQQEUA", name = "a", descriptor = "(BIII)LEPQDEJTO;")
     public static final Pix24 method230(byte arg0, int arg1, int arg2, int arg3) {
         if (arg1 == 0) {
-            Pix24 var4 = (Pix24) field828.method458((long) arg3);
+            Pix24 var4 = (Pix24) field828.get((long) arg3);
             if (var4 != null && var4.field691 != arg2 && var4.field691 != -1) {
-                var4.method604();
+                var4.unlink();
                 var4 = null;
             }
             if (var4 != null) {
                 return var4;
             }
         }
-        ObjType var5 = method221(arg3);
+        ObjType var5 = get(arg3);
         if (var5.field847 == null) {
             arg2 = -1;
         }
@@ -568,10 +568,10 @@ public class ObjType {
                 }
             }
             if (var6 != -1) {
-                var5 = method221(var6);
+                var5 = get(var6);
             }
         }
-        Model var8 = var5.method229(1);
+        Model var8 = var5.getModel(1);
         if (var8 == null) {
             return null;
         }
@@ -606,7 +606,7 @@ public class ObjType {
         }
         int var22 = Draw3D.field1598[var5.field841] * var21 >> 16;
         int var23 = Draw3D.field1599[var5.field841] * var21 >> 16;
-        var8.method380(0, var5.field838, var5.field821, var5.field841, var5.field809, var8.field1709 / 2 + var22 + var5.field822, var5.field822 + var23);
+        var8.method380(0, var5.field838, var5.field821, var5.field841, var5.field809, var8.maxY / 2 + var22 + var5.field822, var5.field822 + var23);
         for (int var24 = 31; var24 >= 0; var24--) {
             for (int var31 = 31; var31 >= 0; var31--) {
                 if (var10.field685[var31 * 32 + var24] == 0) {
@@ -657,7 +657,7 @@ public class ObjType {
             var9.field691 = var30;
         }
         if (arg1 == 0) {
-            field828.method459(var10, (long) arg3, 5);
+            field828.put(var10, (long) arg3);
         }
         Draw2D.method332(field832, var15, var16, var14);
         Draw2D.method334(var19, var17, var20, var18, true);

@@ -13,7 +13,7 @@ public class SeqType {
     private boolean field773 = false;
 
     @OriginalMember(owner = "client!FHWCLIAS", name = "i", descriptor = "I")
-    public int field780 = -1;
+    public int replayoff = -1;
 
     @OriginalMember(owner = "client!FHWCLIAS", name = "k", descriptor = "Z")
     public boolean field782 = false;
@@ -34,7 +34,7 @@ public class SeqType {
     public int field787 = -1;
 
     @OriginalMember(owner = "client!FHWCLIAS", name = "q", descriptor = "I")
-    public int field788 = -1;
+    public int seqPriority = -1;
 
     @OriginalMember(owner = "client!FHWCLIAS", name = "r", descriptor = "I")
     public int field789 = 2;
@@ -46,7 +46,7 @@ public class SeqType {
     public static int field774;
 
     @OriginalMember(owner = "client!FHWCLIAS", name = "e", descriptor = "I")
-    public int field776;
+    public int seqFrameCount;
 
     @OriginalMember(owner = "client!FHWCLIAS", name = "s", descriptor = "I")
     public int field790;
@@ -55,7 +55,7 @@ public class SeqType {
     public static int field791;
 
     @OriginalMember(owner = "client!FHWCLIAS", name = "f", descriptor = "[I")
-    public int[] seqDelay;
+    public int[] seqFrames;
 
     @OriginalMember(owner = "client!FHWCLIAS", name = "g", descriptor = "[I")
     public int[] field778;
@@ -67,20 +67,20 @@ public class SeqType {
     public int[] field781;
 
     @OriginalMember(owner = "client!FHWCLIAS", name = "d", descriptor = "[LFHWCLIAS;")
-    public static SeqType[] field775;
+    public static SeqType[] instances;
 
     @OriginalMember(owner = "client!FHWCLIAS", name = "a", descriptor = "(LATJMVOZR;I)V")
     public static void method213(Jagfile arg0, int arg1) {
         Packet var2 = new Packet(true, arg0.method2("seq.dat", null));
         field774 = var2.g2();
-        if (field775 == null) {
-            field775 = new SeqType[field774];
+        if (instances == null) {
+            instances = new SeqType[field774];
         }
         for (int var3 = 0; var3 < field774; var3++) {
-            if (field775[var3] == null) {
-                field775[var3] = new SeqType();
+            if (instances[var3] == null) {
+                instances[var3] = new SeqType();
             }
-            field775[var3].method215(field772, var2);
+            instances[var3].method215(field772, var2);
         }
         if (arg1 == 36135) {
             ;
@@ -94,7 +94,7 @@ public class SeqType {
             return 1;
         }
         if (var3 == 0) {
-            AnimFrame var4 = AnimFrame.method264(this.seqDelay[arg1]);
+            AnimFrame var4 = AnimFrame.method264(this.seqFrames[arg1]);
             if (var4 != null) {
                 var3 = this.field779[arg1] = var4.field930;
             }
@@ -116,10 +116,10 @@ public class SeqType {
             while (true) {
                 int var4 = arg1.g1();
                 if (var4 == 0) {
-                    if (this.field776 == 0) {
-                        this.field776 = 1;
-                        this.seqDelay = new int[1];
-                        this.seqDelay[0] = -1;
+                    if (this.seqFrameCount == 0) {
+                        this.seqFrameCount = 1;
+                        this.seqFrames = new int[1];
+                        this.seqFrames[0] = -1;
                         this.field778 = new int[1];
                         this.field778[0] = -1;
                         this.field779 = new int[1];
@@ -132,23 +132,23 @@ public class SeqType {
                             this.field787 = 2;
                         }
                     }
-                    if (this.field788 == -1) {
+                    if (this.seqPriority == -1) {
                         if (this.field781 != null) {
-                            this.field788 = 2;
+                            this.seqPriority = 2;
                             return;
                         }
-                        this.field788 = 0;
+                        this.seqPriority = 0;
                         return;
                     }
                     return;
                 }
                 if (var4 == 1) {
-                    this.field776 = arg1.g1();
-                    this.seqDelay = new int[this.field776];
-                    this.field778 = new int[this.field776];
-                    this.field779 = new int[this.field776];
-                    for (int var5 = 0; var5 < this.field776; var5++) {
-                        this.seqDelay[var5] = arg1.g2();
+                    this.seqFrameCount = arg1.g1();
+                    this.seqFrames = new int[this.seqFrameCount];
+                    this.field778 = new int[this.seqFrameCount];
+                    this.field779 = new int[this.seqFrameCount];
+                    for (int var5 = 0; var5 < this.seqFrameCount; var5++) {
+                        this.seqFrames[var5] = arg1.g2();
                         this.field778[var5] = arg1.g2();
                         if (this.field778[var5] == 65535) {
                             this.field778[var5] = -1;
@@ -156,7 +156,7 @@ public class SeqType {
                         this.field779[var5] = arg1.g2();
                     }
                 } else if (var4 == 2) {
-                    this.field780 = arg1.g2();
+                    this.replayoff = arg1.g2();
                 } else if (var4 == 3) {
                     int var6 = arg1.g1();
                     this.field781 = new int[var6 + 1];
@@ -177,7 +177,7 @@ public class SeqType {
                 } else if (var4 == 9) {
                     this.field787 = arg1.g1();
                 } else if (var4 == 10) {
-                    this.field788 = arg1.g1();
+                    this.seqPriority = arg1.g1();
                 } else if (var4 == 11) {
                     this.field789 = arg1.g1();
                 } else if (var4 == 12) {

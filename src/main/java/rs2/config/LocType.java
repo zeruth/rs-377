@@ -32,13 +32,13 @@ public class LocType {
     private byte field1647 = -113;
 
     @OriginalMember(owner = "client!YMYTDPVW", name = "e", descriptor = "LRHNYLZZL;")
-    public static LruCache field1616 = new LruCache(40, -572);
+    public static LruCache field1616 = new LruCache(40);
 
     @OriginalMember(owner = "client!YMYTDPVW", name = "n", descriptor = "[LLZYQDKJV;")
     private static Model[] field1625 = new Model[4];
 
     @OriginalMember(owner = "client!YMYTDPVW", name = "v", descriptor = "LRHNYLZZL;")
-    public static LruCache field1633 = new LruCache(500, -572);
+    public static LruCache field1633 = new LruCache(500);
 
     @OriginalMember(owner = "client!YMYTDPVW", name = "Q", descriptor = "B")
     private static byte field1654 = 6;
@@ -247,7 +247,7 @@ public class LocType {
                 return null;
             }
             var6 = ((long) (arg1 + 1) << 32) + (long) ((this.field1627 << 6) + arg0);
-            Model var8 = (Model) field1616.method458(var6);
+            Model var8 = (Model) field1616.get(var6);
             if (var8 != null) {
                 return var8;
             }
@@ -261,7 +261,7 @@ public class LocType {
                 if (var9) {
                     var12 += 65536;
                 }
-                var5 = (Model) field1633.method458((long) var12);
+                var5 = (Model) field1633.get((long) var12);
                 if (var5 == null) {
                     var5 = Model.method359(var12 & 0xFFFF);
                     if (var5 == null) {
@@ -270,7 +270,7 @@ public class LocType {
                     if (var9) {
                         var5.method374(0);
                     }
-                    field1633.method459(var5, (long) var12, 5);
+                    field1633.put(var5, (long) var12);
                 }
                 if (var10 > 1) {
                     field1625[var11] = var5;
@@ -291,7 +291,7 @@ public class LocType {
                 return null;
             }
             var6 = ((long) (arg1 + 1) << 32) + (long) ((this.field1627 << 6) + (var13 << 3) + arg0);
-            Model var15 = (Model) field1616.method458(var6);
+            Model var15 = (Model) field1616.get(var6);
             if (var15 != null) {
                 return var15;
             }
@@ -300,7 +300,7 @@ public class LocType {
             if (var17) {
                 var16 += 65536;
             }
-            var5 = (Model) field1633.method458((long) var16);
+            var5 = (Model) field1633.get((long) var16);
             if (var5 == null) {
                 var5 = Model.method359(var16 & 0xFFFF);
                 if (var5 == null) {
@@ -309,7 +309,7 @@ public class LocType {
                 if (var17) {
                     var5.method374(0);
                 }
-                field1633.method459(var5, (long) var16, 5);
+                field1633.put(var5, (long) var16);
             }
         }
         boolean var18;
@@ -346,13 +346,13 @@ public class LocType {
             var20.scale(this.field1614, this.field1650, 9, this.field1634);
         }
         if (var19) {
-            var20.method372(this.field1615, this.field1620, false, this.field1639);
+            var20.translateModel(this.field1615, this.field1620, false, this.field1639);
         }
         var20.calculateNormals(this.field1638 + 64, this.field1641 * 5 + 768, -50, -10, -50, !this.field1658);
         if (this.field1648 == 1) {
-            var20.objRaise = var20.field1709;
+            var20.objRaise = var20.maxY;
         }
-        field1616.method459(var20, var6, 5);
+        field1616.put(var20, var6);
         return var20;
     }
 

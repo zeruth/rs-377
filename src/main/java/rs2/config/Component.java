@@ -28,7 +28,7 @@ public class Component {
     public static int field737 = -1;
 
     @OriginalMember(owner = "client!EWIXBTLV", name = "cb", descriptor = "LRHNYLZZL;")
-    public static LruCache field746 = new LruCache(30, -572);
+    public static LruCache field746 = new LruCache(30);
 
     @OriginalMember(owner = "client!EWIXBTLV", name = "nb", descriptor = "I")
     private static int field757 = -291;
@@ -257,11 +257,11 @@ public class Component {
 
     @OriginalMember(owner = "client!EWIXBTLV", name = "a", descriptor = "(ILjava/lang/String;I)LEPQDEJTO;")
     private static Pix24 method203(int arg0, String arg1, int arg2) {
-        long var3 = (JString.method346(183, arg1) << 8) + (long) arg0;
+        long var3 = (JString.hashCode(arg1) << 8) + (long) arg0;
         if (arg2 <= 0) {
             field757 = -317;
         }
-        Pix24 var5 = (Pix24) field732.method458(var3);
+        Pix24 var5 = (Pix24) field732.get(var3);
         if (var5 != null) {
             return var5;
         } else if (field696 == null) {
@@ -269,7 +269,7 @@ public class Component {
         } else {
             try {
                 Pix24 var6 = new Pix24(field696, arg1, arg0);
-                field732.method459(var6, var3, 5);
+                field732.put(var6, var3);
                 return var6;
             } catch (Exception var7) {
                 return null;
@@ -303,11 +303,11 @@ public class Component {
     private Model method206(int arg0, int arg1) {
         ObjType var3 = null;
         if (arg0 == 4) {
-            var3 = ObjType.method221(arg1);
+            var3 = ObjType.get(arg1);
             field762 += var3.field836;
             field725 += var3.field840;
         }
-        Model var4 = (Model) field746.method458((long) ((arg0 << 16) + arg1));
+        Model var4 = (Model) field746.get((long) ((arg0 << 16) + arg1));
         if (var4 != null) {
             return var4;
         }
@@ -315,7 +315,7 @@ public class Component {
             var4 = Model.method359(arg1);
         }
         if (arg0 == 2) {
-            var4 = NpcType.method477(arg1).method472(858);
+            var4 = NpcType.get(arg1).method472(858);
         }
         if (arg0 == 3) {
             var4 = client.field463.method572(true);
@@ -327,7 +327,7 @@ public class Component {
             var4 = null;
         }
         if (var4 != null) {
-            field746.method459(var4, (long) ((arg0 << 16) + arg1), 5);
+            field746.put(var4, (long) ((arg0 << 16) + arg1));
         }
         return var4;
     }
@@ -543,7 +543,7 @@ public class Component {
 
     @OriginalMember(owner = "client!EWIXBTLV", name = "a", descriptor = "(I[LJDPYRDAS;LATJMVOZR;LATJMVOZR;)V")
     public static void method208(int arg0, PixFont[] arg1, Jagfile arg2, Jagfile arg3) {
-        field732 = new LruCache(50000, -572);
+        field732 = new LruCache(50000);
         field696 = arg3;
         field705 = arg1;
         int var4 = -1;
@@ -589,13 +589,13 @@ public class Component {
 
     @OriginalMember(owner = "client!EWIXBTLV", name = "a", descriptor = "(ILLZYQDKJV;II)V")
     public static void method210(int arg0, Model arg1, int arg2, int arg3) {
-        field746.method460();
+        field746.clear();
         if (arg3 != 6) {
             for (int var4 = 1; var4 > 0; var4++) {
             }
         }
         if (arg1 != null && arg0 != 4) {
-            field746.method459(arg1, (long) ((arg0 << 16) + arg2), 5);
+            field746.put(arg1, (long) ((arg0 << 16) + arg2));
         }
     }
 

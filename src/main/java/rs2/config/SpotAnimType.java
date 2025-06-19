@@ -35,7 +35,7 @@ public class SpotAnimType {
     private static boolean field1294 = true;
 
     @OriginalMember(owner = "client!MNZYLKNY", name = "q", descriptor = "LRHNYLZZL;")
-    public static LruCache field1309 = new LruCache(30, -572);
+    public static LruCache field1309 = new LruCache(30);
 
     @OriginalMember(owner = "client!MNZYLKNY", name = "d", descriptor = "I")
     public static int field1296;
@@ -97,8 +97,8 @@ public class SpotAnimType {
                     this.field1299 = arg1.g2();
                 } else if (var4 == 2) {
                     this.field1300 = arg1.g2();
-                    if (SeqType.field775 != null) {
-                        this.seq = SeqType.field775[this.field1300];
+                    if (SeqType.instances != null) {
+                        this.seq = SeqType.instances[this.field1300];
                     }
                 } else if (var4 == 4) {
                     this.resizeh = arg1.g2();
@@ -123,7 +123,7 @@ public class SpotAnimType {
 
     @OriginalMember(owner = "client!MNZYLKNY", name = "a", descriptor = "()LLZYQDKJV;")
     public Model getModel() {
-        Model var1 = (Model) field1309.method458((long) this.field1298);
+        Model var1 = (Model) field1309.get((long) this.field1298);
         if (var1 != null) {
             return var1;
         }
@@ -136,7 +136,7 @@ public class SpotAnimType {
                 var2.method373(this.field1302[var3], this.field1303[var3]);
             }
         }
-        field1309.method459(var2, (long) this.field1298, 5);
+        field1309.put(var2, (long) this.field1298);
         return var2;
     }
 }
