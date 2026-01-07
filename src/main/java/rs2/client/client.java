@@ -8289,7 +8289,7 @@ public class client extends GameShell {
     @OriginalMember(owner = "client!client", name = "getCodeBase", descriptor = "()Ljava/net/URL;")
     public final URL getCodeBase() {
         try {
-            return new URL(CODEBASE);
+            return new URL(IP_ADDRESS);
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }

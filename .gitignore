@@ -45,3 +45,5 @@ bin/
 /data/cache/**.mid
 /data/cache/**.wav
 /data/cache/uid.dat
+
+.idea/
